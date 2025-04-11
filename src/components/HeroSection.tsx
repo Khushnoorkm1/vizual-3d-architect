@@ -140,7 +140,7 @@ const HeroSection = () => {
             </Button>
             <Button 
               variant="outline"
-              className="glass-card py-6 px-8 text-lg hover:bg-white/30 text-white border-white/30"
+              className="glass-card bg-gradient-to-r from-teal-500/30 to-teal-600/30 py-6 px-8 text-lg hover:bg-teal-500/40 text-white border-teal-400/50 transition-all duration-300 shadow-lg hover:shadow-teal-500/20"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
               Contact Us
