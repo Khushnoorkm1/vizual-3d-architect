@@ -69,7 +69,20 @@ export default {
 					silver: '#C0C0C0',
 					gray: '#2D3748',
 					light: '#EDF2F7'
-				}
+				},
+				teal: {
+					50: '#E6FFFA',
+					100: '#B2F5EA',
+					200: '#81E6D9',
+					300: '#4FD1C5',
+					400: '#38B2AC',
+					500: '#319795',
+					600: '#2C7A7B',
+					700: '#285E61',
+					800: '#234E52',
+					900: '#1D4044',
+				},
+				'dark-green': '#0D3E4C'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -78,20 +91,12 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0', opacity: '0' },
+					to: { height: 'var(--radix-accordion-content-height)', opacity: '1' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)', opacity: '1' },
+					to: { height: '0', opacity: '0' }
 				},
 				'float': {
 					'0%, 100%': { transform: 'translateY(0)' },

@@ -1,97 +1,196 @@
 
-import { ArrowRight, Award, Building2, Clock } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, Award, Building2, Clock, Users, Briefcase, Target } from "lucide-react";
 
 const AboutSection = () => {
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
-    <section id="about" className="section-padding bg-white dark:bg-gray-900">
+    <section id="about" className="section-padding bg-teal-900 dark:bg-teal-900 text-white">
       <div className="container mx-auto">
-        <h2 className="section-title dark:text-white text-center">About Us</h2>
-        <p className="section-subtitle dark:text-gray-300 text-center">
-          We are a team of passionate architects and interior designers dedicated to creating exceptional spaces.
-        </p>
+        <motion.h2 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          variants={fadeIn}
+          className="section-title text-white text-center"
+        >
+          Who are we?
+        </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
-          {/* Left side - Information */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          variants={fadeIn}
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16"
+        >
+          {/* Left side - Vision */}
           <div className="space-y-6">
-            <div className="glass-card rounded-xl p-6 hover-scale">
-              <h3 className="text-2xl font-bold mb-4 text-architectural-blue dark:text-white">Our Story</h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                Founded in 2015, VIZUAL3D has been at the forefront of architectural innovation, merging technology with design 
-                to create spaces that inspire. Our journey began with a simple vision: to transform how people experience architecture 
-                through cutting-edge 3D visualization.
+            <motion.div 
+              whileHover={{ scale: 1.03 }}
+              className="glass-card rounded-xl p-6 bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
+            >
+              <h3 className="text-2xl font-bold mb-4 text-teal-300 flex items-center">
+                <Target className="mr-2 text-teal-300" /> Vision
+              </h3>
+              <p className="text-gray-300">
+                To revolutionize the world of contracting, renovation, maintenance, interior design, and finishing
               </p>
-            </div>
+            </motion.div>
             
-            <div className="glass-card rounded-xl p-6 hover-scale">
-              <h3 className="text-2xl font-bold mb-4 text-architectural-blue dark:text-white">Our Approach</h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                We believe in a collaborative design process that puts the client's vision first. By combining technical expertise 
-                with creative thinking, we deliver solutions that are both innovative and practical. Every project is an opportunity 
-                to push boundaries and explore new possibilities.
+            <motion.div 
+              whileHover={{ scale: 1.03 }}
+              className="glass-card rounded-xl p-6 bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
+            >
+              <h3 className="text-2xl font-bold mb-4 text-teal-300 flex items-center">
+                <Target className="mr-2 text-teal-300" /> Goal
+              </h3>
+              <p className="text-gray-300">
+                To be a leading institution in the business and project world in the Kingdom of Saudi Arabia
               </p>
-            </div>
+            </motion.div>
             
-            <div className="glass-card rounded-xl p-6 hover-scale">
-              <h3 className="text-2xl font-bold mb-4 text-architectural-blue dark:text-white">Our Values</h3>
-              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                <li className="flex items-start">
-                  <ArrowRight size={20} className="text-architectural-gold mr-2 mt-1 flex-shrink-0" />
-                  <span>Excellence in every detail</span>
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight size={20} className="text-architectural-gold mr-2 mt-1 flex-shrink-0" />
-                  <span>Innovation through technology</span>
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight size={20} className="text-architectural-gold mr-2 mt-1 flex-shrink-0" />
-                  <span>Sustainability and responsibility</span>
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight size={20} className="text-architectural-gold mr-2 mt-1 flex-shrink-0" />
-                  <span>Client-centered approach</span>
-                </li>
-              </ul>
+            <motion.h3 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="text-2xl font-bold mb-4 text-white mt-12"
+            >
+              Our Values
+            </motion.h3>
+            
+            <div className="grid grid-cols-1 gap-6">
+              <motion.div 
+                whileHover={{ scale: 1.03 }}
+                className="flex items-start glass-card p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
+              >
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-teal-700 flex items-center justify-center mr-4">
+                  <span className="text-white font-bold">1</span>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-white">Integrity</h4>
+                  <p className="text-gray-300">In our work and respecting time and investing it</p>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                whileHover={{ scale: 1.03 }}
+                className="flex items-start glass-card p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
+              >
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-teal-700 flex items-center justify-center mr-4">
+                  <span className="text-white font-bold">2</span>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-white">Creativity</h4>
+                  <p className="text-gray-300">In ideas, excellence and excelling in our field of work</p>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                whileHover={{ scale: 1.03 }}
+                className="flex items-start glass-card p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
+              >
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-teal-700 flex items-center justify-center mr-4">
+                  <span className="text-white font-bold">3</span>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-white">Responsibility</h4>
+                  <p className="text-gray-300">Towards the community, serving it, and leaving a positive impact</p>
+                </div>
+              </motion.div>
             </div>
           </div>
           
-          {/* Right side - Statistics and image */}
+          {/* Right side - Our Mission and Work Team */}
           <div className="flex flex-col space-y-8">
-            <div className="relative h-80 overflow-hidden rounded-xl shadow-xl">
-              <div className="absolute inset-0 bg-gradient-to-r from-architectural-blue/20 to-architectural-gold/20"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" 
-                alt="Architecture team" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="relative"
+            >
+              <div className="glass-card rounded-xl p-6 bg-teal-800/30 backdrop-blur-sm border border-white/10">
+                <h3 className="text-2xl font-bold mb-6 text-teal-300">Our Mission</h3>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 bg-teal-700/40 rounded-full p-2 mr-4">
+                      <Award className="h-5 w-5 text-teal-300" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-medium text-white">Quality</h4>
+                      <p className="text-gray-300">Providing all services and projects with the highest quality and creativity</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 bg-teal-700/40 rounded-full p-2 mr-4">
+                      <Building2 className="h-5 w-5 text-teal-300" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-medium text-white">Standards</h4>
+                      <p className="text-gray-300">According to international standards and specifications</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 bg-teal-700/40 rounded-full p-2 mr-4">
+                      <Briefcase className="h-5 w-5 text-teal-300" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-medium text-white">Ambition</h4>
+                      <p className="text-gray-300">Achieving the ambition of investors, business owners, and clients</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="glass-card p-6 rounded-xl text-center hover-scale">
-                <div className="flex justify-center mb-4">
-                  <Building2 size={32} className="text-architectural-gold" />
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="relative"
+            >
+              <div className="glass-card rounded-xl p-6 bg-teal-800/30 backdrop-blur-sm border border-white/10">
+                <h3 className="text-2xl font-bold mb-6 text-teal-300">Work Team</h3>
+                
+                <p className="text-gray-300 mb-6">
+                  A professional and reliable work team composed of experts, specialists, consultants, contractors, and workers
+                </p>
+                
+                <div className="grid grid-cols-3 gap-6 text-center">
+                  <div className="flex flex-col items-center">
+                    <div className="w-16 h-16 bg-teal-700/30 rounded-full flex items-center justify-center mb-2">
+                      <Users className="h-8 w-8 text-teal-300" />
+                    </div>
+                    <p className="text-white">Engineers</p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center">
+                    <div className="w-16 h-16 bg-teal-700/30 rounded-full flex items-center justify-center mb-2">
+                      <Briefcase className="h-8 w-8 text-teal-300" />
+                    </div>
+                    <p className="text-white">Administrators</p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center">
+                    <div className="w-16 h-16 bg-teal-700/30 rounded-full flex items-center justify-center mb-2">
+                      <Building2 className="h-8 w-8 text-teal-300" />
+                    </div>
+                    <p className="text-white">Workers</p>
+                  </div>
                 </div>
-                <h4 className="text-2xl font-bold text-architectural-blue dark:text-white">150+</h4>
-                <p className="text-gray-600 dark:text-gray-400">Projects Completed</p>
               </div>
-              
-              <div className="glass-card p-6 rounded-xl text-center hover-scale">
-                <div className="flex justify-center mb-4">
-                  <Clock size={32} className="text-architectural-gold" />
-                </div>
-                <h4 className="text-2xl font-bold text-architectural-blue dark:text-white">8+</h4>
-                <p className="text-gray-600 dark:text-gray-400">Years Experience</p>
-              </div>
-              
-              <div className="glass-card p-6 rounded-xl text-center hover-scale">
-                <div className="flex justify-center mb-4">
-                  <Award size={32} className="text-architectural-gold" />
-                </div>
-                <h4 className="text-2xl font-bold text-architectural-blue dark:text-white">25+</h4>
-                <p className="text-gray-600 dark:text-gray-400">Design Awards</p>
-              </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
