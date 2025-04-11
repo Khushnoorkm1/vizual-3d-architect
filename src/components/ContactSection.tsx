@@ -1,13 +1,11 @@
-
 import { useState } from "react";
 import { Phone, Mail, MapPin, Send, Building } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 import { motion } from "framer-motion";
 
 const ContactSection = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,10 +27,8 @@ const ContactSection = () => {
     // Simulate form submission
     setTimeout(() => {
       console.log("Form submitted:", formData);
-      toast({
-        title: "Message Sent",
+      toast("Message Sent", {
         description: "Thank you for your inquiry. We'll get back to you soon!",
-        variant: "default",
       });
       
       setFormData({
