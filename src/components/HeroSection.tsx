@@ -6,7 +6,7 @@ import { Vector3 } from "three";
 import { Button } from "@/components/ui/button";
 import { ChevronDownCircle } from "lucide-react";
 
-// Simple Burj Khalifa model
+// Enhanced Burj Khalifa model
 const BurjKhalifa = ({ scale = 1.5 }) => {
   const meshRef = useRef(null);
   
