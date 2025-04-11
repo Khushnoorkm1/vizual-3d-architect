@@ -1,7 +1,7 @@
 
 import { Suspense, useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Environment, PerspectiveCamera } from "@react-three/drei";
+import { OrbitControls, useGLTF, Environment, PerspectiveCamera, Html } from "@react-three/drei";
 import { Vector3 } from "three";
 import { Button } from "@/components/ui/button";
 import { ChevronDownCircle } from "lucide-react";
@@ -45,12 +45,12 @@ const BurjKhalifa = ({ scale = 1.5 }) => {
   );
 };
 
-// The following component will render when the 3D model is loading
-const Loader = () => {
+// Three.js compatible loading indicator using the Html component from drei
+const LoadingIndicator = () => {
   return (
-    <div className="absolute inset-0 flex items-center justify-center">
+    <Html center>
       <div className="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
-    </div>
+    </Html>
   );
 };
 
@@ -74,7 +74,7 @@ const HeroSection = () => {
       {isMounted && (
         <div className="absolute inset-0 w-full h-full">
           <Canvas className="w-full h-full">
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<LoadingIndicator />}>
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} intensity={1} />
               <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={50} />
