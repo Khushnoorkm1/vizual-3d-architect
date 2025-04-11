@@ -63,8 +63,8 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <a href="#home" className="flex items-center space-x-2">
           <span className="text-2xl font-bold text-architectural-blue dark:text-architectural-light">
-            VIZUAL
-            <span className="text-architectural-gold">3D</span>
+            Omair
+            <span className="text-architectural-gold"> Contracting Establishment</span>
           </span>
         </a>
 
