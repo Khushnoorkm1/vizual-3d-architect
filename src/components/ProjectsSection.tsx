@@ -1,7 +1,8 @@
-
 import { useState } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogClose } from "@radix-ui/react-dialog";
+import { X } from "lucide-react";
 
 // Sample project data
 const projects = [
@@ -137,35 +138,41 @@ const ProjectsSection = () => {
       
       {/* Project detail modal */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={closeProjectDetails}>
-          <div 
-            className="bg-white dark:bg-gray-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto glass-card p-0"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="relative h-80 sm:h-96">
+        <Dialog open={!!selectedProject} onOpenChange={closeProjectDetails}>
+          <DialogContent className="max-w-4xl">
+            <div className="relative h-80 sm:h-96 rounded-t-lg overflow-hidden">
               <img 
                 src={selectedProject.imageUrl} 
                 alt={selectedProject.title} 
                 className="w-full h-full object-cover"
               />
-              <button 
-                className="absolute top-4 right-4 bg-white/80 dark:bg-black/80 rounded-full p-2 text-gray-800 dark:text-white"
-                onClick={closeProjectDetails}
-              >
-                ✕
-              </button>
+              <DialogClose asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute top-4 right-4 bg-white/80 dark:bg-black/80 rounded-full"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </DialogClose>
             </div>
+            
             <div className="p-6">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-bold text-architectural-blue dark:text-white">{selectedProject.title}</h3>
-                <span className="bg-architectural-gold/20 text-architectural-gold px-3 py-1 rounded-full text-sm">
-                  {selectedProject.category}
-                </span>
-              </div>
-              <p className="text-gray-700 dark:text-gray-300 mb-6">{selectedProject.description}</p>
+              <DialogHeader>
+                <div className="flex justify-between items-start mb-4">
+                  <DialogTitle className="text-2xl font-bold text-architectural-blue dark:text-white">
+                    {selectedProject.title}
+                  </DialogTitle>
+                  <span className="bg-architectural-gold/20 text-architectural-gold px-3 py-1 rounded-full text-sm">
+                    {selectedProject.category}
+                  </span>
+                </div>
+                <DialogDescription className="text-gray-700 dark:text-gray-300">
+                  {selectedProject.description}
+                </DialogDescription>
+              </DialogHeader>
               
-              {/* Additional project details - in a real app, these would be loaded from the database */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-architectural-blue dark:text-white">Project Details</h4>
                   <ul className="space-y-2 text-gray-600 dark:text-gray-300">
@@ -186,10 +193,12 @@ const ProjectsSection = () => {
                 </div>
               </div>
               
-              <Button className="w-full glass-button bg-architectural-blue text-white">Contact Us About This Project</Button>
+              <Button className="w-full glass-button bg-architectural-blue text-white mt-6">
+                Contact Us About This Project
+              </Button>
             </div>
-          </div>
-        </div>
+          </DialogContent>
+        </Dialog>
       )}
     </section>
   );
