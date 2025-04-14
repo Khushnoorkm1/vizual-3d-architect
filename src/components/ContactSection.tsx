@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Phone, Mail, MapPin, Send, Building } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -222,10 +223,10 @@ const ContactSection = () => {
                   <div className="flex-shrink-0 bg-teal-100 dark:bg-teal-700/40 rounded-full p-3 mr-4">
                     <Phone className="h-6 w-6 text-teal-700 dark:text-teal-300" />
                   </div>
-                  <div>
+                  <div className="flex-1 min-w-0"> {/* Added min-w-0 to prevent overflow */}
                     <h4 className="text-lg font-medium text-teal-900 dark:text-white">Phone</h4>
-                    <p className="text-teal-800 dark:text-gray-300">+966 11 123 4567</p>
-                    <p className="text-teal-800 dark:text-gray-300">+966 50 987 6543</p>
+                    <p className="text-teal-800 dark:text-gray-300 break-words">+966 11 123 4567</p>
+                    <p className="text-teal-800 dark:text-gray-300 break-words">+966 50 987 6543</p>
                   </div>
                 </div>
                 
@@ -233,10 +234,10 @@ const ContactSection = () => {
                   <div className="flex-shrink-0 bg-teal-100 dark:bg-teal-700/40 rounded-full p-3 mr-4">
                     <Mail className="h-6 w-6 text-teal-700 dark:text-teal-300" />
                   </div>
-                  <div>
+                  <div className="flex-1 min-w-0"> {/* Added min-w-0 to prevent overflow */}
                     <h4 className="text-lg font-medium text-teal-900 dark:text-white">Email</h4>
-                    <p className="text-teal-800 dark:text-gray-300">info@omaircontracting.com</p>
-                    <p className="text-teal-800 dark:text-gray-300">projects@omaircontracting.com</p>
+                    <p className="text-teal-800 dark:text-gray-300 break-words">info@omaircontracting.com</p>
+                    <p className="text-teal-800 dark:text-gray-300 break-words">projects@omaircontracting.com</p>
                   </div>
                 </div>
                 
@@ -244,12 +245,12 @@ const ContactSection = () => {
                   <div className="flex-shrink-0 bg-teal-100 dark:bg-teal-700/40 rounded-full p-3 mr-4">
                     <Building className="h-6 w-6 text-teal-700 dark:text-teal-300" />
                   </div>
-                  <div>
+                  <div className="flex-1 min-w-0"> {/* Added min-w-0 to prevent overflow */}
                     <h4 className="text-lg font-medium text-teal-900 dark:text-white">Locations</h4>
-                    <p className="text-teal-800 dark:text-gray-300 font-medium">Riyadh:</p>
-                    <p className="text-teal-800 dark:text-gray-300 mb-2">King Abdullah Road</p>
-                    <p className="text-teal-800 dark:text-gray-300 font-medium">Shaqra City:</p>
-                    <p className="text-teal-800 dark:text-gray-300">King Fahd Road</p>
+                    <p className="text-teal-800 dark:text-gray-300 font-medium break-words">Riyadh:</p>
+                    <p className="text-teal-800 dark:text-gray-300 mb-2 break-words">King Abdullah Road</p>
+                    <p className="text-teal-800 dark:text-gray-300 font-medium break-words">Shaqra City:</p>
+                    <p className="text-teal-800 dark:text-gray-300 break-words">King Fahd Road</p>
                   </div>
                 </div>
               </div>
@@ -264,15 +265,15 @@ const ContactSection = () => {
               <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">Office Hours</h3>
               
               <div className="space-y-3">
-                <div className="flex justify-between">
+                <div className="flex justify-between flex-wrap">
                   <span className="text-teal-800 dark:text-gray-300">Sunday - Thursday</span>
                   <span className="font-medium text-teal-900 dark:text-white">8:00 AM - 5:00 PM</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between flex-wrap">
                   <span className="text-teal-800 dark:text-gray-300">Friday</span>
                   <span className="font-medium text-teal-900 dark:text-white">Closed</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between flex-wrap">
                   <span className="text-teal-800 dark:text-gray-300">Saturday</span>
                   <span className="font-medium text-teal-900 dark:text-white">9:00 AM - 1:00 PM</span>
                 </div>
