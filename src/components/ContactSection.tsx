@@ -1,9 +1,16 @@
-
 import { useState } from "react";
-import { Phone, Mail, MapPin, Send, Building } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Building, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { toast } from "sonner";
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogDescription,
+  DialogFooter,
+  DialogClose
+} from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 
 const ContactSection = () => {
@@ -15,6 +22,7 @@ const ContactSection = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccessDialogOpen, setIsSuccessDialogOpen] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,9 +36,9 @@ const ContactSection = () => {
     // Simulate form submission
     setTimeout(() => {
       console.log("Form submitted:", formData);
-      toast("Message Sent", {
-        description: "Thank you for your inquiry. We'll get back to you soon!",
-      });
+      
+      // Open the success dialog instead of showing a toast
+      setIsSuccessDialogOpen(true);
       
       setFormData({
         name: "",
@@ -52,6 +60,28 @@ const ContactSection = () => {
   return (
     <section id="contact" className="section-padding bg-white dark:bg-teal-900/30">
       <div className="container mx-auto">
+        {/* Success Dialog */}
+        <Dialog open={isSuccessDialogOpen} onOpenChange={setIsSuccessDialogOpen}>
+          <DialogContent className="bg-white dark:bg-teal-900/90 border-teal-200 dark:border-teal-700/50 max-w-md mx-auto">
+            <DialogHeader>
+              <DialogTitle className="text-center flex items-center justify-center gap-2 text-teal-900 dark:text-white">
+                <CheckCircle className="h-6 w-6 text-green-500" />
+                Message Sent
+              </DialogTitle>
+              <DialogDescription className="text-center text-teal-800 dark:text-gray-300">
+                Thank you for your inquiry. We'll get back to you soon!
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter className="sm:justify-center">
+              <DialogClose asChild>
+                <Button className="glass-button bg-teal-600 hover:bg-teal-500 text-white border border-teal-400/30">
+                  Close
+                </Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
         <motion.h2 
           initial="hidden"
           whileInView="visible"
@@ -62,6 +92,7 @@ const ContactSection = () => {
         >
           Contact Us
         </motion.h2>
+        
         <motion.p 
           initial="hidden"
           whileInView="visible"
@@ -74,7 +105,6 @@ const ContactSection = () => {
         </motion.p>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
-          {/* Contact Form */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -202,7 +232,6 @@ const ContactSection = () => {
             </motion.div>
           </motion.div>
           
-          {/* Contact Information */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -223,7 +252,7 @@ const ContactSection = () => {
                   <div className="flex-shrink-0 bg-teal-100 dark:bg-teal-700/40 rounded-full p-3 mr-4">
                     <Phone className="h-6 w-6 text-teal-700 dark:text-teal-300" />
                   </div>
-                  <div className="flex-1 min-w-0"> {/* Added min-w-0 to prevent overflow */}
+                  <div className="flex-1 min-w-0">
                     <h4 className="text-lg font-medium text-teal-900 dark:text-white">Phone</h4>
                     <p className="text-teal-800 dark:text-gray-300 break-words">+966 11 123 4567</p>
                     <p className="text-teal-800 dark:text-gray-300 break-words">+966 50 987 6543</p>
@@ -234,7 +263,7 @@ const ContactSection = () => {
                   <div className="flex-shrink-0 bg-teal-100 dark:bg-teal-700/40 rounded-full p-3 mr-4">
                     <Mail className="h-6 w-6 text-teal-700 dark:text-teal-300" />
                   </div>
-                  <div className="flex-1 min-w-0"> {/* Added min-w-0 to prevent overflow */}
+                  <div className="flex-1 min-w-0">
                     <h4 className="text-lg font-medium text-teal-900 dark:text-white">Email</h4>
                     <p className="text-teal-800 dark:text-gray-300 break-words">info@omaircontracting.com</p>
                     <p className="text-teal-800 dark:text-gray-300 break-words">projects@omaircontracting.com</p>
@@ -245,7 +274,7 @@ const ContactSection = () => {
                   <div className="flex-shrink-0 bg-teal-100 dark:bg-teal-700/40 rounded-full p-3 mr-4">
                     <Building className="h-6 w-6 text-teal-700 dark:text-teal-300" />
                   </div>
-                  <div className="flex-1 min-w-0"> {/* Added min-w-0 to prevent overflow */}
+                  <div className="flex-1 min-w-0">
                     <h4 className="text-lg font-medium text-teal-900 dark:text-white">Locations</h4>
                     <p className="text-teal-800 dark:text-gray-300 font-medium break-words">Riyadh:</p>
                     <p className="text-teal-800 dark:text-gray-300 mb-2 break-words">King Abdullah Road</p>
@@ -256,7 +285,6 @@ const ContactSection = () => {
               </div>
             </motion.div>
             
-            {/* Office Hours */}
             <motion.div 
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -280,7 +308,6 @@ const ContactSection = () => {
               </div>
             </motion.div>
             
-            {/* Map or image placeholder */}
             <div className="rounded-xl overflow-hidden h-60 relative">
               <img 
                 src="https://images.unsplash.com/photo-1595648160928-74fd8d4573bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" 
