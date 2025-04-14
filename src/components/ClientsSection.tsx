@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Star, ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -46,18 +46,44 @@ const clientLogos = [
 
 const ClientsSection = () => {
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef(null);
 
+  // Function to advance to the next testimonial
   const nextTestimonial = () => {
     setActiveTestimonialIndex((prevIndex) => 
       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
     );
   };
 
+  // Function to go to the previous testimonial
   const prevTestimonial = () => {
     setActiveTestimonialIndex((prevIndex) => 
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
   };
+
+  // Set up auto-scrolling
+  useEffect(() => {
+    // Clear any existing interval when component mounts or updates
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    // Only create an interval if not paused
+    if (!isPaused) {
+      intervalRef.current = setInterval(() => {
+        nextTestimonial();
+      }, 5000); // Change testimonial every 5 seconds
+    }
+
+    // Clean up interval on component unmount
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isPaused, activeTestimonialIndex]);
 
   const activeTestimonial = testimonials[activeTestimonialIndex];
 
@@ -65,6 +91,29 @@ const ClientsSection = () => {
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
+  };
+
+  // Logo animation variants
+  const logoContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const logoItem = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { 
+        type: "spring",
+        stiffness: 100
+      }
+    }
   };
 
   return (
@@ -99,6 +148,8 @@ const ClientsSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           variants={fadeIn}
           className="max-w-4xl mx-auto my-16"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           <motion.div 
             whileHover={{ scale: 1.02 }}
@@ -111,7 +162,12 @@ const ClientsSection = () => {
             <div className="flex flex-col md:flex-row gap-8 items-center">
               <div className="md:w-1/3">
                 <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-teal-300/30 mx-auto">
-                  <img 
+                  <motion.img 
+                    key={activeTestimonial.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
                     src={activeTestimonial.image} 
                     alt={activeTestimonial.name} 
                     className="w-full h-full object-cover"
@@ -120,9 +176,16 @@ const ClientsSection = () => {
               </div>
               
               <div className="md:w-2/3">
-                <blockquote className="text-lg md:text-xl italic text-teal-800 dark:text-gray-300 mb-6">
+                <motion.blockquote 
+                  key={`quote-${activeTestimonial.id}`}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-lg md:text-xl italic text-teal-800 dark:text-gray-300 mb-6"
+                >
                   {activeTestimonial.quote}
-                </blockquote>
+                </motion.blockquote>
                 
                 <div className="flex items-center mb-4">
                   {[...Array(5)].map((_, i) => (
@@ -138,14 +201,20 @@ const ClientsSection = () => {
                   ))}
                 </div>
                 
-                <div>
+                <motion.div
+                  key={`info-${activeTestimonial.id}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
                   <h3 className="text-xl font-bold text-teal-900 dark:text-white">
                     {activeTestimonial.name}
                   </h3>
                   <p className="text-teal-700 dark:text-gray-400">
                     {activeTestimonial.role}{activeTestimonial.company && `, ${activeTestimonial.company}`}
                   </p>
-                </div>
+                </motion.div>
               </div>
             </div>
             
@@ -154,7 +223,11 @@ const ClientsSection = () => {
               <motion.button 
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={prevTestimonial}
+                onClick={() => {
+                  prevTestimonial();
+                  setIsPaused(true);
+                  setTimeout(() => setIsPaused(false), 10000); // Resume auto-scroll after 10 seconds
+                }}
                 className="p-2 rounded-full bg-white/50 dark:bg-teal-700/50 hover:bg-white dark:hover:bg-teal-700 transition-colors"
                 aria-label="Previous testimonial"
               >
@@ -165,7 +238,11 @@ const ClientsSection = () => {
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => setActiveTestimonialIndex(index)}
+                    onClick={() => {
+                      setActiveTestimonialIndex(index);
+                      setIsPaused(true);
+                      setTimeout(() => setIsPaused(false), 10000); // Resume auto-scroll after 10 seconds
+                    }}
                     className={`w-3 h-3 rounded-full ${
                       index === activeTestimonialIndex 
                         ? "bg-teal-500 dark:bg-teal-300" 
@@ -179,7 +256,11 @@ const ClientsSection = () => {
               <motion.button 
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={nextTestimonial}
+                onClick={() => {
+                  nextTestimonial();
+                  setIsPaused(true);
+                  setTimeout(() => setIsPaused(false), 10000); // Resume auto-scroll after 10 seconds
+                }}
                 className="p-2 rounded-full bg-white/50 dark:bg-teal-700/50 hover:bg-white dark:hover:bg-teal-700 transition-colors"
                 aria-label="Next testimonial"
               >
@@ -187,6 +268,30 @@ const ClientsSection = () => {
               </motion.button>
             </div>
           </motion.div>
+        </motion.div>
+        
+        {/* Client Logos */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={logoContainer}
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-12 max-w-5xl mx-auto"
+        >
+          {clientLogos.map((client, index) => (
+            <motion.div 
+              key={client.name} 
+              variants={logoItem}
+              whileHover={{ scale: 1.1 }}
+              className="flex items-center justify-center"
+            >
+              <img 
+                src={client.logo} 
+                alt={client.name} 
+                className="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition-opacity filter grayscale hover:grayscale-0"
+              />
+            </motion.div>
+          ))}
         </motion.div>
         
         {/* Business Showcase */}
