@@ -10,10 +10,14 @@ import ContactSection from "@/components/ContactSection";
 import SupplyMainPowerSection from "@/components/SupplyMainPowerSection";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useAutoTranslate } from "@/hooks/useAutoTranslate";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { t, language } = useLanguage();
+  
+  // Initialize the auto-translation hook
+  const { isTranslating } = useAutoTranslate(true);
 
   useEffect(() => {
     // Simulate loading time for resources like 3D models
@@ -51,6 +55,11 @@ const Index = () => {
         <ContactSection />
       </main>
       <Footer />
+      {isTranslating && (
+        <div className="fixed bottom-4 right-4 bg-white/80 dark:bg-gray-800/80 text-sm p-2 rounded-md shadow-md backdrop-blur-sm" data-no-translate>
+          <span>Translating content...</span>
+        </div>
+      )}
     </div>
   );
 };

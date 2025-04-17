@@ -72,7 +72,42 @@ const translations: TranslationsType = {
     loading: "Loading amazing experiences...",
     
     // Language toggle
-    changeLanguage: "Change language"
+    changeLanguage: "Change language",
+    
+    // Footer translations
+    companyName: "Omair Contracting Establishment",
+    companyDescription: "Transforming spaces with innovative architectural and interior design solutions.",
+    services: "Services",
+    architecturalDesign: "Architectural Design",
+    interiorDesign: "Interior Design",
+    visualization: "3D Visualization",
+    commercialSpaces: "Commercial Spaces",
+    residentialDesign: "Residential Design",
+    quickLinks: "Quick Links",
+    aboutUs: "About Us",
+    testimonials: "Testimonials",
+    contactUs: "Contact Us",
+    address1: "Design District, Building 7",
+    address2: "Sheikh Zayed Road",
+    address3: "Dubai, United Arab Emirates",
+    phone: "Phone: +971 4 123 4567",
+    email: "Email: info@omaircontracting.com",
+    copyright: "All rights reserved.",
+    privacyPolicy: "Privacy Policy",
+    termsOfService: "Terms of Service",
+    sitemap: "Sitemap",
+    
+    // Hero section
+    heroTitle: "Omair Contracting Establishment",
+    heroSubtitle: "A leading establishment in contracting, maintenance, and interior design in the Kingdom of Saudi Arabia",
+    exploreWork: "Explore Our Work",
+    
+    // Contact form
+    getInTouch: "Get in Touch",
+    nameLabel: "Your Name",
+    emailLabel: "Your Email",
+    messageLabel: "Message",
+    sendButton: "Send Message",
   },
   ar: {
     // Supply Main Power Section

@@ -1,7 +1,10 @@
 
 import { Facebook, Twitter, Instagram, Linkedin, ArrowUpCircle } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -16,12 +19,12 @@ const Footer = () => {
           {/* Company Information */}
           <div>
             <h3 className="text-2xl font-bold mb-4">
-              Omair<span className="text-architectural-gold"> Contracting Establishment</span>
+              {t('companyName')}
             </h3>
             <p className="text-gray-300 mb-4">
-              Transforming spaces with innovative architectural and interior design solutions.
+              {t('companyDescription')}
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4" data-no-translate>
               <a href="#" className="text-gray-300 hover:text-architectural-gold transition-colors">
                 <Facebook size={20} />
               </a>
@@ -39,31 +42,31 @@ const Footer = () => {
           
           {/* Services */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Services</h3>
+            <h3 className="text-xl font-bold mb-4">{t('services')}</h3>
             <ul className="space-y-2">
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Architectural Design
+                  {t('architecturalDesign')}
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Interior Design
+                  {t('interiorDesign')}
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  3D Visualization
+                  {t('visualization')}
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Commercial Spaces
+                  {t('commercialSpaces')}
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Residential Design
+                  {t('residentialDesign')}
                 </a>
               </li>
             </ul>
@@ -71,31 +74,31 @@ const Footer = () => {
           
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            <h3 className="text-xl font-bold mb-4">{t('quickLinks')}</h3>
             <ul className="space-y-2">
               <li>
                 <a href="#home" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Home
+                  {t('home')}
                 </a>
               </li>
               <li>
                 <a href="#about" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  About Us
+                  {t('aboutUs')}
                 </a>
               </li>
               <li>
                 <a href="#projects" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Projects
+                  {t('projects')}
                 </a>
               </li>
               <li>
                 <a href="#clients" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Testimonials
+                  {t('testimonials')}
                 </a>
               </li>
               <li>
                 <a href="#contact" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Contact Us
+                  {t('contactUs')}
                 </a>
               </li>
             </ul>
@@ -103,37 +106,38 @@ const Footer = () => {
           
           {/* Contact */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
+            <h3 className="text-xl font-bold mb-4">{t('contactUs')}</h3>
             <address className="not-italic text-gray-300 space-y-2">
-              <p>Design District, Building 7</p>
-              <p>Sheikh Zayed Road</p>
-              <p>Dubai, United Arab Emirates</p>
-              <p className="mt-4">Phone: +971 4 123 4567</p>
-              <p>Email: info@omaircontracting.com</p>
+              <p>{t('address1')}</p>
+              <p>{t('address2')}</p>
+              <p>{t('address3')}</p>
+              <p className="mt-4">{t('phone')}</p>
+              <p>{t('email')}</p>
             </address>
           </div>
         </div>
         
         <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Omair Contracting Establishment. All rights reserved.
+            &copy; {new Date().getFullYear()} {t('companyName')}. {t('copyright')}
           </p>
           <div className="flex items-center">
             <div className="flex space-x-4 text-gray-400">
               <a href="#" className="hover:text-architectural-gold transition-colors">
-                Privacy Policy
+                {t('privacyPolicy')}
               </a>
               <a href="#" className="hover:text-architectural-gold transition-colors">
-                Terms of Service
+                {t('termsOfService')}
               </a>
               <a href="#" className="hover:text-architectural-gold transition-colors">
-                Sitemap
+                {t('sitemap')}
               </a>
             </div>
             <button
               onClick={scrollToTop}
               className="ml-6 text-architectural-gold hover:text-white transition-colors"
               aria-label="Scroll to top"
+              data-no-translate
             >
               <ArrowUpCircle size={24} />
             </button>
