@@ -1,8 +1,13 @@
+
 import { Zap, Info, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageToggle from "@/components/LanguageToggle";
 
 const SupplyMainPowerSection = () => {
+  const { t, language } = useLanguage();
+  
   return (
     <section id="supply-power" className="section-padding bg-gradient-to-br from-gray-50 to-gray-100 dark:from-dark-green/90 dark:to-teal-900/70">
       <div className="container mx-auto">
@@ -33,32 +38,35 @@ const SupplyMainPowerSection = () => {
               </div>
             </div>
             
-            <div className="p-8 lg:p-10 flex flex-col justify-center">
-              <div className="flex items-center mb-2">
-                <div className="w-1 h-8 bg-teal-500 mr-4"></div>
-                <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-200">Supply Main Power</h2>
-                <HoverCard>
-                  <HoverCardTrigger asChild>
-                    <button className="ml-2 text-gray-400 hover:text-teal-500">
-                      <Info size={18} />
-                    </button>
-                  </HoverCardTrigger>
-                  <HoverCardContent className="w-80">
-                    <div className="space-y-2">
-                      <h4 className="font-medium">Technical Specifications</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Input: 90-240V AC<br />
-                        Output: 24V DC / 10A<br />
-                        Protection: Short circuit, overload<br />
-                        Efficiency: ≥92%
-                      </p>
-                    </div>
-                  </HoverCardContent>
-                </HoverCard>
+            <div className="p-8 lg:p-10 flex flex-col justify-center" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+              <div className="flex items-center mb-2 justify-between">
+                <div className="flex items-center">
+                  <div className="w-1 h-8 bg-teal-500 mr-4"></div>
+                  <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-200">{t('supplyMainPower')}</h2>
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <button className="ml-2 text-gray-400 hover:text-teal-500">
+                        <Info size={18} />
+                      </button>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-80">
+                      <div className="space-y-2">
+                        <h4 className="font-medium">{t('technicalSpecs')}</h4>
+                        <p className="text-sm text-muted-foreground">
+                          {t('inputSpec')}<br />
+                          {t('outputSpec')}<br />
+                          {t('protectionSpec')}<br />
+                          {t('efficiencySpec')}
+                        </p>
+                      </div>
+                    </HoverCardContent>
+                  </HoverCard>
+                </div>
+                <LanguageToggle />
               </div>
               
               <p className="text-gray-600 dark:text-gray-300 my-4 lg:text-lg">
-                The primary electrical power source engineered to deliver consistent, reliable energy to all critical system components.
+                {t('powerDescription')}
               </p>
               
               <ul className="space-y-2 mb-6 text-gray-600 dark:text-gray-400">
@@ -66,30 +74,30 @@ const SupplyMainPowerSection = () => {
                   <div className="w-5 h-5 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center mt-1 mr-3">
                     <div className="w-2 h-2 rounded-full bg-teal-500"></div>
                   </div>
-                  <span>Automatic voltage regulation</span>
+                  <span>{t('voltageRegulation')}</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-5 h-5 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center mt-1 mr-3">
                     <div className="w-2 h-2 rounded-full bg-teal-500"></div>
                   </div>
-                  <span>Surge protection capacity</span>
+                  <span>{t('surgeProtection')}</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-5 h-5 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center mt-1 mr-3">
                     <div className="w-2 h-2 rounded-full bg-teal-500"></div>
                   </div>
-                  <span>Continuous power monitoring</span>
+                  <span>{t('powerMonitoring')}</span>
                 </li>
               </ul>
               
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button className="bg-teal-600 hover:bg-teal-700 text-white">
-                  Learn More 
+                  {t('learnMore')} 
                   <ArrowRight size={16} className="ml-2" />
                 </Button>
                 
                 <Button variant="outline" className="border-teal-200 dark:border-teal-800 hover:bg-teal-50 dark:hover:bg-teal-900/30">
-                  Technical Documentation
+                  {t('technicalDocs')}
                 </Button>
               </div>
             </div>
