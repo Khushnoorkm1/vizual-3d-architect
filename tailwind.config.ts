@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -117,6 +116,14 @@ export default {
 				'float': 'float 6s ease-in-out infinite',
 				'rotate-slow': 'rotate-slow 15s linear infinite',
 				'pulse-slow': 'pulse-slow 3s ease-in-out infinite'
+			},
+			utilities: {
+				'.animation-delay-300': {
+					'animation-delay': '300ms',
+				},
+				'.animation-delay-600': {
+					'animation-delay': '600ms',
+				},
 			}
 		}
 	},
