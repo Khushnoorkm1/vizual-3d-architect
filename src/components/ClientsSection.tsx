@@ -159,7 +159,7 @@ const ClientsSection = () => {
             className="glass-card rounded-xl p-8 md:p-12 relative bg-white/80 dark:bg-teal-800/30 backdrop-blur-md border border-teal-200 dark:border-white/10"
           >
             {/* Quote icon */}
-            <div className="absolute -top-6 left-8 text-5xl text-teal-500 dark:text-teal-300 font-serif">"</div>
+            <div className={`absolute -top-6 ${language === 'ar' ? 'right-8' : 'left-8'} text-5xl text-teal-500 dark:text-teal-300 font-serif`}>"</div>
             
             <div className="flex flex-col md:flex-row gap-8 items-center">
               <div className="md:w-1/3">
@@ -180,9 +180,9 @@ const ClientsSection = () => {
               <div className="md:w-2/3">
                 <motion.blockquote 
                   key={`quote-${activeTestimonial.id}`}
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: language === 'ar' ? -20 : 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
+                  exit={{ opacity: 0, x: language === 'ar' ? 20 : -20 }}
                   transition={{ duration: 0.5 }}
                   className="text-lg md:text-xl italic text-teal-800 dark:text-gray-300 mb-6"
                 >
@@ -233,7 +233,7 @@ const ClientsSection = () => {
                 className="p-2 rounded-full bg-white/50 dark:bg-teal-700/50 hover:bg-white dark:hover:bg-teal-700 transition-colors"
                 aria-label="Previous testimonial"
               >
-                <ArrowLeft size={20} className="text-teal-700 dark:text-white" />
+                {language === 'ar' ? <ArrowRight size={20} className="text-teal-700 dark:text-white" /> : <ArrowLeft size={20} className="text-teal-700 dark:text-white" />}
               </motion.button>
               
               <div className="flex space-x-2">
@@ -266,7 +266,7 @@ const ClientsSection = () => {
                 className="p-2 rounded-full bg-white/50 dark:bg-teal-700/50 hover:bg-white dark:hover:bg-teal-700 transition-colors"
                 aria-label="Next testimonial"
               >
-                <ArrowRight size={20} className="text-teal-700 dark:text-white" />
+                {language === 'ar' ? <ArrowLeft size={20} className="text-teal-700 dark:text-white" /> : <ArrowRight size={20} className="text-teal-700 dark:text-white" />}
               </motion.button>
             </div>
           </motion.div>

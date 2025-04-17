@@ -100,8 +100,8 @@ const Navbar = () => {
             <span className="text-white font-bold text-lg">O</span>
           </motion.div>
           <span className="text-xl font-bold text-architectural-blue dark:text-architectural-light">
-            Omair
-            <span className="text-architectural-gold"> Contracting</span>
+            {language === 'ar' ? 'عمير' : 'Omair'}
+            <span className="text-architectural-gold">{language === 'ar' ? ' للمقاولات' : ' Contracting'}</span>
           </span>
         </motion.a>
 

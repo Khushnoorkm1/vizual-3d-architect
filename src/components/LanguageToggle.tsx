@@ -1,17 +1,29 @@
 
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Globe } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-// This component doesn't render any UI elements but helps with state management
-// for the auto-translation feature
 const LanguageToggle = () => {
   const { language, setLanguage } = useLanguage();
 
-  // This is only for managing state - no UI changes
   const toggleLanguage = () => {
     setLanguage(language === 'ar' ? 'en' : 'ar');
   };
 
-  return null; // No UI is rendered
+  return (
+    <Button 
+      onClick={toggleLanguage}
+      variant="ghost" 
+      size="icon"
+      className="rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      aria-label={language === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}
+      title={language === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}
+      data-no-translate
+    >
+      <Globe size={18} />
+      <span className="sr-only">{language === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}</span>
+    </Button>
+  );
 };
 
 export default LanguageToggle;

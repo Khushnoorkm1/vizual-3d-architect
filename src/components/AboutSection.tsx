@@ -40,7 +40,7 @@ const AboutSection = () => {
               className="glass-card rounded-xl p-6 bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
             >
               <h3 className="text-2xl font-bold mb-4 text-teal-300 flex items-center">
-                <Target className="mr-2 text-teal-300" /> {t('vision')}
+                <Target className={language === 'ar' ? 'ml-2' : 'mr-2'} /> {t('vision')}
               </h3>
               <p className="text-gray-300">
                 {t('visionText')}
@@ -52,7 +52,7 @@ const AboutSection = () => {
               className="glass-card rounded-xl p-6 bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
             >
               <h3 className="text-2xl font-bold mb-4 text-teal-300 flex items-center">
-                <Target className="mr-2 text-teal-300" /> {t('goal')}
+                <Target className={language === 'ar' ? 'ml-2' : 'mr-2'} /> {t('goal')}
               </h3>
               <p className="text-gray-300">
                 {t('goalText')}
@@ -73,7 +73,7 @@ const AboutSection = () => {
                 whileHover={{ scale: 1.03 }}
                 className="flex items-start glass-card p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
               >
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-teal-700 flex items-center justify-center mr-4">
+                <div className={`flex-shrink-0 w-8 h-8 rounded-full bg-teal-700 flex items-center justify-center ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
                   <span className="text-white font-bold">1</span>
                 </div>
                 <div>
@@ -86,7 +86,7 @@ const AboutSection = () => {
                 whileHover={{ scale: 1.03 }}
                 className="flex items-start glass-card p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
               >
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-teal-700 flex items-center justify-center mr-4">
+                <div className={`flex-shrink-0 w-8 h-8 rounded-full bg-teal-700 flex items-center justify-center ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
                   <span className="text-white font-bold">2</span>
                 </div>
                 <div>
@@ -99,7 +99,7 @@ const AboutSection = () => {
                 whileHover={{ scale: 1.03 }}
                 className="flex items-start glass-card p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
               >
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-teal-700 flex items-center justify-center mr-4">
+                <div className={`flex-shrink-0 w-8 h-8 rounded-full bg-teal-700 flex items-center justify-center ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
                   <span className="text-white font-bold">3</span>
                 </div>
                 <div>
@@ -123,7 +123,7 @@ const AboutSection = () => {
                 
                 <div className="space-y-6">
                   <div className="flex items-start">
-                    <div className="flex-shrink-0 bg-teal-700/40 rounded-full p-2 mr-4">
+                    <div className={`flex-shrink-0 bg-teal-700/40 rounded-full p-2 ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
                       <Award className="h-5 w-5 text-teal-300" />
                     </div>
                     <div>
@@ -133,7 +133,7 @@ const AboutSection = () => {
                   </div>
                   
                   <div className="flex items-start">
-                    <div className="flex-shrink-0 bg-teal-700/40 rounded-full p-2 mr-4">
+                    <div className={`flex-shrink-0 bg-teal-700/40 rounded-full p-2 ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
                       <Building2 className="h-5 w-5 text-teal-300" />
                     </div>
                     <div>
@@ -143,7 +143,7 @@ const AboutSection = () => {
                   </div>
                   
                   <div className="flex items-start">
-                    <div className="flex-shrink-0 bg-teal-700/40 rounded-full p-2 mr-4">
+                    <div className={`flex-shrink-0 bg-teal-700/40 rounded-full p-2 ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
                       <Briefcase className="h-5 w-5 text-teal-300" />
                     </div>
                     <div>

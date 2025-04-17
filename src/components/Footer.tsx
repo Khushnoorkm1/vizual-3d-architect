@@ -3,7 +3,7 @@ import { Facebook, Twitter, Instagram, Linkedin, ArrowUpCircle } from "lucide-re
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   const scrollToTop = () => {
     window.scrollTo({
@@ -13,7 +13,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-architectural-blue text-white pt-16 pb-8">
+    <footer className="bg-architectural-blue text-white pt-16 pb-8" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Information */}
@@ -24,7 +24,7 @@ const Footer = () => {
             <p className="text-gray-300 mb-4">
               {t('companyDescription')}
             </p>
-            <div className="flex space-x-4" data-no-translate>
+            <div className={`flex ${language === 'ar' ? 'space-x-reverse' : 'space-x-4'}`} data-no-translate>
               <a href="#" className="text-gray-300 hover:text-architectural-gold transition-colors">
                 <Facebook size={20} />
               </a>
@@ -122,7 +122,7 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} {t('companyName')}. {t('copyright')}
           </p>
           <div className="flex items-center">
-            <div className="flex space-x-4 text-gray-400">
+            <div className={`flex ${language === 'ar' ? 'space-x-reverse' : 'space-x-4'} text-gray-400`}>
               <a href="#" className="hover:text-architectural-gold transition-colors">
                 {t('privacyPolicy')}
               </a>
@@ -135,7 +135,7 @@ const Footer = () => {
             </div>
             <button
               onClick={scrollToTop}
-              className="ml-6 text-architectural-gold hover:text-white transition-colors"
+              className={`${language === 'ar' ? 'mr-6' : 'ml-6'} text-architectural-gold hover:text-white transition-colors`}
               aria-label="Scroll to top"
               data-no-translate
             >

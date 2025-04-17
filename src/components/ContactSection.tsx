@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Phone, Mail, MapPin, Send, Building, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,8 +13,10 @@ import {
   DialogClose
 } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactSection = () => {
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -58,7 +61,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-white dark:bg-teal-900/30">
+    <section id="contact" className="section-padding bg-white dark:bg-teal-900/30" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container mx-auto">
         {/* Success Dialog */}
         <Dialog open={isSuccessDialogOpen} onOpenChange={setIsSuccessDialogOpen}>
@@ -66,16 +69,16 @@ const ContactSection = () => {
             <DialogHeader>
               <DialogTitle className="text-center flex items-center justify-center gap-2 text-teal-900 dark:text-white">
                 <CheckCircle className="h-6 w-6 text-green-500" />
-                Message Sent
+                {language === 'ar' ? 'تم إرسال الرسالة' : 'Message Sent'}
               </DialogTitle>
               <DialogDescription className="text-center text-teal-800 dark:text-gray-300">
-                Thank you for your inquiry. We'll get back to you soon!
+                {language === 'ar' ? 'شكراً لتواصلك معنا. سنرد عليك قريباً!' : 'Thank you for your inquiry. We\'ll get back to you soon!'}
               </DialogDescription>
             </DialogHeader>
             <DialogFooter className="sm:justify-center">
               <DialogClose asChild>
                 <Button className="glass-button bg-teal-600 hover:bg-teal-500 text-white border border-teal-400/30">
-                  Close
+                  {language === 'ar' ? 'إغلاق' : 'Close'}
                 </Button>
               </DialogClose>
             </DialogFooter>
@@ -90,7 +93,7 @@ const ContactSection = () => {
           variants={fadeIn}
           className="section-title text-teal-900 dark:text-white text-center"
         >
-          Contact Us
+          {t('contactUs')}
         </motion.h2>
         
         <motion.p 
@@ -101,7 +104,7 @@ const ContactSection = () => {
           variants={fadeIn}
           className="section-subtitle text-teal-800 dark:text-gray-300 text-center"
         >
-          Reach out to discuss your project or schedule a consultation with our team
+          {language === 'ar' ? 'تواصل معنا لمناقشة مشروعك أو لجدولة استشارة مع فريقنا' : 'Reach out to discuss your project or schedule a consultation with our team'}
         </motion.p>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
@@ -117,12 +120,12 @@ const ContactSection = () => {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="glass-card rounded-xl p-8 bg-white/80 dark:bg-teal-800/30 backdrop-blur-md border border-teal-200 dark:border-white/10"
             >
-              <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">Send Us a Message</h3>
+              <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">{t('getInTouch')}</h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-teal-800 dark:text-gray-300 mb-1">
-                    Your Name
+                    {t('nameLabel')}
                   </label>
                   <Input
                     id="name"
@@ -132,14 +135,14 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     className="w-full bg-white/50 dark:bg-teal-900/50 border-teal-200 dark:border-teal-700"
-                    placeholder="John Doe"
+                    placeholder={language === 'ar' ? 'محمد عبدالله' : 'John Doe'}
                   />
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-teal-800 dark:text-gray-300 mb-1">
-                      Email Address
+                      {t('emailLabel')}
                     </label>
                     <Input
                       id="email"
@@ -149,13 +152,13 @@ const ContactSection = () => {
                       onChange={handleChange}
                       required
                       className="w-full bg-white/50 dark:bg-teal-900/50 border-teal-200 dark:border-teal-700"
-                      placeholder="john@example.com"
+                      placeholder={language === 'ar' ? 'example@domain.com' : 'john@example.com'}
                     />
                   </div>
                   
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-teal-800 dark:text-gray-300 mb-1">
-                      Phone Number
+                      {language === 'ar' ? 'رقم الهاتف' : 'Phone Number'}
                     </label>
                     <Input
                       id="phone"
@@ -171,7 +174,7 @@ const ContactSection = () => {
                 
                 <div>
                   <label htmlFor="service" className="block text-sm font-medium text-teal-800 dark:text-gray-300 mb-1">
-                    Service of Interest
+                    {language === 'ar' ? 'الخدمة المطلوبة' : 'Service of Interest'}
                   </label>
                   <select
                     id="service"
@@ -180,20 +183,20 @@ const ContactSection = () => {
                     onChange={handleChange}
                     className="w-full rounded-md border border-teal-200 dark:border-teal-700 px-4 py-2 bg-white/50 dark:bg-teal-900/50 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:focus:ring-teal-300 text-teal-900 dark:text-white"
                   >
-                    <option value="">Select a service</option>
-                    <option value="contracting">Contracting</option>
-                    <option value="interior-design">Interior Design</option>
-                    <option value="restoration">Restoration</option>
-                    <option value="plumbing">Plumbing</option>
-                    <option value="electrical">Electrical Works</option>
-                    <option value="air-conditioning">Air Conditioning</option>
-                    <option value="project-development">Project Development</option>
+                    <option value="">{language === 'ar' ? 'اختر خدمة' : 'Select a service'}</option>
+                    <option value="contracting">{language === 'ar' ? 'المقاولات' : 'Contracting'}</option>
+                    <option value="interior-design">{language === 'ar' ? 'التصميم الداخلي' : 'Interior Design'}</option>
+                    <option value="restoration">{language === 'ar' ? 'الترميم' : 'Restoration'}</option>
+                    <option value="plumbing">{language === 'ar' ? 'السباكة' : 'Plumbing'}</option>
+                    <option value="electrical">{language === 'ar' ? 'الأعمال الكهربائية' : 'Electrical Works'}</option>
+                    <option value="air-conditioning">{language === 'ar' ? 'التكييف' : 'Air Conditioning'}</option>
+                    <option value="project-development">{language === 'ar' ? 'تطوير المشاريع' : 'Project Development'}</option>
                   </select>
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-teal-800 dark:text-gray-300 mb-1">
-                    Your Message
+                    {t('messageLabel')}
                   </label>
                   <textarea
                     id="message"
@@ -203,7 +206,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     className="w-full rounded-md border border-teal-200 dark:border-teal-700 px-4 py-2 bg-white/50 dark:bg-teal-900/50 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:focus:ring-teal-300 text-teal-900 dark:text-white"
-                    placeholder="Tell us about your project..."
+                    placeholder={language === 'ar' ? 'اخبرنا عن مشروعك...' : 'Tell us about your project...'}
                   />
                 </div>
                 
@@ -219,11 +222,11 @@ const ContactSection = () => {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        Sending...
+                        {language === 'ar' ? 'جاري الإرسال...' : 'Sending...'}
                       </span>
                     ) : (
                       <span className="flex items-center">
-                        Send Message <Send size={16} className="ml-2" />
+                        {t('sendButton')} <Send size={16} className={language === 'ar' ? 'mr-2' : 'ml-2'} />
                       </span>
                     )}
                   </Button>
@@ -245,41 +248,41 @@ const ContactSection = () => {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="glass-card rounded-xl p-8 bg-white/80 dark:bg-teal-800/30 backdrop-blur-md border border-teal-200 dark:border-white/10"
             >
-              <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">Contact Information</h3>
+              <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">{language === 'ar' ? 'معلومات الاتصال' : 'Contact Information'}</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-teal-100 dark:bg-teal-700/40 rounded-full p-3 mr-4">
+                  <div className={`flex-shrink-0 bg-teal-100 dark:bg-teal-700/40 rounded-full p-3 ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
                     <Phone className="h-6 w-6 text-teal-700 dark:text-teal-300" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">Phone</h4>
+                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">{language === 'ar' ? 'الهاتف' : 'Phone'}</h4>
                     <p className="text-teal-800 dark:text-gray-300 break-words">+966 11 123 4567</p>
                     <p className="text-teal-800 dark:text-gray-300 break-words">+966 50 987 6543</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-teal-100 dark:bg-teal-700/40 rounded-full p-3 mr-4">
+                  <div className={`flex-shrink-0 bg-teal-100 dark:bg-teal-700/40 rounded-full p-3 ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
                     <Mail className="h-6 w-6 text-teal-700 dark:text-teal-300" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">Email</h4>
+                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">{language === 'ar' ? 'البريد الإلكتروني' : 'Email'}</h4>
                     <p className="text-teal-800 dark:text-gray-300 break-words">info@omaircontracting.com</p>
                     <p className="text-teal-800 dark:text-gray-300 break-words">projects@omaircontracting.com</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-teal-100 dark:bg-teal-700/40 rounded-full p-3 mr-4">
+                  <div className={`flex-shrink-0 bg-teal-100 dark:bg-teal-700/40 rounded-full p-3 ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
                     <Building className="h-6 w-6 text-teal-700 dark:text-teal-300" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">Locations</h4>
-                    <p className="text-teal-800 dark:text-gray-300 font-medium break-words">Riyadh:</p>
-                    <p className="text-teal-800 dark:text-gray-300 mb-2 break-words">King Abdullah Road</p>
-                    <p className="text-teal-800 dark:text-gray-300 font-medium break-words">Shaqra City:</p>
-                    <p className="text-teal-800 dark:text-gray-300 break-words">King Fahd Road</p>
+                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">{language === 'ar' ? 'المواقع' : 'Locations'}</h4>
+                    <p className="text-teal-800 dark:text-gray-300 font-medium break-words">{language === 'ar' ? 'الرياض:' : 'Riyadh:'}</p>
+                    <p className="text-teal-800 dark:text-gray-300 mb-2 break-words">{language === 'ar' ? 'طريق الملك عبدالله' : 'King Abdullah Road'}</p>
+                    <p className="text-teal-800 dark:text-gray-300 font-medium break-words">{language === 'ar' ? 'مدينة شقراء:' : 'Shaqra City:'}</p>
+                    <p className="text-teal-800 dark:text-gray-300 break-words">{language === 'ar' ? 'طريق الملك فهد' : 'King Fahd Road'}</p>
                   </div>
                 </div>
               </div>
@@ -290,20 +293,20 @@ const ContactSection = () => {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="glass-card rounded-xl p-8 bg-white/80 dark:bg-teal-800/30 backdrop-blur-md border border-teal-200 dark:border-white/10"
             >
-              <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">Office Hours</h3>
+              <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">{language === 'ar' ? 'ساعات العمل' : 'Office Hours'}</h3>
               
               <div className="space-y-3">
                 <div className="flex justify-between flex-wrap">
-                  <span className="text-teal-800 dark:text-gray-300">Sunday - Thursday</span>
-                  <span className="font-medium text-teal-900 dark:text-white">8:00 AM - 5:00 PM</span>
+                  <span className="text-teal-800 dark:text-gray-300">{language === 'ar' ? 'الأحد - الخميس' : 'Sunday - Thursday'}</span>
+                  <span className="font-medium text-teal-900 dark:text-white">{language === 'ar' ? '8:00 ص - 5:00 م' : '8:00 AM - 5:00 PM'}</span>
                 </div>
                 <div className="flex justify-between flex-wrap">
-                  <span className="text-teal-800 dark:text-gray-300">Friday</span>
-                  <span className="font-medium text-teal-900 dark:text-white">Closed</span>
+                  <span className="text-teal-800 dark:text-gray-300">{language === 'ar' ? 'الجمعة' : 'Friday'}</span>
+                  <span className="font-medium text-teal-900 dark:text-white">{language === 'ar' ? 'مغلق' : 'Closed'}</span>
                 </div>
                 <div className="flex justify-between flex-wrap">
-                  <span className="text-teal-800 dark:text-gray-300">Saturday</span>
-                  <span className="font-medium text-teal-900 dark:text-white">9:00 AM - 1:00 PM</span>
+                  <span className="text-teal-800 dark:text-gray-300">{language === 'ar' ? 'السبت' : 'Saturday'}</span>
+                  <span className="font-medium text-teal-900 dark:text-white">{language === 'ar' ? '9:00 ص - 1:00 م' : '9:00 AM - 1:00 PM'}</span>
                 </div>
               </div>
             </motion.div>
@@ -317,7 +320,8 @@ const ContactSection = () => {
               <div className="absolute inset-0 flex items-center justify-center bg-black/30">
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <Button variant="outline" className="glass-button bg-white/70 hover:bg-white text-teal-900 dark:border-transparent">
-                    <MapPin className="mr-2 h-4 w-4" /> View Location
+                    <MapPin className={language === 'ar' ? 'ml-2' : 'mr-2'} size={16} /> 
+                    {language === 'ar' ? 'عرض الموقع' : 'View Location'}
                   </Button>
                 </motion.div>
               </div>

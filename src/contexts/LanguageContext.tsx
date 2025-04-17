@@ -170,7 +170,42 @@ const translations: TranslationsType = {
     loading: "جاري تحميل تجارب مذهلة...",
     
     // Language toggle
-    changeLanguage: "تغيير اللغة"
+    changeLanguage: "تغيير اللغة",
+    
+    // Footer translations
+    companyName: "مؤسسة عمير للمقاولات",
+    companyDescription: "تحويل المساحات بحلول معمارية وتصميم داخلي مبتكرة.",
+    services: "الخدمات",
+    architecturalDesign: "التصميم المعماري",
+    interiorDesign: "التصميم الداخلي",
+    visualization: "التصور ثلاثي الأبعاد",
+    commercialSpaces: "المساحات التجارية",
+    residentialDesign: "التصميم السكني",
+    quickLinks: "روابط سريعة",
+    aboutUs: "من نحن",
+    testimonials: "الشهادات",
+    contactUs: "اتصل بنا",
+    address1: "حي التصميم، مبنى 7",
+    address2: "طريق الشيخ زايد",
+    address3: "دبي، الإمارات العربية المتحدة",
+    phone: "هاتف: +971 4 123 4567",
+    email: "البريد الإلكتروني: info@omaircontracting.com",
+    copyright: "جميع الحقوق محفوظة.",
+    privacyPolicy: "سياسة الخصوصية",
+    termsOfService: "شروط الخدمة",
+    sitemap: "خريطة الموقع",
+    
+    // Hero section
+    heroTitle: "مؤسسة عمير للمقاولات",
+    heroSubtitle: "مؤسسة رائدة في المقاولات والصيانة والتصميم الداخلي في المملكة العربية السعودية",
+    exploreWork: "استكشف أعمالنا",
+    
+    // Contact form
+    getInTouch: "تواصل معنا",
+    nameLabel: "الاسم",
+    emailLabel: "البريد الإلكتروني",
+    messageLabel: "الرسالة",
+    sendButton: "إرسال الرسالة",
   }
 };
 
