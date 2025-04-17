@@ -1,15 +1,18 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Award, Building2, Clock, Users, Briefcase, Target } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const AboutSection = () => {
+  const { language, t } = useLanguage();
+  
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
   };
 
   return (
-    <section id="about" className="section-padding bg-teal-900 dark:bg-teal-900 text-white">
+    <section id="about" className="section-padding bg-teal-900 dark:bg-teal-900 text-white" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container mx-auto">
         <motion.h2 
           initial="hidden"
@@ -19,7 +22,7 @@ const AboutSection = () => {
           variants={fadeIn}
           className="section-title text-white text-center"
         >
-          Who are we?
+          {t('whoAreWe')}
         </motion.h2>
         
         <motion.div 
@@ -37,10 +40,10 @@ const AboutSection = () => {
               className="glass-card rounded-xl p-6 bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
             >
               <h3 className="text-2xl font-bold mb-4 text-teal-300 flex items-center">
-                <Target className="mr-2 text-teal-300" /> Vision
+                <Target className="mr-2 text-teal-300" /> {t('vision')}
               </h3>
               <p className="text-gray-300">
-                To revolutionize the world of contracting, renovation, maintenance, interior design, and finishing
+                {t('visionText')}
               </p>
             </motion.div>
             
@@ -49,10 +52,10 @@ const AboutSection = () => {
               className="glass-card rounded-xl p-6 bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
             >
               <h3 className="text-2xl font-bold mb-4 text-teal-300 flex items-center">
-                <Target className="mr-2 text-teal-300" /> Goal
+                <Target className="mr-2 text-teal-300" /> {t('goal')}
               </h3>
               <p className="text-gray-300">
-                To be a leading institution in the business and project world in the Kingdom of Saudi Arabia
+                {t('goalText')}
               </p>
             </motion.div>
             
@@ -62,7 +65,7 @@ const AboutSection = () => {
               transition={{ delay: 0.3 }}
               className="text-2xl font-bold mb-4 text-white mt-12"
             >
-              Our Values
+              {t('ourValues')}
             </motion.h3>
             
             <div className="grid grid-cols-1 gap-6">
@@ -74,8 +77,8 @@ const AboutSection = () => {
                   <span className="text-white font-bold">1</span>
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-white">Integrity</h4>
-                  <p className="text-gray-300">In our work and respecting time and investing it</p>
+                  <h4 className="text-xl font-bold text-white">{t('integrity')}</h4>
+                  <p className="text-gray-300">{t('integrityText')}</p>
                 </div>
               </motion.div>
               
@@ -87,8 +90,8 @@ const AboutSection = () => {
                   <span className="text-white font-bold">2</span>
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-white">Creativity</h4>
-                  <p className="text-gray-300">In ideas, excellence and excelling in our field of work</p>
+                  <h4 className="text-xl font-bold text-white">{t('creativity')}</h4>
+                  <p className="text-gray-300">{t('creativityText')}</p>
                 </div>
               </motion.div>
               
@@ -100,8 +103,8 @@ const AboutSection = () => {
                   <span className="text-white font-bold">3</span>
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-white">Responsibility</h4>
-                  <p className="text-gray-300">Towards the community, serving it, and leaving a positive impact</p>
+                  <h4 className="text-xl font-bold text-white">{t('responsibility')}</h4>
+                  <p className="text-gray-300">{t('responsibilityText')}</p>
                 </div>
               </motion.div>
             </div>
@@ -116,7 +119,7 @@ const AboutSection = () => {
               className="relative"
             >
               <div className="glass-card rounded-xl p-6 bg-teal-800/30 backdrop-blur-sm border border-white/10">
-                <h3 className="text-2xl font-bold mb-6 text-teal-300">Our Mission</h3>
+                <h3 className="text-2xl font-bold mb-6 text-teal-300">{t('ourMission')}</h3>
                 
                 <div className="space-y-6">
                   <div className="flex items-start">
@@ -124,8 +127,8 @@ const AboutSection = () => {
                       <Award className="h-5 w-5 text-teal-300" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-medium text-white">Quality</h4>
-                      <p className="text-gray-300">Providing all services and projects with the highest quality and creativity</p>
+                      <h4 className="text-lg font-medium text-white">{t('quality')}</h4>
+                      <p className="text-gray-300">{t('qualityText')}</p>
                     </div>
                   </div>
                   
@@ -134,8 +137,8 @@ const AboutSection = () => {
                       <Building2 className="h-5 w-5 text-teal-300" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-medium text-white">Standards</h4>
-                      <p className="text-gray-300">According to international standards and specifications</p>
+                      <h4 className="text-lg font-medium text-white">{t('standards')}</h4>
+                      <p className="text-gray-300">{t('standardsText')}</p>
                     </div>
                   </div>
                   
@@ -144,8 +147,8 @@ const AboutSection = () => {
                       <Briefcase className="h-5 w-5 text-teal-300" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-medium text-white">Ambition</h4>
-                      <p className="text-gray-300">Achieving the ambition of investors, business owners, and clients</p>
+                      <h4 className="text-lg font-medium text-white">{t('ambition')}</h4>
+                      <p className="text-gray-300">{t('ambitionText')}</p>
                     </div>
                   </div>
                 </div>
@@ -159,10 +162,10 @@ const AboutSection = () => {
               className="relative"
             >
               <div className="glass-card rounded-xl p-6 bg-teal-800/30 backdrop-blur-sm border border-white/10">
-                <h3 className="text-2xl font-bold mb-6 text-teal-300">Work Team</h3>
+                <h3 className="text-2xl font-bold mb-6 text-teal-300">{t('workTeam')}</h3>
                 
                 <p className="text-gray-300 mb-6">
-                  A professional and reliable work team composed of experts, specialists, consultants, contractors, and workers
+                  {t('workTeamText')}
                 </p>
                 
                 <div className="grid grid-cols-3 gap-6 text-center">
@@ -170,21 +173,21 @@ const AboutSection = () => {
                     <div className="w-16 h-16 bg-teal-700/30 rounded-full flex items-center justify-center mb-2">
                       <Users className="h-8 w-8 text-teal-300" />
                     </div>
-                    <p className="text-white">Engineers</p>
+                    <p className="text-white">{t('engineers')}</p>
                   </div>
                   
                   <div className="flex flex-col items-center">
                     <div className="w-16 h-16 bg-teal-700/30 rounded-full flex items-center justify-center mb-2">
                       <Briefcase className="h-8 w-8 text-teal-300" />
                     </div>
-                    <p className="text-white">Administrators</p>
+                    <p className="text-white">{t('administrators')}</p>
                   </div>
                   
                   <div className="flex flex-col items-center">
                     <div className="w-16 h-16 bg-teal-700/30 rounded-full flex items-center justify-center mb-2">
                       <Building2 className="h-8 w-8 text-teal-300" />
                     </div>
-                    <p className="text-white">Workers</p>
+                    <p className="text-white">{t('workers')}</p>
                   </div>
                 </div>
               </div>

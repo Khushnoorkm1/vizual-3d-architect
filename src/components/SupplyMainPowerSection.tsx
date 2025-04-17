@@ -3,7 +3,6 @@ import { Zap, Info, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { useLanguage } from "@/contexts/LanguageContext";
-import LanguageToggle from "@/components/LanguageToggle";
 
 const SupplyMainPowerSection = () => {
   const { t, language } = useLanguage();
@@ -39,30 +38,27 @@ const SupplyMainPowerSection = () => {
             </div>
             
             <div className="p-8 lg:p-10 flex flex-col justify-center" dir={language === 'ar' ? 'rtl' : 'ltr'}>
-              <div className="flex items-center mb-2 justify-between">
-                <div className="flex items-center">
-                  <div className="w-1 h-8 bg-teal-500 mr-4"></div>
-                  <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-200">{t('supplyMainPower')}</h2>
-                  <HoverCard>
-                    <HoverCardTrigger asChild>
-                      <button className="ml-2 text-gray-400 hover:text-teal-500">
-                        <Info size={18} />
-                      </button>
-                    </HoverCardTrigger>
-                    <HoverCardContent className="w-80">
-                      <div className="space-y-2">
-                        <h4 className="font-medium">{t('technicalSpecs')}</h4>
-                        <p className="text-sm text-muted-foreground">
-                          {t('inputSpec')}<br />
-                          {t('outputSpec')}<br />
-                          {t('protectionSpec')}<br />
-                          {t('efficiencySpec')}
-                        </p>
-                      </div>
-                    </HoverCardContent>
-                  </HoverCard>
-                </div>
-                <LanguageToggle />
+              <div className="flex items-center mb-2">
+                <div className="w-1 h-8 bg-teal-500 mr-4"></div>
+                <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-200">{t('supplyMainPower')}</h2>
+                <HoverCard>
+                  <HoverCardTrigger asChild>
+                    <button className="ml-2 text-gray-400 hover:text-teal-500">
+                      <Info size={18} />
+                    </button>
+                  </HoverCardTrigger>
+                  <HoverCardContent className="w-80">
+                    <div className="space-y-2">
+                      <h4 className="font-medium">{t('technicalSpecs')}</h4>
+                      <p className="text-sm text-muted-foreground">
+                        {t('inputSpec')}<br />
+                        {t('outputSpec')}<br />
+                        {t('protectionSpec')}<br />
+                        {t('efficiencySpec')}
+                      </p>
+                    </div>
+                  </HoverCardContent>
+                </HoverCard>
               </div>
               
               <p className="text-gray-600 dark:text-gray-300 my-4 lg:text-lg">

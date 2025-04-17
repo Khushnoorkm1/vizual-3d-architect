@@ -1,8 +1,10 @@
 
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon, MapPin } from "lucide-react";
+import { Menu, X, Sun, Moon, MapPin, Globe } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageToggle from "@/components/LanguageToggle";
 import {
   HoverCard,
   HoverCardContent,
@@ -15,6 +17,7 @@ const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const isMobile = useIsMobile();
+  const { language, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,12 +53,12 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "services", label: "Services" },
-    { id: "projects", label: "Projects" },
-    { id: "clients", label: "Clients" },
-    { id: "contact", label: "Contact" },
+    { id: "home", label: t('home') },
+    { id: "about", label: t('about') },
+    { id: "services", label: t('services') },
+    { id: "projects", label: t('projects') },
+    { id: "clients", label: t('clients') },
+    { id: "contact", label: t('contact') },
   ];
 
   // Company office locations
@@ -79,6 +82,7 @@ const Navbar = () => {
           ? "bg-white/80 dark:bg-architectural-gray/80 backdrop-blur-md py-2 shadow-md" // Reduced padding from py-4 to py-2
           : "bg-transparent py-3" // Reduced padding from py-6 to py-3
       }`}
+      dir={language === 'ar' ? 'rtl' : 'ltr'}
     >
       <div className="container mx-auto flex justify-between items-center">
         <motion.a 
@@ -133,12 +137,12 @@ const Navbar = () => {
                 transition={{ duration: 0.3, delay: navLinks.length * 0.1 }}
               >
                 <MapPin size={18} />
-                <span className="text-sm font-medium">Our Offices</span>
+                <span className="text-sm font-medium">{t('ourOffices')}</span>
               </motion.button>
             </HoverCardTrigger>
             <HoverCardContent className="w-80 p-0 bg-white/90 dark:bg-teal-800/90 backdrop-blur-md">
               <div className="p-4">
-                <h3 className="text-lg font-semibold text-teal-900 dark:text-white mb-3">Visit Our Locations</h3>
+                <h3 className="text-lg font-semibold text-teal-900 dark:text-white mb-3">{t('visitLocations')}</h3>
                 <div className="space-y-3">
                   {locations.map((location, index) => (
                     <motion.a
@@ -171,6 +175,9 @@ const Navbar = () => {
             </HoverCardContent>
           </HoverCard>
           
+          {/* Language Toggle */}
+          <LanguageToggle />
+          
           <motion.button
             onClick={toggleDarkMode}
             className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -187,9 +194,10 @@ const Navbar = () => {
 
         {/* Mobile Menu Toggle */}
         <div className="flex items-center md:hidden">
+          <LanguageToggle />
           <motion.button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors mr-2"
+            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors mx-2"
             aria-label="Toggle dark mode"
             whileHover={{ rotate: 15, scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -240,7 +248,7 @@ const Navbar = () => {
             
             {/* Mobile Locations */}
             <div className="px-6 py-2">
-              <p className="text-lg font-medium mb-2">Our Locations</p>
+              <p className="text-lg font-medium mb-2">{t('ourOffices')}</p>
               <div className="space-y-2 ml-2">
                 {locations.map((location, index) => (
                   <motion.a

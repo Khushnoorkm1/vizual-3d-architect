@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Star, ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Updated testimonials based on the provided images
 const testimonials = [
@@ -45,6 +46,7 @@ const clientLogos = [
 ];
 
 const ClientsSection = () => {
+  const { language, t } = useLanguage();
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef(null);
@@ -117,7 +119,7 @@ const ClientsSection = () => {
   };
 
   return (
-    <section id="clients" className="section-padding bg-teal-50 dark:bg-teal-900/50">
+    <section id="clients" className="section-padding bg-teal-50 dark:bg-teal-900/50" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container mx-auto">
         <motion.h2 
           initial="hidden"
@@ -127,7 +129,7 @@ const ClientsSection = () => {
           variants={fadeIn}
           className="section-title text-teal-900 dark:text-white text-center"
         >
-          Client Testimonials
+          {t('clientTestimonials')}
         </motion.h2>
         <motion.p 
           initial="hidden"
@@ -137,7 +139,7 @@ const ClientsSection = () => {
           variants={fadeIn}
           className="section-subtitle text-teal-800 dark:text-gray-300 text-center"
         >
-          What our clients say about our services
+          {t('testimonialSubtitle')}
         </motion.p>
         
         {/* Testimonials */}
@@ -303,7 +305,7 @@ const ClientsSection = () => {
           variants={fadeIn} 
           className="mt-16"
         >
-          <h3 className="text-2xl font-bold text-center mb-10 text-teal-900 dark:text-white">Business Showcase</h3>
+          <h3 className="text-2xl font-bold text-center mb-10 text-teal-900 dark:text-white">{t('businessShowcase')}</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <motion.div 
@@ -343,7 +345,7 @@ const ClientsSection = () => {
             </motion.div>
           </div>
           
-          <p className="text-center mt-6 text-teal-800 dark:text-gray-300">Highlights of the projects we have completed</p>
+          <p className="text-center mt-6 text-teal-800 dark:text-gray-300">{t('showcaseDescription')}</p>
         </motion.div>
       </div>
     </section>
