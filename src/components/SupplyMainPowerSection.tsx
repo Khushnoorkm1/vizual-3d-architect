@@ -1,5 +1,4 @@
-
-import { Zap, Info } from "lucide-react";
+import { Zap, Info, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
@@ -9,7 +8,6 @@ const SupplyMainPowerSection = () => {
       <div className="container mx-auto">
         <div className="max-w-5xl mx-auto bg-white dark:bg-gray-900/50 rounded-2xl shadow-lg overflow-hidden">
           <div className="grid md:grid-cols-2 gap-0">
-            {/* Left side: Technical visualization */}
             <div className="bg-gray-900 dark:bg-teal-900/50 p-8 flex items-center justify-center relative overflow-hidden">
               <div className="absolute inset-0 opacity-10">
                 <svg className="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +33,6 @@ const SupplyMainPowerSection = () => {
               </div>
             </div>
             
-            {/* Right side: Content */}
             <div className="p-8 lg:p-10 flex flex-col justify-center">
               <div className="flex items-center mb-2">
                 <div className="w-1 h-8 bg-teal-500 mr-4"></div>
