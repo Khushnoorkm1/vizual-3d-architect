@@ -12,16 +12,28 @@ import TeamSection from "@/components/TeamSection";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAutoTranslate } from "@/hooks/useAutoTranslate";
+import { motion } from "framer-motion";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { t, language } = useLanguage();
-  
-  // Initialize the auto-translation hook
   const { isTranslating } = useAutoTranslate(true);
 
+  // Animation variants for sections
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        type: "spring",
+        stiffness: 100
+      }
+    }
+  };
+
   useEffect(() => {
-    // Simulate loading time for resources like 3D models
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1500);
@@ -46,15 +58,37 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <Navbar />
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        <SupplyMainPowerSection />
-        <TeamSection />
-        <ProjectsSection />
-        <ClientsSection />
-        <ContactSection />
+      <main className="pt-16"> {/* Added padding to account for fixed navbar */}
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.2
+              }
+            }
+          }}
+        >
+          {[
+            <HeroSection key="hero" />,
+            <AboutSection key="about" />,
+            <ServicesSection key="services" />,
+            <SupplyMainPowerSection key="supply" />,
+            <TeamSection key="team" />,
+            <ProjectsSection key="projects" />,
+            <ClientsSection key="clients" />,
+            <ContactSection key="contact" />
+          ].map((section, index) => (
+            <motion.div
+              key={index}
+              variants={sectionVariants}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              {section}
+            </motion.div>
+          ))}
+        </motion.div>
       </main>
       <Footer />
       {isTranslating && (

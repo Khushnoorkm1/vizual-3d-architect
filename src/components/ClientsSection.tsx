@@ -1,10 +1,8 @@
-
 import { useState, useEffect, useRef } from "react";
-import { Star, ArrowLeft, ArrowRight } from "lucide-react";
+import { Star, ArrowLeft, ArrowRight, Building2, Crown, Warehouse, Building, Castle, Landmark } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-// Updated testimonials based on the provided images
 const testimonials = [
   {
     id: 1,
@@ -35,14 +33,13 @@ const testimonials = [
   }
 ];
 
-// Updated client logos
 const clientLogos = [
-  { name: "Saudi Properties", logo: "https://via.placeholder.com/150?text=Saudi+Properties" },
-  { name: "Royal Group", logo: "https://via.placeholder.com/150?text=Royal+Group" },
-  { name: "Al-Futtaim", logo: "https://via.placeholder.com/150?text=Al-Futtaim" },
-  { name: "Gulf Developers", logo: "https://via.placeholder.com/150?text=Gulf+Developers" },
-  { name: "Saudi Construction", logo: "https://via.placeholder.com/150?text=Saudi+Construction" },
-  { name: "Al-Rajhi", logo: "https://via.placeholder.com/150?text=Al-Rajhi" },
+  { name: "Saudi Properties", icon: Building2, color: "#234E52" },
+  { name: "Royal Group", icon: Crown, color: "#D4AF37" },
+  { name: "Al-Futtaim", icon: Warehouse, color: "#1A365D" },
+  { name: "Gulf Developers", icon: Building, color: "#0EA5E9" },
+  { name: "Saudi Construction", icon: Castle, color: "#285E61" },
+  { name: "Al-Rajhi", icon: Landmark, color: "#319795" },
 ];
 
 const ClientsSection = () => {
@@ -51,35 +48,29 @@ const ClientsSection = () => {
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef(null);
 
-  // Function to advance to the next testimonial
   const nextTestimonial = () => {
     setActiveTestimonialIndex((prevIndex) => 
       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
     );
   };
 
-  // Function to go to the previous testimonial
   const prevTestimonial = () => {
     setActiveTestimonialIndex((prevIndex) => 
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
   };
 
-  // Set up auto-scrolling
   useEffect(() => {
-    // Clear any existing interval when component mounts or updates
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
 
-    // Only create an interval if not paused
     if (!isPaused) {
       intervalRef.current = setInterval(() => {
         nextTestimonial();
-      }, 5000); // Change testimonial every 5 seconds
+      }, 5000);
     }
 
-    // Clean up interval on component unmount
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
@@ -89,29 +80,13 @@ const ClientsSection = () => {
 
   const activeTestimonial = testimonials[activeTestimonialIndex];
 
-  // Animation variants
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
-  // Logo animation variants
-  const logoContainer = {
-    hidden: { opacity: 0 },
+  const slideVariants = {
+    hidden: { opacity: 0, x: -50 },
     visible: {
       opacity: 1,
+      x: 0,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const logoItem = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { 
+        duration: 0.6,
         type: "spring",
         stiffness: 100
       }
@@ -119,14 +94,17 @@ const ClientsSection = () => {
   };
 
   return (
-    <section id="clients" className="section-padding bg-teal-50 dark:bg-teal-900/50" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      id="clients" 
+      className="section-padding bg-teal-50 dark:bg-teal-900/50"
+      dir={language === 'ar' ? 'rtl' : 'ltr'}
+    >
       <div className="container mx-auto">
         <motion.h2 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          variants={fadeIn}
+          variants={slideVariants}
           className="section-title text-teal-900 dark:text-white text-center"
         >
           {t('clientTestimonials')}
@@ -136,19 +114,18 @@ const ClientsSection = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          variants={fadeIn}
+          variants={slideVariants}
           className="section-subtitle text-teal-800 dark:text-gray-300 text-center"
         >
           {t('testimonialSubtitle')}
         </motion.p>
         
-        {/* Testimonials */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          variants={fadeIn}
+          variants={slideVariants}
           className="max-w-4xl mx-auto my-16"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -158,7 +135,6 @@ const ClientsSection = () => {
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             className="glass-card rounded-xl p-8 md:p-12 relative bg-white/80 dark:bg-teal-800/30 backdrop-blur-md border border-teal-200 dark:border-white/10"
           >
-            {/* Quote icon */}
             <div className={`absolute -top-6 ${language === 'ar' ? 'right-8' : 'left-8'} text-5xl text-teal-500 dark:text-teal-300 font-serif`}>"</div>
             
             <div className="flex flex-col md:flex-row gap-8 items-center">
@@ -220,7 +196,6 @@ const ClientsSection = () => {
               </div>
             </div>
             
-            {/* Navigation arrows */}
             <div className="flex justify-between mt-8">
               <motion.button 
                 whileHover={{ scale: 1.1 }}
@@ -228,7 +203,7 @@ const ClientsSection = () => {
                 onClick={() => {
                   prevTestimonial();
                   setIsPaused(true);
-                  setTimeout(() => setIsPaused(false), 10000); // Resume auto-scroll after 10 seconds
+                  setTimeout(() => setIsPaused(false), 10000);
                 }}
                 className="p-2 rounded-full bg-white/50 dark:bg-teal-700/50 hover:bg-white dark:hover:bg-teal-700 transition-colors"
                 aria-label="Previous testimonial"
@@ -243,7 +218,7 @@ const ClientsSection = () => {
                     onClick={() => {
                       setActiveTestimonialIndex(index);
                       setIsPaused(true);
-                      setTimeout(() => setIsPaused(false), 10000); // Resume auto-scroll after 10 seconds
+                      setTimeout(() => setIsPaused(false), 10000);
                     }}
                     className={`w-3 h-3 rounded-full ${
                       index === activeTestimonialIndex 
@@ -261,7 +236,7 @@ const ClientsSection = () => {
                 onClick={() => {
                   nextTestimonial();
                   setIsPaused(true);
-                  setTimeout(() => setIsPaused(false), 10000); // Resume auto-scroll after 10 seconds
+                  setTimeout(() => setIsPaused(false), 10000);
                 }}
                 className="p-2 rounded-full bg-white/50 dark:bg-teal-700/50 hover:bg-white dark:hover:bg-teal-700 transition-colors"
                 aria-label="Next testimonial"
@@ -272,37 +247,56 @@ const ClientsSection = () => {
           </motion.div>
         </motion.div>
         
-        {/* Client Logos */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={logoContainer}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1
+              }
+            }
+          }}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-12 max-w-5xl mx-auto"
         >
           {clientLogos.map((client, index) => (
             <motion.div 
               key={client.name} 
-              variants={logoItem}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100
+                  }
+                }
+              }}
               whileHover={{ scale: 1.1 }}
-              className="flex items-center justify-center"
+              className="flex flex-col items-center justify-center p-4 bg-white/80 dark:bg-teal-800/30 rounded-lg shadow-lg"
             >
-              <img 
-                src={client.logo} 
-                alt={client.name} 
-                className="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition-opacity filter grayscale hover:grayscale-0"
-              />
+              {React.createElement(client.icon, {
+                size: 40,
+                color: client.color,
+                className: "mb-2"
+              })}
+              <p className="text-sm font-medium text-teal-900 dark:text-teal-100 text-center">
+                {client.name}
+              </p>
             </motion.div>
           ))}
         </motion.div>
         
-        {/* Business Showcase */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          variants={fadeIn} 
+          variants={slideVariants} 
           className="mt-16"
         >
           <h3 className="text-2xl font-bold text-center mb-10 text-teal-900 dark:text-white">{t('businessShowcase')}</h3>
@@ -348,7 +342,7 @@ const ClientsSection = () => {
           <p className="text-center mt-6 text-teal-800 dark:text-gray-300">{t('showcaseDescription')}</p>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
