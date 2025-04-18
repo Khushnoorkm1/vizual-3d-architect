@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -86,11 +85,9 @@ const translations = {
       goal: "Our Goal",
       goalText: "To provide exceptional construction and engineering services while maintaining the highest standards of professionalism, integrity, and excellence.",
       ourValues: "Our Values",
-      integrity: "Integrity",
-      integrityText: "We conduct our business with the highest ethical standards and transparency.",
-      creativity: "Creativity",
+      creativityValue: "Creativity",
       creativityText: "We embrace innovative thinking and creative solutions to complex challenges.",
-      responsibility: "Responsibility",
+      responsibilityValue: "Responsibility",
       responsibilityText: "We take ownership of our work and deliver on our promises.",
       standards: "High Standards",
       standardsText: "We maintain rigorous quality standards in all our projects and services.",
@@ -100,7 +97,10 @@ const translations = {
       workTeamText: "Our team consists of highly qualified professionals with extensive experience in the construction and engineering industry.",
       engineers: "Engineers",
       administrators: "Administrators",
-      workers: "Workers"
+      workers: "Workers",
+      ourOffices: "Our Offices",
+      visitLocations: "Visit Our Locations",
+      integrityText: "We conduct our business with the highest ethical standards and transparency."
     }
   },
   ar: {
@@ -171,11 +171,9 @@ const translations = {
       goal: "هدفنا",
       goalText: "تقديم خدمات بناء وهندسة استثنائية مع الحفاظ على أعلى معايير الاحترافية والنزاهة والتميز.",
       ourValues: "قيمنا",
-      integrity: "النزاهة",
-      integrityText: "نمارس أعمالنا بأعلى المعايير الأخلاقية والشفافية.",
-      creativity: "الإبداع",
+      creativityValue: "الإبداع",
       creativityText: "نتبنى التفكير المبتكر والحلول الإبداعية للتحديات المعقدة.",
-      responsibility: "المسؤولية",
+      responsibilityValue: "المسؤولية",
       responsibilityText: "نتحمل مسؤولية عملنا ونفي بوعودنا.",
       standards: "معايير عالية",
       standardsText: "نحافظ على معايير جودة صارمة في جميع مشاريعنا وخدماتنا.",
@@ -185,7 +183,10 @@ const translations = {
       workTeamText: "يتكون فريقنا من متخصصين مؤهلين تأهيلاً عالياً ذوي خبرة واسعة في صناعة البناء والهندسة.",
       engineers: "المهندسون",
       administrators: "الإداريون",
-      workers: "العمال"
+      workers: "العمال",
+      ourOffices: "مكاتبنا",
+      visitLocations: "زيارة مواقعنا",
+      integrityText: "نمارس أعمالنا بأعلى المعايير الأخلاقية والشفافية."
     }
   }
 };
