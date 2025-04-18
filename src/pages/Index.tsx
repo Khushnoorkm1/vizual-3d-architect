@@ -8,6 +8,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ClientsSection from "@/components/ClientsSection";
 import ContactSection from "@/components/ContactSection";
 import SupplyMainPowerSection from "@/components/SupplyMainPowerSection";
+import TeamSection from "@/components/TeamSection";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAutoTranslate } from "@/hooks/useAutoTranslate";
@@ -50,6 +51,7 @@ const Index = () => {
         <AboutSection />
         <ServicesSection />
         <SupplyMainPowerSection />
+        <TeamSection />
         <ProjectsSection />
         <ClientsSection />
         <ContactSection />

@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 
 type Language = 'en' | 'ar';
@@ -9,9 +8,42 @@ type TranslationsType = {
   };
 };
 
-// Expanded translations object to cover all website sections
 const translations: TranslationsType = {
   en: {
+    // Team Section
+    ourTeam: "Our Team",
+    teamDescription: "Meet our experienced professionals dedicated to delivering excellence in construction and contracting",
+    siteEngineer: "Site Engineer",
+    projectManager: "Project Manager",
+    safetyOfficer: "Safety Officer",
+    constructionExpert: "Expert in construction site management and technical supervision",
+    projectManagement: "Specialized in project planning and execution",
+    safetyExpert: "Ensures workplace safety and compliance with regulations",
+
+    // Navbar and general translations
+    home: "Home",
+    about: "About",
+    services: "Services",
+    projects: "Projects",
+    clients: "Clients",
+    contact: "Contact",
+    loading: "Loading amazing experiences...",
+    changeLanguage: "Change language",
+
+    // About Section
+    whoAreWe: "Who We Are",
+    vision: "Vision",
+    goal: "Goal",
+    visionText: "To revolutionize contracting, renovation, and maintenance",
+    goalText: "To be a leading institution in Saudi Arabia's business world",
+
+    // Contact Section
+    getInTouch: "Get in Touch",
+    nameLabel: "Your Name",
+    emailLabel: "Your Email",
+    messageLabel: "Message",
+    sendButton: "Send Message",
+    
     // Supply Main Power Section
     supplyMainPower: "Supply Main Power",
     powerDescription: "The primary electrical power source engineered to deliver consistent, reliable energy to all critical system components.",
@@ -27,21 +59,10 @@ const translations: TranslationsType = {
     efficiencySpec: "Efficiency: ≥92%",
     
     // Navbar
-    home: "Home",
-    about: "About",
-    services: "Services",
-    projects: "Projects",
-    clients: "Clients",
-    contact: "Contact",
     ourOffices: "Our Offices",
     visitLocations: "Visit Our Locations",
     
-    // About Section
-    whoAreWe: "Who are we?",
-    vision: "Vision",
-    goal: "Goal",
-    visionText: "To revolutionize the world of contracting, renovation, maintenance, interior design, and finishing",
-    goalText: "To be a leading institution in the business and project world in the Kingdom of Saudi Arabia",
+    // Our Values
     ourValues: "Our Values",
     integrity: "Integrity",
     creativity: "Creativity",
@@ -67,12 +88,6 @@ const translations: TranslationsType = {
     testimonialSubtitle: "What our clients say about our services",
     businessShowcase: "Business Showcase",
     showcaseDescription: "Highlights of the projects we have completed",
-    
-    // Loading screen
-    loading: "Loading amazing experiences...",
-    
-    // Language toggle
-    changeLanguage: "Change language",
     
     // Footer translations
     companyName: "Omair Contracting Establishment",
@@ -101,15 +116,42 @@ const translations: TranslationsType = {
     heroTitle: "Omair Contracting Establishment",
     heroSubtitle: "A leading establishment in contracting, maintenance, and interior design in the Kingdom of Saudi Arabia",
     exploreWork: "Explore Our Work",
-    
-    // Contact form
-    getInTouch: "Get in Touch",
-    nameLabel: "Your Name",
-    emailLabel: "Your Email",
-    messageLabel: "Message",
-    sendButton: "Send Message",
   },
   ar: {
+    // Team Section
+    ourTeam: "فريق العمل",
+    teamDescription: "تعرف على فريقنا المحترف المتخصص في تقديم التميز في مجال البناء والمقاولات",
+    siteEngineer: "مهندس موقع",
+    projectManager: "مدير مشروع",
+    safetyOfficer: "مسؤول السلامة",
+    constructionExpert: "خبير في إدارة مواقع البناء والإشراف الفني",
+    projectManagement: "متخصص في تخطيط وتنفيذ المشاريع",
+    safetyExpert: "يضمن سلامة مكان العمل والامتثال للوائح",
+
+    // Navbar and general translations
+    home: "الرئيسية",
+    about: "من نحن",
+    services: "خدماتنا",
+    projects: "المشاريع",
+    clients: "العملاء",
+    contact: "اتصل بنا",
+    loading: "جاري تحميل تجارب مذهلة...",
+    changeLanguage: "تغيير اللغة",
+
+    // About Section
+    whoAreWe: "من نحن؟",
+    vision: "رؤيتنا",
+    goal: "هدفنا",
+    visionText: "أن نحدث ثورة في مجال المقاولات والتجديد والصيانة",
+    goalText: "أن نكون مؤسسة رائدة في عالم الأعمال في المملكة العربية السعودية",
+
+    // Contact Section
+    getInTouch: "تواصل معنا",
+    nameLabel: "الاسم",
+    emailLabel: "البريد الإلكتروني",
+    messageLabel: "الرسالة",
+    sendButton: "إرسال الرسالة",
+    
     // Supply Main Power Section
     supplyMainPower: "تزويد الطاقة الرئيسية",
     powerDescription: "مصدر الطاقة الكهربائية الأساسي المصمم لتوفير طاقة ثابتة وموثوقة لجميع مكونات النظام الحيوية.",
@@ -125,21 +167,10 @@ const translations: TranslationsType = {
     efficiencySpec: "الكفاءة: ≥92%",
     
     // Navbar
-    home: "الرئيسية",
-    about: "من نحن",
-    services: "خدماتنا",
-    projects: "المشاريع",
-    clients: "العملاء",
-    contact: "اتصل بنا",
     ourOffices: "مكاتبنا",
     visitLocations: "زيارة مواقعنا",
     
     // About Section
-    whoAreWe: "من نحن؟",
-    vision: "الرؤية",
-    goal: "الهدف",
-    visionText: "إحداث ثورة في عالم المقاولات والتجديد والصيانة والتصميم الداخلي والتشطيب",
-    goalText: "أن نكون مؤسسة رائدة في عالم الأعمال والمشاريع في المملكة العربية السعودية",
     ourValues: "قيمنا",
     integrity: "النزاهة",
     creativity: "الإبداع",
@@ -165,12 +196,6 @@ const translations: TranslationsType = {
     testimonialSubtitle: "ماذا يقول عملاؤنا عن خدماتنا",
     businessShowcase: "معرض الأعمال",
     showcaseDescription: "أبرز المشاريع التي أنجزناها",
-    
-    // Loading screen
-    loading: "جاري تحميل تجارب مذهلة...",
-    
-    // Language toggle
-    changeLanguage: "تغيير اللغة",
     
     // Footer translations
     companyName: "مؤسسة عمير للمقاولات",
@@ -199,13 +224,6 @@ const translations: TranslationsType = {
     heroTitle: "مؤسسة عمير للمقاولات",
     heroSubtitle: "مؤسسة رائدة في المقاولات والصيانة والتصميم الداخلي في المملكة العربية السعودية",
     exploreWork: "استكشف أعمالنا",
-    
-    // Contact form
-    getInTouch: "تواصل معنا",
-    nameLabel: "الاسم",
-    emailLabel: "البريد الإلكتروني",
-    messageLabel: "الرسالة",
-    sendButton: "إرسال الرسالة",
   }
 };
 
