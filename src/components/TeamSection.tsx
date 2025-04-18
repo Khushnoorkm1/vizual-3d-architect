@@ -1,6 +1,5 @@
 
 import { motion } from "framer-motion";
-import { Users, Award, Brain, Target } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const TeamSection = () => {
@@ -11,21 +10,21 @@ const TeamSection = () => {
       id: 1,
       name: "Mohammad Al-Sayed",
       role: t('siteEngineer'),
-      image: "public/lovable-uploads/e68e189d-d80d-4f2c-b858-93d38d452a08.png",
+      image: "/lovable-uploads/e68e189d-d80d-4f2c-b858-93d38d452a08.png",
       expertise: t('constructionExpert')
     },
     {
       id: 2,
       name: "Ahmed Ibrahim",
       role: t('projectManager'),
-      image: "public/lovable-uploads/bdc045f1-78d4-4d93-882a-a7ef09dc1e12.png",
+      image: "/lovable-uploads/bdc045f1-78d4-4d93-882a-a7ef09dc1e12.png",
       expertise: t('projectManagement')
     },
     {
       id: 3,
       name: "Youssef Hassan",
       role: t('safetyOfficer'),
-      image: "public/lovable-uploads/25263289-e0f5-403a-9d27-8b367c5b3c23.png",
+      image: "/lovable-uploads/25263289-e0f5-403a-9d27-8b367c5b3c23.png",
       expertise: t('safetyExpert')
     }
   ];
@@ -58,8 +57,12 @@ const TeamSection = () => {
           variants={containerVariants}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-teal-900 dark:text-white mb-4">{t('ourTeam')}</h2>
-          <p className="text-teal-700 dark:text-teal-300 max-w-2xl mx-auto">{t('teamDescription')}</p>
+          <h2 className="text-3xl font-bold text-teal-900 dark:text-white mb-4">
+            {t('ourTeam')}
+          </h2>
+          <p className="text-teal-700 dark:text-teal-300 max-w-2xl mx-auto">
+            {t('teamDescription')}
+          </p>
         </motion.div>
 
         <motion.div 
@@ -84,9 +87,15 @@ const TeamSection = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-teal-900 dark:text-white mb-2">{member.name}</h3>
-                <p className="text-teal-600 dark:text-teal-300 mb-4">{member.role}</p>
-                <p className="text-gray-600 dark:text-gray-300">{member.expertise}</p>
+                <h3 className="text-xl font-bold text-teal-900 dark:text-white mb-2">
+                  {member.name}
+                </h3>
+                <p className="text-teal-600 dark:text-teal-300 mb-4">
+                  {member.role}
+                </p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {member.expertise}
+                </p>
               </div>
             </motion.div>
           ))}
