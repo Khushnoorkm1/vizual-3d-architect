@@ -1,3 +1,4 @@
+
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -54,7 +55,52 @@ const translations = {
       safetyOfficer: "Safety Officer",
       constructionExpert: "Construction & Engineering Expert",
       projectManagement: "Project Management & Planning Specialist",
-      safetyExpert: "Safety & Compliance Expert"
+      safetyExpert: "Safety & Compliance Expert",
+      // Company info
+      companyName: "Omair Contracting",
+      companyDescription: "Delivering excellence in construction and engineering solutions since 2005.",
+      // Footer links
+      quickLinks: "Quick Links",
+      architecturalDesign: "Architectural Design",
+      interiorDesign: "Interior Design",
+      visualization: "3D Visualization",
+      commercialSpaces: "Commercial Spaces",
+      residentialDesign: "Residential Design",
+      aboutUs: "About Us",
+      testimonials: "Testimonials",
+      // Contact info
+      address1: "123 Construction Avenue",
+      address2: "Riyadh, Saudi Arabia",
+      address3: "P.O Box 12345",
+      phone: "+966 12 345 6789",
+      email: "info@omaircontracting.com",
+      // Footer
+      copyright: "All Rights Reserved",
+      privacyPolicy: "Privacy Policy",
+      termsOfService: "Terms of Service",
+      sitemap: "Sitemap",
+      // About section
+      whoAreWe: "Who We Are",
+      vision: "Our Vision",
+      visionText: "To be the premier construction and engineering partner in Saudi Arabia, renowned for quality, innovation, and client satisfaction.",
+      goal: "Our Goal",
+      goalText: "To provide exceptional construction and engineering services while maintaining the highest standards of professionalism, integrity, and excellence.",
+      ourValues: "Our Values",
+      integrity: "Integrity",
+      integrityText: "We conduct our business with the highest ethical standards and transparency.",
+      creativity: "Creativity",
+      creativityText: "We embrace innovative thinking and creative solutions to complex challenges.",
+      responsibility: "Responsibility",
+      responsibilityText: "We take ownership of our work and deliver on our promises.",
+      standards: "High Standards",
+      standardsText: "We maintain rigorous quality standards in all our projects and services.",
+      ambition: "Ambition",
+      ambitionText: "We constantly strive to grow, improve, and expand our capabilities.",
+      workTeam: "Our Work Team",
+      workTeamText: "Our team consists of highly qualified professionals with extensive experience in the construction and engineering industry.",
+      engineers: "Engineers",
+      administrators: "Administrators",
+      workers: "Workers"
     }
   },
   ar: {
@@ -94,7 +140,52 @@ const translations = {
       safetyOfficer: "مسؤول السلامة",
       constructionExpert: "خبير في البناء والهندسة",
       projectManagement: "متخصص في إدارة وتخطيط المشاريع",
-      safetyExpert: "خبير في السلامة والامتثال"
+      safetyExpert: "خبير في السلامة والامتثال",
+      // Company info
+      companyName: "مؤسسة عمير للمقاولات",
+      companyDescription: "نقدم التميز في حلول البناء والهندسة منذ عام 2005.",
+      // Footer links
+      quickLinks: "روابط سريعة",
+      architecturalDesign: "التصميم المعماري",
+      interiorDesign: "التصميم الداخلي",
+      visualization: "التصور ثلاثي الأبعاد",
+      commercialSpaces: "المساحات التجارية",
+      residentialDesign: "التصميم السكني",
+      aboutUs: "من نحن",
+      testimonials: "آراء العملاء",
+      // Contact info
+      address1: "١٢٣ شارع الإنشاءات",
+      address2: "الرياض، المملكة العربية السعودية",
+      address3: "صندوق بريد ١٢٣٤٥",
+      phone: "٦٧٨٩ ٣٤٥ ١٢ ٩٦٦+",
+      email: "info@omaircontracting.com",
+      // Footer
+      copyright: "جميع الحقوق محفوظة",
+      privacyPolicy: "سياسة الخصوصية",
+      termsOfService: "شروط الخدمة",
+      sitemap: "خريطة الموقع",
+      // About section
+      whoAreWe: "من نحن",
+      vision: "رؤيتنا",
+      visionText: "أن نكون الشريك الأول في مجال البناء والهندسة في المملكة العربية السعودية، مشهورين بالجودة والابتكار ورضا العملاء.",
+      goal: "هدفنا",
+      goalText: "تقديم خدمات بناء وهندسة استثنائية مع الحفاظ على أعلى معايير الاحترافية والنزاهة والتميز.",
+      ourValues: "قيمنا",
+      integrity: "النزاهة",
+      integrityText: "نمارس أعمالنا بأعلى المعايير الأخلاقية والشفافية.",
+      creativity: "الإبداع",
+      creativityText: "نتبنى التفكير المبتكر والحلول الإبداعية للتحديات المعقدة.",
+      responsibility: "المسؤولية",
+      responsibilityText: "نتحمل مسؤولية عملنا ونفي بوعودنا.",
+      standards: "معايير عالية",
+      standardsText: "نحافظ على معايير جودة صارمة في جميع مشاريعنا وخدماتنا.",
+      ambition: "الطموح",
+      ambitionText: "نسعى باستمرار للنمو والتحسين وتوسيع قدراتنا.",
+      workTeam: "فريق عملنا",
+      workTeamText: "يتكون فريقنا من متخصصين مؤهلين تأهيلاً عالياً ذوي خبرة واسعة في صناعة البناء والهندسة.",
+      engineers: "المهندسون",
+      administrators: "الإداريون",
+      workers: "العمال"
     }
   }
 };
