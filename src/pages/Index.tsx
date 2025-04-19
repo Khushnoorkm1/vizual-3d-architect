@@ -14,6 +14,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useAutoTranslate } from "@/hooks/useAutoTranslate";
 import { motion } from "framer-motion";
 import MultilingualContentSection from "@/components/MultilingualContentSection";
+import ImageGallerySection from "@/components/ImageGallerySection";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -75,6 +76,7 @@ const Index = () => {
             <AboutSection key="about" />,
             <ServicesSection key="services" />,
             <MultilingualContentSection key="multilingual" />,
+            <ImageGallerySection key="gallery" />,
             <SupplyMainPowerSection key="supply" />,
             <TeamSection key="team" />,
             <ProjectsSection key="projects" />,
