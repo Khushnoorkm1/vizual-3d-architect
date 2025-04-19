@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Phone, Mail, MapPin, Send, Building, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -118,7 +117,7 @@ const ContactSection = () => {
             <motion.div 
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="glass-card rounded-xl p-8 bg-white/80 dark:bg-teal-800/30 backdrop-blur-md border border-teal-200 dark:border-white/10"
+              className="glass-card rounded-xl p-8 bg-white/80 dark:bg-teal-800/30 backdrop-blur-md border border-teal-200 dark:border-teal-700"
             >
               <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">{t('getInTouch')}</h3>
               
@@ -278,11 +277,15 @@ const ContactSection = () => {
                     <Building className="h-6 w-6 text-teal-700 dark:text-teal-300" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">{language === 'ar' ? 'المواقع' : 'Locations'}</h4>
-                    <p className="text-teal-800 dark:text-gray-300 font-medium break-words">{language === 'ar' ? 'الرياض:' : 'Riyadh:'}</p>
-                    <p className="text-teal-800 dark:text-gray-300 mb-2 break-words">{language === 'ar' ? 'طريق الملك عبدالله' : 'King Abdullah Road'}</p>
-                    <p className="text-teal-800 dark:text-gray-300 font-medium break-words">{language === 'ar' ? 'مدينة شقراء:' : 'Shaqra City:'}</p>
-                    <p className="text-teal-800 dark:text-gray-300 break-words">{language === 'ar' ? 'طريق الملك فهد' : 'King Fahd Road'}</p>
+                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">
+                      {language === 'ar' ? 'المواقع' : 'Locations'}
+                    </h4>
+                    <p className="text-teal-800 dark:text-gray-300">
+                      {language === 'ar' ? 'الرياض - طريق الملك عبدالله' : 'Riyadh - King Abdullah Road'}
+                    </p>
+                    <p className="text-teal-800 dark:text-gray-300">
+                      {language === 'ar' ? 'مدينة شقراء - طريق الملك فهد' : 'Shaqra City - King Fahd Road'}
+                    </p>
                   </div>
                 </div>
               </div>

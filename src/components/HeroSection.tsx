@@ -1,4 +1,3 @@
-
 import { Suspense, useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment, PerspectiveCamera, Html } from "@react-three/drei";
@@ -7,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { ChevronDownCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
-// Building Model
 const BuildingModel = ({ scale = 1.5 }) => {
   const meshRef = useRef(null);
   
@@ -19,25 +17,21 @@ const BuildingModel = ({ scale = 1.5 }) => {
 
   return (
     <group ref={meshRef} dispose={null} scale={[scale, scale, scale]} position={[0, -1, 0]}>
-      {/* Building base */}
       <mesh position={[0, 0, 0]}>
         <cylinderGeometry args={[1, 1.5, 1, 6]} />
         <meshStandardMaterial color="#0D3E4C" metalness={0.8} roughness={0.1} />
       </mesh>
       
-      {/* Main building */}
       <mesh position={[0, 3, 0]}>
         <cylinderGeometry args={[0.5, 1, 5, 6]} />
         <meshStandardMaterial color="#0D3E4C" metalness={0.9} roughness={0.2} />
       </mesh>
       
-      {/* Building top */}
       <mesh position={[0, 6, 0]}>
         <cylinderGeometry args={[0.1, 0.5, 2, 6]} />
         <meshStandardMaterial color="#0D3E4C" metalness={0.9} roughness={0.1} />
       </mesh>
       
-      {/* Windows (decorative elements) */}
       {[...Array(6)].map((_, i) => (
         <mesh 
           key={i} 
@@ -55,7 +49,6 @@ const BuildingModel = ({ scale = 1.5 }) => {
   );
 };
 
-// Three.js compatible loading indicator using the Html component from drei
 const LoadingIndicator = () => {
   return (
     <Html center>
@@ -77,10 +70,8 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative h-screen flex flex-col justify-center items-center overflow-hidden">
-      {/* Background with gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-teal-900/80 to-dark-green/80 dark:from-teal-900/90 dark:to-black/90"></div>
       
-      {/* 3D Model Canvas - only render on client side */}
       {isMounted && (
         <div className="absolute inset-0 w-full h-full">
           <Canvas className="w-full h-full">
@@ -102,7 +93,6 @@ const HeroSection = () => {
         </div>
       )}
       
-      {/* Content */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -116,7 +106,7 @@ const HeroSection = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
           >
-            Omair <span className="text-teal-300">Contracting</span> Establishment
+            Omair Contracting Establishment
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -124,7 +114,7 @@ const HeroSection = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-xl md:text-2xl mb-8 text-gray-200"
           >
-            A leading establishment in contracting, maintenance, and interior design in the Kingdom of Saudi Arabia
+            We are Omair Contracting Corporation, revolutionizing the world of contracting from restoration, maintenance, interior design and finishes for buildings, villas, apartments, offices and companies.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -149,7 +139,6 @@ const HeroSection = () => {
         </div>
       </motion.div>
       
-      {/* Scroll down indicator */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

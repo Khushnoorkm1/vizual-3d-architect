@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { ArrowRight, Award, Building2, Clock, Users, Briefcase, Target } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -33,17 +32,15 @@ const AboutSection = () => {
           variants={fadeIn}
           className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16"
         >
-          {/* Left side - Vision */}
           <div className="space-y-6">
-            <motion.div 
-              whileHover={{ scale: 1.03 }}
-              className="glass-card rounded-xl p-6 bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
-            >
+            <motion.div whileHover={{ scale: 1.03 }} className="glass-card rounded-xl p-6 bg-white/5">
               <h3 className="text-2xl font-bold mb-4 text-teal-300 flex items-center">
                 <Target className={language === 'ar' ? 'ml-2' : 'mr-2'} /> {t('vision')}
               </h3>
               <p className="text-gray-300">
-                {t('visionText')}
+                {language === 'ar' ? 
+                  "نهدف إلى الوصول إلى أعلى المستويات في مجال عملنا كأفضل مؤسسة مقاولات وأعمال تصميم داخلي" :
+                  "We aim to reach the highest levels in our field of work as the best contracting establishment, interior design works"}
               </p>
             </motion.div>
             
@@ -110,7 +107,6 @@ const AboutSection = () => {
             </div>
           </div>
           
-          {/* Right side - Our Mission and Work Team */}
           <div className="flex flex-col space-y-8">
             <motion.div 
               initial={{ opacity: 0 }}
