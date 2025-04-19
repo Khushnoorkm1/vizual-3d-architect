@@ -16,7 +16,7 @@ const Footer = () => {
           {/* Company Information */}
           <div>
             <h3 className="text-2xl font-bold mb-4">
-              VIZUAL<span className="text-architectural-gold">3D</span>
+              Omair<span className="text-architectural-gold"> Contracting Establishment</span>
             </h3>
             <p className="text-gray-300 mb-4">
               Transforming spaces with innovative architectural and interior design solutions.
@@ -109,14 +109,14 @@ const Footer = () => {
               <p>Sheikh Zayed Road</p>
               <p>Dubai, United Arab Emirates</p>
               <p className="mt-4">Phone: +971 4 123 4567</p>
-              <p>Email: info@vizual3d.com</p>
+              <p>Email: info@omaircontracting.com</p>
             </address>
           </div>
         </div>
         
         <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} VIZUAL3D. All rights reserved.
+            &copy; {new Date().getFullYear()} Omair Contracting Establishment. All rights reserved.
           </p>
           <div className="flex items-center">
             <div className="flex space-x-4 text-gray-400">
