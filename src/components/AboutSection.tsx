@@ -1,195 +1,97 @@
-import { motion } from "framer-motion";
-import { ArrowRight, Award, Building2, Clock, Users, Briefcase, Target } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
+
+import { ArrowRight, Award, Building2, Clock } from "lucide-react";
 
 const AboutSection = () => {
-  const { language, t } = useLanguage();
-  
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
   return (
-    <section id="about" className="section-padding bg-teal-900 dark:bg-teal-900 text-white" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+    <section id="about" className="section-padding bg-white dark:bg-gray-900">
       <div className="container mx-auto">
-        <motion.h2 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          variants={fadeIn}
-          className="section-title text-white text-center"
-        >
-          {t('whoAreWe')}
-        </motion.h2>
+        <h2 className="section-title dark:text-white text-center">About Us</h2>
+        <p className="section-subtitle dark:text-gray-300 text-center">
+          We are a team of passionate architects and interior designers dedicated to creating exceptional spaces.
+        </p>
         
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          variants={fadeIn}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
+          {/* Left side - Information */}
           <div className="space-y-6">
-            <motion.div whileHover={{ scale: 1.03 }} className="glass-card rounded-xl p-6 bg-white/5">
-              <h3 className="text-2xl font-bold mb-4 text-teal-300 flex items-center">
-                <Target className={language === 'ar' ? 'ml-2' : 'mr-2'} /> {t('vision')}
-              </h3>
-              <p className="text-gray-300">
-                {language === 'ar' ? 
-                  "نهدف إلى الوصول إلى أعلى المستويات في مجال عملنا كأفضل مؤسسة مقاولات وأعمال تصميم داخلي" :
-                  "We aim to reach the highest levels in our field of work as the best contracting establishment, interior design works"}
+            <div className="glass-card rounded-xl p-6 hover-scale">
+              <h3 className="text-2xl font-bold mb-4 text-architectural-blue dark:text-white">Our Story</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Founded in 2015, VIZUAL3D has been at the forefront of architectural innovation, merging technology with design 
+                to create spaces that inspire. Our journey began with a simple vision: to transform how people experience architecture 
+                through cutting-edge 3D visualization.
               </p>
-            </motion.div>
+            </div>
             
-            <motion.div 
-              whileHover={{ scale: 1.03 }}
-              className="glass-card rounded-xl p-6 bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
-            >
-              <h3 className="text-2xl font-bold mb-4 text-teal-300 flex items-center">
-                <Target className={language === 'ar' ? 'ml-2' : 'mr-2'} /> {t('goal')}
-              </h3>
-              <p className="text-gray-300">
-                {t('goalText')}
+            <div className="glass-card rounded-xl p-6 hover-scale">
+              <h3 className="text-2xl font-bold mb-4 text-architectural-blue dark:text-white">Our Approach</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                We believe in a collaborative design process that puts the client's vision first. By combining technical expertise 
+                with creative thinking, we deliver solutions that are both innovative and practical. Every project is an opportunity 
+                to push boundaries and explore new possibilities.
               </p>
-            </motion.div>
+            </div>
             
-            <motion.h3 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="text-2xl font-bold mb-4 text-white mt-12"
-            >
-              {t('ourValues')}
-            </motion.h3>
-            
-            <div className="grid grid-cols-1 gap-6">
-              <motion.div 
-                whileHover={{ scale: 1.03 }}
-                className="flex items-start glass-card p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
-              >
-                <div className={`flex-shrink-0 w-8 h-8 rounded-full bg-teal-700 flex items-center justify-center ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
-                  <span className="text-white font-bold">1</span>
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold text-white">{t('integrity')}</h4>
-                  <p className="text-gray-300">{t('integrityText')}</p>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                whileHover={{ scale: 1.03 }}
-                className="flex items-start glass-card p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
-              >
-                <div className={`flex-shrink-0 w-8 h-8 rounded-full bg-teal-700 flex items-center justify-center ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
-                  <span className="text-white font-bold">2</span>
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold text-white">{t('creativity')}</h4>
-                  <p className="text-gray-300">{t('creativityText')}</p>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                whileHover={{ scale: 1.03 }}
-                className="flex items-start glass-card p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-300/30 transition-all"
-              >
-                <div className={`flex-shrink-0 w-8 h-8 rounded-full bg-teal-700 flex items-center justify-center ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
-                  <span className="text-white font-bold">3</span>
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold text-white">{t('responsibility')}</h4>
-                  <p className="text-gray-300">{t('responsibilityText')}</p>
-                </div>
-              </motion.div>
+            <div className="glass-card rounded-xl p-6 hover-scale">
+              <h3 className="text-2xl font-bold mb-4 text-architectural-blue dark:text-white">Our Values</h3>
+              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+                <li className="flex items-start">
+                  <ArrowRight size={20} className="text-architectural-gold mr-2 mt-1 flex-shrink-0" />
+                  <span>Excellence in every detail</span>
+                </li>
+                <li className="flex items-start">
+                  <ArrowRight size={20} className="text-architectural-gold mr-2 mt-1 flex-shrink-0" />
+                  <span>Innovation through technology</span>
+                </li>
+                <li className="flex items-start">
+                  <ArrowRight size={20} className="text-architectural-gold mr-2 mt-1 flex-shrink-0" />
+                  <span>Sustainability and responsibility</span>
+                </li>
+                <li className="flex items-start">
+                  <ArrowRight size={20} className="text-architectural-gold mr-2 mt-1 flex-shrink-0" />
+                  <span>Client-centered approach</span>
+                </li>
+              </ul>
             </div>
           </div>
           
+          {/* Right side - Statistics and image */}
           <div className="flex flex-col space-y-8">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="relative"
-            >
-              <div className="glass-card rounded-xl p-6 bg-teal-800/30 backdrop-blur-sm border border-white/10">
-                <h3 className="text-2xl font-bold mb-6 text-teal-300">{t('ourMission')}</h3>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className={`flex-shrink-0 bg-teal-700/40 rounded-full p-2 ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
-                      <Award className="h-5 w-5 text-teal-300" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-medium text-white">{t('quality')}</h4>
-                      <p className="text-gray-300">{t('qualityText')}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className={`flex-shrink-0 bg-teal-700/40 rounded-full p-2 ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
-                      <Building2 className="h-5 w-5 text-teal-300" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-medium text-white">{t('standards')}</h4>
-                      <p className="text-gray-300">{t('standardsText')}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className={`flex-shrink-0 bg-teal-700/40 rounded-full p-2 ${language === 'ar' ? 'ml-4' : 'mr-4'}`}>
-                      <Briefcase className="h-5 w-5 text-teal-300" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-medium text-white">{t('ambition')}</h4>
-                      <p className="text-gray-300">{t('ambitionText')}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+            <div className="relative h-80 overflow-hidden rounded-xl shadow-xl">
+              <div className="absolute inset-0 bg-gradient-to-r from-architectural-blue/20 to-architectural-gold/20"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" 
+                alt="Architecture team" 
+                className="w-full h-full object-cover"
+              />
+            </div>
             
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="relative"
-            >
-              <div className="glass-card rounded-xl p-6 bg-teal-800/30 backdrop-blur-sm border border-white/10">
-                <h3 className="text-2xl font-bold mb-6 text-teal-300">{t('workTeam')}</h3>
-                
-                <p className="text-gray-300 mb-6">
-                  {t('workTeamText')}
-                </p>
-                
-                <div className="grid grid-cols-3 gap-6 text-center">
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 bg-teal-700/30 rounded-full flex items-center justify-center mb-2">
-                      <Users className="h-8 w-8 text-teal-300" />
-                    </div>
-                    <p className="text-white">{t('engineers')}</p>
-                  </div>
-                  
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 bg-teal-700/30 rounded-full flex items-center justify-center mb-2">
-                      <Briefcase className="h-8 w-8 text-teal-300" />
-                    </div>
-                    <p className="text-white">{t('administrators')}</p>
-                  </div>
-                  
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 bg-teal-700/30 rounded-full flex items-center justify-center mb-2">
-                      <Building2 className="h-8 w-8 text-teal-300" />
-                    </div>
-                    <p className="text-white">{t('workers')}</p>
-                  </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="glass-card p-6 rounded-xl text-center hover-scale">
+                <div className="flex justify-center mb-4">
+                  <Building2 size={32} className="text-architectural-gold" />
                 </div>
+                <h4 className="text-2xl font-bold text-architectural-blue dark:text-white">150+</h4>
+                <p className="text-gray-600 dark:text-gray-400">Projects Completed</p>
               </div>
-            </motion.div>
+              
+              <div className="glass-card p-6 rounded-xl text-center hover-scale">
+                <div className="flex justify-center mb-4">
+                  <Clock size={32} className="text-architectural-gold" />
+                </div>
+                <h4 className="text-2xl font-bold text-architectural-blue dark:text-white">8+</h4>
+                <p className="text-gray-600 dark:text-gray-400">Years Experience</p>
+              </div>
+              
+              <div className="glass-card p-6 rounded-xl text-center hover-scale">
+                <div className="flex justify-center mb-4">
+                  <Award size={32} className="text-architectural-gold" />
+                </div>
+                <h4 className="text-2xl font-bold text-architectural-blue dark:text-white">25+</h4>
+                <p className="text-gray-600 dark:text-gray-400">Design Awards</p>
+              </div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

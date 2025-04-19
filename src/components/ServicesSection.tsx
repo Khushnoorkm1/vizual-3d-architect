@@ -1,43 +1,18 @@
+
 import { 
   LayoutPanelTop, 
   Paintbrush, 
   Home, 
   Building, 
   Building2, 
-  Waypoints,
-  X
+  Waypoints 
 } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogClose,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
 
 const services = [
   {
     icon: <Building size={36} className="text-architectural-gold" />,
     title: "Architectural Design",
     description: "From concept to construction, we create architectural designs that balance aesthetics, functionality, and sustainability.",
-    details: {
-      features: [
-        "Custom residential and commercial designs",
-        "Sustainable architecture solutions",
-        "3D modeling and visualization",
-        "Construction documentation",
-        "Site analysis and planning"
-      ],
-      process: [
-        "Initial consultation and requirement gathering",
-        "Concept development and sketches",
-        "Detailed design and documentation",
-        "Construction supervision"
-      ]
-    }
   },
   {
     icon: <Paintbrush size={36} className="text-architectural-gold" />,
@@ -67,8 +42,6 @@ const services = [
 ];
 
 const ServicesSection = () => {
-  const [selectedService, setSelectedService] = useState(null);
-
   return (
     <section id="services" className="section-padding bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto">
@@ -81,8 +54,7 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="glass-card rounded-xl p-6 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl cursor-pointer"
-              onClick={() => setSelectedService(service)}
+              className="glass-card rounded-xl p-6 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl"
             >
               <div className="mb-4">{service.icon}</div>
               <h3 className="text-xl font-bold mb-3 text-architectural-blue dark:text-white">{service.title}</h3>
@@ -91,64 +63,19 @@ const ServicesSection = () => {
           ))}
         </div>
         
-        <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
-          <DialogContent className="max-w-2xl">
-            <DialogHeader>
-              <DialogTitle className="flex items-center gap-3 text-2xl">
-                {selectedService?.icon}
-                {selectedService?.title}
-              </DialogTitle>
-              <DialogDescription className="text-lg">
-                {selectedService?.description}
-              </DialogDescription>
-            </DialogHeader>
-            
-            <div className="mt-6 space-y-6">
-              <div>
-                <h4 className="text-xl font-semibold mb-3 text-architectural-blue dark:text-white">
-                  Key Features
-                </h4>
-                <ul className="list-disc pl-6 space-y-2">
-                  {selectedService?.details.features.map((feature, index) => (
-                    <li key={index} className="text-gray-600 dark:text-gray-300">{feature}</li>
-                  ))}
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-xl font-semibold mb-3 text-architectural-blue dark:text-white">
-                  Our Process
-                </h4>
-                <div className="space-y-3">
-                  {selectedService?.details.process.map((step, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-architectural-gold text-white flex items-center justify-center text-sm">
-                        {index + 1}
-                      </span>
-                      <p className="text-gray-600 dark:text-gray-300">{step}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            
-            <DialogClose asChild>
-              <Button variant="ghost" size="icon" className="absolute right-4 top-4">
-                <X className="h-4 w-4" />
-              </Button>
-            </DialogClose>
-          </DialogContent>
-        </Dialog>
-        
+        {/* Process */}
         <div className="mt-24">
           <h3 className="text-3xl font-bold text-center mb-12 text-architectural-blue dark:text-white">
             Our Design Process
           </h3>
           
           <div className="relative">
+            {/* Process line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-architectural-gold/30 hidden md:block"></div>
             
+            {/* Process steps */}
             <div className="space-y-12 md:space-y-0">
+              {/* Step 1 */}
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
                   <div className="glass-card p-6 rounded-xl inline-block hover-scale">
@@ -165,6 +92,7 @@ const ServicesSection = () => {
                 </div>
               </div>
               
+              {/* Step 2 */}
               <div className="flex flex-col md:flex-row items-center">
                 <div className="relative md:w-1/2 flex justify-center mb-6 md:mb-0">
                   <div className="w-12 h-12 rounded-full bg-architectural-gold flex items-center justify-center z-10">
@@ -181,6 +109,7 @@ const ServicesSection = () => {
                 </div>
               </div>
               
+              {/* Step 3 */}
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
                   <div className="glass-card p-6 rounded-xl inline-block hover-scale">
@@ -197,6 +126,7 @@ const ServicesSection = () => {
                 </div>
               </div>
               
+              {/* Step 4 */}
               <div className="flex flex-col md:flex-row items-center">
                 <div className="relative md:w-1/2 flex justify-center mb-6 md:mb-0">
                   <div className="w-12 h-12 rounded-full bg-architectural-gold flex items-center justify-center z-10">
@@ -213,6 +143,7 @@ const ServicesSection = () => {
                 </div>
               </div>
               
+              {/* Step 5 */}
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
                   <div className="glass-card p-6 rounded-xl inline-block hover-scale">

@@ -1,10 +1,7 @@
 
 import { Facebook, Twitter, Instagram, Linkedin, ArrowUpCircle } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
-  const { t, language } = useLanguage();
-  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -13,18 +10,18 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-architectural-blue text-white pt-16 pb-8" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+    <footer className="bg-architectural-blue text-white pt-16 pb-8">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Information */}
           <div>
             <h3 className="text-2xl font-bold mb-4">
-              {t('companyName')}
+              VIZUAL<span className="text-architectural-gold">3D</span>
             </h3>
             <p className="text-gray-300 mb-4">
-              {t('companyDescription')}
+              Transforming spaces with innovative architectural and interior design solutions.
             </p>
-            <div className={`flex ${language === 'ar' ? 'space-x-reverse' : 'space-x-4'}`} data-no-translate>
+            <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-architectural-gold transition-colors">
                 <Facebook size={20} />
               </a>
@@ -42,31 +39,31 @@ const Footer = () => {
           
           {/* Services */}
           <div>
-            <h3 className="text-xl font-bold mb-4">{t('services')}</h3>
+            <h3 className="text-xl font-bold mb-4">Services</h3>
             <ul className="space-y-2">
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  {t('architecturalDesign')}
+                  Architectural Design
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  {t('interiorDesign')}
+                  Interior Design
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  {t('visualization')}
+                  3D Visualization
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  {t('commercialSpaces')}
+                  Commercial Spaces
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  {t('residentialDesign')}
+                  Residential Design
                 </a>
               </li>
             </ul>
@@ -74,31 +71,31 @@ const Footer = () => {
           
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-4">{t('quickLinks')}</h3>
+            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
                 <a href="#home" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  {t('home')}
+                  Home
                 </a>
               </li>
               <li>
                 <a href="#about" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  {t('aboutUs')}
+                  About Us
                 </a>
               </li>
               <li>
                 <a href="#projects" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  {t('projects')}
+                  Projects
                 </a>
               </li>
               <li>
                 <a href="#clients" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  {t('testimonials')}
+                  Testimonials
                 </a>
               </li>
               <li>
                 <a href="#contact" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  {t('contactUs')}
+                  Contact Us
                 </a>
               </li>
             </ul>
@@ -106,38 +103,37 @@ const Footer = () => {
           
           {/* Contact */}
           <div>
-            <h3 className="text-xl font-bold mb-4">{t('contactUs')}</h3>
+            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
             <address className="not-italic text-gray-300 space-y-2">
-              <p>{t('address1')}</p>
-              <p>{t('address2')}</p>
-              <p>{t('address3')}</p>
-              <p className="mt-4">{t('phone')}</p>
-              <p>{t('email')}</p>
+              <p>Design District, Building 7</p>
+              <p>Sheikh Zayed Road</p>
+              <p>Dubai, United Arab Emirates</p>
+              <p className="mt-4">Phone: +971 4 123 4567</p>
+              <p>Email: info@vizual3d.com</p>
             </address>
           </div>
         </div>
         
         <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} {t('companyName')}. {t('copyright')}
+            &copy; {new Date().getFullYear()} VIZUAL3D. All rights reserved.
           </p>
           <div className="flex items-center">
-            <div className={`flex ${language === 'ar' ? 'space-x-reverse' : 'space-x-4'} text-gray-400`}>
+            <div className="flex space-x-4 text-gray-400">
               <a href="#" className="hover:text-architectural-gold transition-colors">
-                {t('privacyPolicy')}
+                Privacy Policy
               </a>
               <a href="#" className="hover:text-architectural-gold transition-colors">
-                {t('termsOfService')}
+                Terms of Service
               </a>
               <a href="#" className="hover:text-architectural-gold transition-colors">
-                {t('sitemap')}
+                Sitemap
               </a>
             </div>
             <button
               onClick={scrollToTop}
-              className={`${language === 'ar' ? 'mr-6' : 'ml-6'} text-architectural-gold hover:text-white transition-colors`}
+              className="ml-6 text-architectural-gold hover:text-white transition-colors"
               aria-label="Scroll to top"
-              data-no-translate
             >
               <ArrowUpCircle size={24} />
             </button>
