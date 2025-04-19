@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -13,13 +12,13 @@ import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAutoTranslate } from "@/hooks/useAutoTranslate";
 import { motion } from "framer-motion";
+import MultilingualContentSection from "@/components/MultilingualContentSection";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { t, language } = useLanguage();
   const { isTranslating } = useAutoTranslate(true);
 
-  // Animation variants for sections
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -58,7 +57,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <Navbar />
-      <main className="pt-16"> {/* Added padding to account for fixed navbar */}
+      <main className="pt-16">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -74,6 +73,7 @@ const Index = () => {
             <HeroSection key="hero" />,
             <AboutSection key="about" />,
             <ServicesSection key="services" />,
+            <MultilingualContentSection key="multilingual" />,
             <SupplyMainPowerSection key="supply" />,
             <TeamSection key="team" />,
             <ProjectsSection key="projects" />,
