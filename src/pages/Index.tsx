@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -25,9 +26,9 @@ const Index = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.8,
         type: "spring",
-        stiffness: 100
+        stiffness: 80
       }
     }
   };
@@ -57,14 +58,14 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <Navbar />
-      <main className="pt-16">
+      <main className="flex-1">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={{
             visible: {
               transition: {
-                staggerChildren: 0.2
+                staggerChildren: 0.3
               }
             }
           }}
@@ -80,13 +81,14 @@ const Index = () => {
             <ClientsSection key="clients" />,
             <ContactSection key="contact" />
           ].map((section, index) => (
-            <motion.div
+            <motion.section
               key={index}
               variants={sectionVariants}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="min-h-[90vh] py-24 md:py-32 px-6 md:px-12 lg:px-24"
             >
               {section}
-            </motion.div>
+            </motion.section>
           ))}
         </motion.div>
       </main>
