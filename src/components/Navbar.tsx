@@ -1,8 +1,10 @@
 
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon, MapPin } from "lucide-react";
+import { Menu, X, Sun, Moon, MapPin, Globe } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/context/LanguageContext";
 import {
   HoverCard,
   HoverCardContent,
@@ -15,6 +17,8 @@ const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const isMobile = useIsMobile();
+  const { t } = useTranslation();
+  const { language, setLanguage, dir } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,25 +53,29 @@ const Navbar = () => {
     setIsDarkMode(!isDarkMode);
   };
 
+  const toggleLanguage = () => {
+    setLanguage(language === 'ar' ? 'en' : 'ar');
+  };
+
   const navLinks = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "services", label: "Services" },
-    { id: "projects", label: "Projects" },
-    { id: "clients", label: "Clients" },
-    { id: "contact", label: "Contact" },
+    { id: "home", label: t("nav.home", "Home") },
+    { id: "about", label: t("nav.about", "About") },
+    { id: "services", label: t("nav.services", "Services") },
+    { id: "projects", label: t("nav.projects", "Projects") },
+    { id: "clients", label: t("nav.clients", "Clients") },
+    { id: "contact", label: t("nav.contact", "Contact") },
   ];
 
   // Company office locations
   const locations = [
     { 
-      name: "Riyadh Office", 
-      address: "King Abdullah Road, Riyadh", 
+      name: t("nav.locations.riyadh.name", "Riyadh Office"), 
+      address: t("nav.locations.riyadh.address", "King Abdullah Road, Riyadh"), 
       coordinates: { lat: 24.7136, lng: 46.6753 } 
     },
     { 
-      name: "Shaqra Office", 
-      address: "King Fahd Road, Shaqra City", 
+      name: t("nav.locations.shaqra.name", "Shaqra Office"), 
+      address: t("nav.locations.shaqra.address", "King Fahd Road, Shaqra City"), 
       coordinates: { lat: 25.2427, lng: 45.2695 } 
     }
   ];
@@ -79,6 +87,7 @@ const Navbar = () => {
           ? "bg-white/80 dark:bg-architectural-gray/80 backdrop-blur-md py-2 shadow-md" // Reduced padding from py-4 to py-2
           : "bg-transparent py-3" // Reduced padding from py-6 to py-3
       }`}
+      dir={dir}
     >
       <div className="container mx-auto flex justify-between items-center">
         <motion.a 
@@ -96,8 +105,8 @@ const Navbar = () => {
             <span className="text-white font-bold text-lg">O</span>
           </motion.div>
           <span className="text-xl font-bold text-architectural-blue dark:text-architectural-light">
-            Omair
-            <span className="text-architectural-gold"> Contracting</span>
+            {language === 'ar' ? 'عمير' : 'Omair'}
+            <span className="text-architectural-gold"> {language === 'ar' ? 'للمقاولات' : 'Contracting'}</span>
           </span>
         </motion.a>
 
@@ -121,6 +130,21 @@ const Navbar = () => {
             </motion.a>
           ))}
           
+          {/* Language Toggle Button */}
+          <motion.button
+            onClick={toggleLanguage}
+            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center gap-1"
+            aria-label="Toggle language"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: (navLinks.length) * 0.1 }}
+          >
+            <Globe size={18} />
+            <span className="text-sm font-medium">{language === 'ar' ? 'English' : 'العربية'}</span>
+          </motion.button>
+          
           {/* Map Location Dropdown */}
           <HoverCard>
             <HoverCardTrigger asChild>
@@ -130,15 +154,15 @@ const Navbar = () => {
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: navLinks.length * 0.1 }}
+                transition={{ duration: 0.3, delay: (navLinks.length + 1) * 0.1 }}
               >
                 <MapPin size={18} />
-                <span className="text-sm font-medium">Our Offices</span>
+                <span className="text-sm font-medium">{t("nav.offices", "Our Offices")}</span>
               </motion.button>
             </HoverCardTrigger>
             <HoverCardContent className="w-80 p-0 bg-white/90 dark:bg-teal-800/90 backdrop-blur-md">
               <div className="p-4">
-                <h3 className="text-lg font-semibold text-teal-900 dark:text-white mb-3">Visit Our Locations</h3>
+                <h3 className="text-lg font-semibold text-teal-900 dark:text-white mb-3">{t("nav.visitLocations", "Visit Our Locations")}</h3>
                 <div className="space-y-3">
                   {locations.map((location, index) => (
                     <motion.a
@@ -179,7 +203,7 @@ const Navbar = () => {
             whileTap={{ scale: 0.9 }}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: (navLinks.length + 1) * 0.1 }}
+            transition={{ duration: 0.3, delay: (navLinks.length + 2) * 0.1 }}
           >
             {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
           </motion.button>
@@ -187,6 +211,15 @@ const Navbar = () => {
 
         {/* Mobile Menu Toggle */}
         <div className="flex items-center md:hidden">
+          <motion.button
+            onClick={toggleLanguage}
+            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors mr-2"
+            aria-label="Toggle language"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <Globe size={18} />
+          </motion.button>
           <motion.button
             onClick={toggleDarkMode}
             className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors mr-2"
@@ -240,7 +273,7 @@ const Navbar = () => {
             
             {/* Mobile Locations */}
             <div className="px-6 py-2">
-              <p className="text-lg font-medium mb-2">Our Locations</p>
+              <p className="text-lg font-medium mb-2">{t("nav.offices", "Our Locations")}</p>
               <div className="space-y-2 ml-2">
                 {locations.map((location, index) => (
                   <motion.a

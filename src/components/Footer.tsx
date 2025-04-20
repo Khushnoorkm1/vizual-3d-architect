@@ -1,7 +1,12 @@
 
 import { Facebook, Twitter, Instagram, Linkedin, ArrowUpCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Footer = () => {
+  const { t } = useTranslation();
+  const { dir } = useLanguage();
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -10,16 +15,25 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-architectural-blue text-white pt-16 pb-8">
+    <footer className="bg-architectural-blue text-white pt-16 pb-8" dir={dir}>
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Information */}
           <div>
             <h3 className="text-2xl font-bold mb-4">
-              Omair<span className="text-architectural-gold"> Contracting Establishment</span>
+              {dir === 'rtl' ? (
+                <>
+                  <span className="text-architectural-gold">{t("footer.company").split(' ')[0]} </span>
+                  {t("footer.company").split(' ')[1]}
+                </>
+              ) : (
+                <>
+                  {t("footer.company").split(' ')[0]}<span className="text-architectural-gold"> {t("footer.company").split(' ')[1]}</span>
+                </>
+              )}
             </h3>
             <p className="text-gray-300 mb-4">
-              Transforming spaces with innovative architectural and interior design solutions.
+              {t("footer.description")}
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-architectural-gold transition-colors">
@@ -39,31 +53,31 @@ const Footer = () => {
           
           {/* Services */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Services</h3>
+            <h3 className="text-xl font-bold mb-4">{t("footer.services.title")}</h3>
             <ul className="space-y-2">
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Architectural Design
+                  {t("footer.services.architecturalDesign")}
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Interior Design
+                  {t("footer.services.interiorDesign")}
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  3D Visualization
+                  {t("footer.services.visualization")}
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Commercial Spaces
+                  {t("footer.services.commercialSpaces")}
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Residential Design
+                  {t("footer.services.residentialDesign")}
                 </a>
               </li>
             </ul>
@@ -71,31 +85,31 @@ const Footer = () => {
           
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            <h3 className="text-xl font-bold mb-4">{t("footer.quickLinks.title")}</h3>
             <ul className="space-y-2">
               <li>
                 <a href="#home" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Home
+                  {t("footer.quickLinks.home")}
                 </a>
               </li>
               <li>
                 <a href="#about" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  About Us
+                  {t("footer.quickLinks.about")}
                 </a>
               </li>
               <li>
                 <a href="#projects" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Projects
+                  {t("footer.quickLinks.projects")}
                 </a>
               </li>
               <li>
                 <a href="#clients" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Testimonials
+                  {t("footer.quickLinks.testimonials")}
                 </a>
               </li>
               <li>
                 <a href="#contact" className="text-gray-300 hover:text-architectural-gold transition-colors">
-                  Contact Us
+                  {t("footer.quickLinks.contact")}
                 </a>
               </li>
             </ul>
@@ -103,31 +117,31 @@ const Footer = () => {
           
           {/* Contact */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
+            <h3 className="text-xl font-bold mb-4">{t("footer.contactUs.title")}</h3>
             <address className="not-italic text-gray-300 space-y-2">
-              <p>Design District, Building 7</p>
-              <p>Sheikh Zayed Road</p>
-              <p>Dubai, United Arab Emirates</p>
-              <p className="mt-4">Phone: +971 4 123 4567</p>
-              <p>Email: info@omaircontracting.com</p>
+              <p>{t("footer.contactUs.address1")}</p>
+              <p>{t("footer.contactUs.address2")}</p>
+              <p>{t("footer.contactUs.address3")}</p>
+              <p className="mt-4">{t("footer.contactUs.phone")}</p>
+              <p>{t("footer.contactUs.email")}</p>
             </address>
           </div>
         </div>
         
         <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Omair Contracting Establishment. All rights reserved.
+            &copy; {new Date().getFullYear()} {t("footer.company")}. {t("footer.copyright")}
           </p>
           <div className="flex items-center">
             <div className="flex space-x-4 text-gray-400">
               <a href="#" className="hover:text-architectural-gold transition-colors">
-                Privacy Policy
+                {t("footer.legalLinks.privacy")}
               </a>
               <a href="#" className="hover:text-architectural-gold transition-colors">
-                Terms of Service
+                {t("footer.legalLinks.terms")}
               </a>
               <a href="#" className="hover:text-architectural-gold transition-colors">
-                Sitemap
+                {t("footer.legalLinks.sitemap")}
               </a>
             </div>
             <button
