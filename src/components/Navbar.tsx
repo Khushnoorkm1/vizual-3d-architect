@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon, MapPin, Globe } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -22,9 +21,8 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Update active section based on scroll position
       const sections = document.querySelectorAll("section[id]");
-      const scrollPosition = window.scrollY + 80; // Reduced from 100 to 80 for smaller navbar
+      const scrollPosition = window.scrollY + 80;
 
       sections.forEach((section) => {
         const sectionTop = (section as HTMLElement).offsetTop;
@@ -36,8 +34,7 @@ const Navbar = () => {
         }
       });
 
-      // Check if page is scrolled for navbar styling
-      setIsScrolled(window.scrollY > 30); // Reduced from 50 to 30 for earlier transformation
+      setIsScrolled(window.scrollY > 30);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -66,7 +63,6 @@ const Navbar = () => {
     { id: "contact", label: t("nav.contact", "Contact") },
   ];
 
-  // Company office locations
   const locations = [
     { 
       name: t("nav.locations.riyadh.name", "Riyadh Office"), 
@@ -84,8 +80,8 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled || isMenuOpen
-          ? "bg-white/80 dark:bg-architectural-gray/80 backdrop-blur-md py-2 shadow-md" // Reduced padding from py-4 to py-2
-          : "bg-transparent py-3" // Reduced padding from py-6 to py-3
+          ? "bg-white/80 dark:bg-architectural-gray/80 backdrop-blur-md py-2 shadow-md"
+          : "bg-transparent py-3"
       }`}
       dir={dir}
     >
@@ -110,8 +106,7 @@ const Navbar = () => {
           </span>
         </motion.a>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-5"> {/* Reduced space-x from 8 to 5 */}
+        <div className="hidden md:flex items-center space-x-5">
           {navLinks.map((link, index) => (
             <motion.a
               key={link.id}
@@ -130,7 +125,6 @@ const Navbar = () => {
             </motion.a>
           ))}
           
-          {/* Language Toggle Button */}
           <motion.button
             onClick={toggleLanguage}
             className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center gap-1"
@@ -145,7 +139,6 @@ const Navbar = () => {
             <span className="text-sm font-medium">{language === 'ar' ? 'English' : 'العربية'}</span>
           </motion.button>
           
-          {/* Map Location Dropdown */}
           <HoverCard>
             <HoverCardTrigger asChild>
               <motion.button
@@ -209,7 +202,6 @@ const Navbar = () => {
           </motion.button>
         </div>
 
-        {/* Mobile Menu Toggle */}
         <div className="flex items-center md:hidden">
           <motion.button
             onClick={toggleLanguage}
@@ -240,7 +232,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMenuOpen && isMobile && (
         <motion.div 
           className="md:hidden absolute top-full left-0 w-full bg-white/90 dark:bg-architectural-gray/90 backdrop-blur-md shadow-lg py-3"
@@ -271,7 +262,6 @@ const Navbar = () => {
               </motion.a>
             ))}
             
-            {/* Mobile Locations */}
             <div className="px-6 py-2">
               <p className="text-lg font-medium mb-2">{t("nav.offices", "Our Locations")}</p>
               <div className="space-y-2 ml-2">

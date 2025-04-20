@@ -48,7 +48,8 @@ i18n
   // init i18next
   .init({
     resources,
-    fallbackLng: 'ar',
+    fallbackLng: 'ar',  // Set Arabic as fallback
+    lng: 'ar',          // Set Arabic as default
     debug: false,
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
