@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { translations } from "@/utils/translations";
 
 const services = [
   {
@@ -72,9 +73,13 @@ const ServicesSection = () => {
   return (
     <section id="services" className="section-padding bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto">
-        <h2 className="section-title dark:text-white text-center">Our Services</h2>
+        <h2 className="section-title dark:text-white text-center">
+          <span className="block mb-2">{translations.services.title.ar}</span>
+          <span className="block">{translations.services.title.en}</span>
+        </h2>
         <p className="section-subtitle dark:text-gray-300 text-center">
-          We offer comprehensive design solutions to transform your vision into reality.
+          <span className="block mb-2">{translations.services.subtitle.ar}</span>
+          <span className="block">{translations.services.subtitle.en}</span>
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">

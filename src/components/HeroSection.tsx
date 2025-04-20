@@ -1,11 +1,10 @@
-
 import { Suspense, useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Environment, PerspectiveCamera, Html } from "@react-three/drei";
-import { Vector3 } from "three";
+import { OrbitControls, Environment, PerspectiveCamera, Html } from "@react-three/drei";
 import { Button } from "@/components/ui/button";
 import { ChevronDownCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { translations } from "@/utils/translations";
 
 // Building Model
 const BuildingModel = ({ scale = 1.5 }) => {
@@ -80,7 +79,7 @@ const HeroSection = () => {
       {/* Background with gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-teal-900/80 to-dark-green/80 dark:from-teal-900/90 dark:to-black/90"></div>
       
-      {/* 3D Model Canvas - only render on client side */}
+      {/* 3D Model Canvas */}
       {isMounted && (
         <div className="absolute inset-0 w-full h-full">
           <Canvas className="w-full h-full">
@@ -116,7 +115,8 @@ const HeroSection = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
           >
-            Omair <span className="text-teal-300">Contracting</span> Establishment
+            <span className="block mb-2">{translations.hero.title.ar}</span>
+            <span className="block">{translations.hero.title.en}</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -124,7 +124,8 @@ const HeroSection = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-xl md:text-2xl mb-8 text-gray-200"
           >
-            A leading establishment in contracting, maintenance, and interior design in the Kingdom of Saudi Arabia
+            <span className="block mb-2">{translations.hero.subtitle.ar}</span>
+            <span className="block">{translations.hero.subtitle.en}</span>
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -136,14 +137,14 @@ const HeroSection = () => {
               className="glass-button bg-teal-600 hover:bg-teal-500 text-white py-6 px-8 text-lg border border-teal-400/30"
               onClick={handleScroll}
             >
-              Explore Our Work
+              {translations.hero.exploreButton.ar}
             </Button>
             <Button 
               variant="outline"
               className="glass-card bg-gradient-to-r from-teal-500/30 to-teal-600/30 py-6 px-8 text-lg hover:bg-teal-500/40 text-white border-teal-400/50 transition-all duration-300 shadow-lg hover:shadow-teal-500/20"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
-              Contact Us
+              {translations.hero.contactButton.ar}
             </Button>
           </motion.div>
         </div>
