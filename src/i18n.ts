@@ -8,35 +8,35 @@ import { translations } from './utils/translations';
 const resources = {
   en: {
     translation: Object.entries(translations).reduce((acc, [section, content]) => {
-      Object.entries(content).forEach(([key, value]) => {
-        if (typeof value === 'object' && value.en) {
-          acc[`${section}.${key}`] = value.en;
-        } else if (typeof value === 'object') {
-          Object.entries(value).forEach(([subKey, subValue]) => {
-            if (typeof subValue === 'object' && subValue.en) {
-              acc[`${section}.${key}.${subKey}`] = subValue.en;
+      Object.entries(content as Record<string, any>).forEach(([key, value]) => {
+        if (typeof value === 'object' && value !== null && 'en' in value) {
+          acc[`${section}.${key}`] = (value as any).en;
+        } else if (typeof value === 'object' && value !== null) {
+          Object.entries(value as Record<string, any>).forEach(([subKey, subValue]) => {
+            if (typeof subValue === 'object' && subValue !== null && 'en' in subValue) {
+              acc[`${section}.${key}.${subKey}`] = (subValue as any).en;
             }
           });
         }
       });
       return acc;
-    }, {})
+    }, {} as Record<string, string>)
   },
   ar: {
     translation: Object.entries(translations).reduce((acc, [section, content]) => {
-      Object.entries(content).forEach(([key, value]) => {
-        if (typeof value === 'object' && value.ar) {
-          acc[`${section}.${key}`] = value.ar;
-        } else if (typeof value === 'object') {
-          Object.entries(value).forEach(([subKey, subValue]) => {
-            if (typeof subValue === 'object' && subValue.ar) {
-              acc[`${section}.${key}.${subKey}`] = subValue.ar;
+      Object.entries(content as Record<string, any>).forEach(([key, value]) => {
+        if (typeof value === 'object' && value !== null && 'ar' in value) {
+          acc[`${section}.${key}`] = (value as any).ar;
+        } else if (typeof value === 'object' && value !== null) {
+          Object.entries(value as Record<string, any>).forEach(([subKey, subValue]) => {
+            if (typeof subValue === 'object' && subValue !== null && 'ar' in subValue) {
+              acc[`${section}.${key}.${subKey}`] = (subValue as any).ar;
             }
           });
         }
       });
       return acc;
-    }, {})
+    }, {} as Record<string, string>)
   }
 };
 
