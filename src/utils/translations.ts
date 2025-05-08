@@ -76,27 +76,27 @@ export const translations = {
   },
   about: {
     title: {
-      en: "Who are we?",
-      ar: "من نحن؟"
+      en: "Who We Are",
+      ar: "من نحن"
     },
     vision: {
       title: {
-        en: "Vision",
+        en: "Our Vision",
         ar: "رؤيتنا"
       },
       content: {
-        en: "To revolutionize the world of contracting, renovation, maintenance, interior design, and finishing",
-        ar: "إحداث ثورة في عالم المقاولات والتجديد والصيانة والتصميم الداخلي والتشطيبات"
+        en: "To revolutionize the world of contracting, renovation, maintenance, interior design, and finishing with innovative solutions and exceptional quality.",
+        ar: "إحداث ثورة في عالم المقاولات والتجديد والصيانة والتصميم الداخلي والتشطيبات من خلال حلول مبتكرة وجودة استثنائية."
       }
     },
     goal: {
       title: {
-        en: "Goal",
+        en: "Our Goal",
         ar: "هدفنا"
       },
       content: {
-        en: "To be a leading institution in the business and project world in the Kingdom of Saudi Arabia",
-        ar: "أن نكون مؤسسة رائدة في عالم الأعمال والمشاريع في المملكة العربية السعودية"
+        en: "To be a leading institution in the business and project world in the Kingdom of Saudi Arabia, setting new standards of excellence and innovation.",
+        ar: "أن نكون مؤسسة رائدة في عالم الأعمال والمشاريع في المملكة العربية السعودية، ونضع معايير جديدة للتميز والابتكار."
       }
     },
     values: {
@@ -110,8 +110,8 @@ export const translations = {
           ar: "النزاهة"
         },
         content: {
-          en: "In our work and respecting time and investing it",
-          ar: "في عملنا واحترام الوقت واستثماره"
+          en: "Maintaining the highest standards of professionalism in our work while respecting and optimizing time management.",
+          ar: "الحفاظ على أعلى معايير الاحتراف في عملنا مع احترام الوقت وإدارته بالشكل الأمثل."
         }
       },
       creativity: {
@@ -120,8 +120,8 @@ export const translations = {
           ar: "الإبداع"
         },
         content: {
-          en: "In ideas, excellence and excelling in our field of work",
-          ar: "في الأفكار والتميز والتفوق في مجال عملنا"
+          en: "Fostering innovative ideas and striving for excellence in all aspects of our professional field.",
+          ar: "تعزيز الأفكار المبتكرة والسعي للتميز في جميع جوانب مجال عملنا."
         }
       },
       responsibility: {
@@ -130,8 +130,8 @@ export const translations = {
           ar: "المسؤولية"
         },
         content: {
-          en: "Towards the community, serving it, and leaving a positive impact",
-          ar: "تجاه المجتمع وخدمته وترك أثر إيجابي"
+          en: "Committing to community service and creating a positive, lasting impact on society.",
+          ar: "الالتزام بخدمة المجتمع وإحداث تأثير إيجابي ودائم على المجتمع."
         }
       }
     },
@@ -146,8 +146,8 @@ export const translations = {
           ar: "الجودة"
         },
         content: {
-          en: "Providing all services and projects with the highest quality and creativity",
-          ar: "تقديم جميع الخدمات والمشاريع بأعلى جودة وإبداع"
+          en: "Delivering all services and projects with the highest quality and creative excellence.",
+          ar: "تقديم جميع الخدمات والمشاريع بأعلى جودة وتميز إبداعي."
         }
       },
       standards: {
@@ -156,8 +156,8 @@ export const translations = {
           ar: "المعايير"
         },
         content: {
-          en: "According to international standards and specifications",
-          ar: "وفقًا للمعايير والمواصفات الدولية"
+          en: "Adhering to international standards and specifications in all our work.",
+          ar: "الالتزام بالمعايير والمواصفات الدولية في كل أعمالنا."
         }
       },
       ambition: {
@@ -166,19 +166,19 @@ export const translations = {
           ar: "الطموح"
         },
         content: {
-          en: "Achieving the ambition of investors, business owners, and clients",
-          ar: "تحقيق طموح المستثمرين وأصحاب الأعمال والعملاء"
+          en: "Fulfilling the aspirations of investors, business owners, and clients through exceptional service.",
+          ar: "تحقيق تطلعات المستثمرين وأصحاب الأعمال والعملاء من خلال خدمة استثنائية."
         }
       }
     },
     workTeam: {
       title: {
-        en: "Work Team",
+        en: "Our Team",
         ar: "فريق العمل"
       },
       description: {
-        en: "A professional and reliable work team composed of experts, specialists, consultants, contractors, and workers",
-        ar: "فريق عمل محترف وموثوق به مكون من خبراء ومتخصصين واستشاريين ومقاولين وعمال"
+        en: "A professional and reliable team composed of experts, specialists, consultants, contractors, and skilled workers committed to excellence.",
+        ar: "فريق عمل محترف وموثوق به يتكون من خبراء ومتخصصين واستشاريين ومقاولين وعمال مهرة ملتزمين بالتميز."
       },
       engineers: {
         en: "Engineers",
@@ -200,8 +200,8 @@ export const translations = {
       ar: "خدماتنا"
     },
     subtitle: {
-      en: "We offer comprehensive design solutions to transform your vision into reality",
-      ar: "نقدم حلول تصميم شاملة لتحويل رؤيتك إلى واقع"
+      en: "We offer comprehensive design and construction solutions to transform your vision into reality.",
+      ar: "نقدم حلول تصميم وبناء شاملة لتحويل رؤيتك إلى واقع ملموس."
     },
     keyFeatures: {
       en: "Key Features",
@@ -209,12 +209,12 @@ export const translations = {
     },
     ourProcess: {
       en: "Our Process",
-      ar: "عمليتنا"
+      ar: "منهجية العمل"
     },
     designProcess: {
       title: {
         en: "Our Design Process",
-        ar: "عملية التصميم لدينا"
+        ar: "منهجية التصميم لدينا"
       },
       discovery: {
         title: {
@@ -222,8 +222,8 @@ export const translations = {
           ar: "الاستكشاف"
         },
         content: {
-          en: "We start by understanding your vision, requirements, and constraints through detailed consultations",
-          ar: "نبدأ بفهم رؤيتك ومتطلباتك والقيود من خلال استشارات مفصلة"
+          en: "We begin by thoroughly understanding your vision, requirements, and constraints through comprehensive consultations.",
+          ar: "نبدأ بفهم رؤيتك ومتطلباتك والقيود بشكل شامل من خلال استشارات مفصلة."
         }
       },
       conceptDevelopment: {
@@ -232,8 +232,8 @@ export const translations = {
           ar: "تطوير المفهوم"
         },
         content: {
-          en: "We create initial designs and concepts that align with your goals and project parameters",
-          ar: "نقوم بإنشاء تصاميم ومفاهيم أولية تتماشى مع أهدافك ومعايير المشروع"
+          en: "We create innovative initial designs and concepts that align perfectly with your goals and project parameters.",
+          ar: "نبتكر تصاميم ومفاهيم أولية مبتكرة تتوافق تماماً مع أهدافك ومعايير المشروع."
         }
       },
       visualization: {
@@ -242,18 +242,18 @@ export const translations = {
           ar: "التصور ثلاثي الأبعاد"
         },
         content: {
-          en: "Experience your design through photorealistic renderings and immersive 3D visualizations",
-          ar: "اختبر تصميمك من خلال عروض واقعية وتصورات ثلاثية الأبعاد غامرة"
+          en: "Experience your design through photorealistic renderings and immersive 3D visualizations before implementation.",
+          ar: "اختبر تصميمك من خلال عروض واقعية وتصورات ثلاثية الأبعاد غامرة قبل التنفيذ."
         }
       },
       refinement: {
         title: {
           en: "Refinement",
-          ar: "التنقيح"
+          ar: "التحسين والتنقيح"
         },
         content: {
-          en: "We refine the design based on your feedback, making adjustments until it perfectly matches your vision",
-          ar: "نقوم بتنقيح التصميم بناءً على ملاحظاتك، وإجراء التعديلات حتى يتطابق تمامًا مع رؤيتك"
+          en: "We meticulously refine the design based on your feedback, making adjustments until it perfectly matches your vision.",
+          ar: "نقوم بتنقيح التصميم بدقة بناءً على ملاحظاتك، وإجراء التعديلات حتى يتطابق تماماً مع رؤيتك."
         }
       },
       implementation: {
@@ -262,8 +262,8 @@ export const translations = {
           ar: "التنفيذ"
         },
         content: {
-          en: "We provide detailed documentation and support throughout the construction or implementation phase",
-          ar: "نقدم وثائق مفصلة ودعم طوال مرحلة البناء أو التنفيذ"
+          en: "We provide detailed documentation and expert support throughout the construction or implementation phase.",
+          ar: "نقدم وثائق مفصلة ودعم متخصص طوال مرحلة البناء أو التنفيذ."
         }
       }
     },
@@ -273,8 +273,8 @@ export const translations = {
         ar: "المساحات التجارية"
       },
       description: {
-        en: "Design commercial environments that enhance brand identity, maximize functionality, and create memorable experiences",
-        ar: "تصميم بيئات تجارية تعزز هوية العلامة التجارية وتزيد الوظائف وتخلق تجارب لا تنسى"
+        en: "We design commercial environments that enhance brand identity, maximize functionality, and create memorable customer experiences.",
+        ar: "نصمم البيئات التجارية التي تعزز هوية العلامة التجارية وتزيد من الوظائف وتخلق تجارب عملاء لا تُنسى."
       }
     },
     residentialDesign: {
@@ -283,8 +283,8 @@ export const translations = {
         ar: "التصميم السكني"
       },
       description: {
-        en: "Create homes that reflect your personality, meet your needs, and provide comfort and inspiration every day",
-        ar: "إنشاء منازل تعكس شخصيتك وتلبي احتياجاتك وتوفر الراحة والإلهام كل يوم"
+        en: "We create homes that reflect your personality, meet your specific needs, and provide comfort and inspiration every day.",
+        ar: "نبتكر منازل تعكس شخصيتك وتلبي احتياجاتك الخاصة وتوفر الراحة والإلهام كل يوم."
       }
     },
     urbanPlanning: {
@@ -293,8 +293,8 @@ export const translations = {
         ar: "التخطيط الحضري"
       },
       description: {
-        en: "Develop sustainable urban solutions that create vibrant communities and improve quality of life",
-        ar: "تطوير حلول حضرية مستدامة تخلق مجتمعات نابضة بالحياة وتحسن نوعية الحياة"
+        en: "We develop sustainable urban solutions that create vibrant communities and improve quality of life for residents.",
+        ar: "نطور حلول حضرية مستدامة تخلق مجتمعات نابضة بالحياة وتحسن نوعية الحياة للسكان."
       }
     },
     items: [
@@ -304,8 +304,8 @@ export const translations = {
           ar: "التصميم المعماري"
         },
         description: {
-          en: "From concept to construction, we create architectural designs that balance aesthetics, functionality, and sustainability",
-          ar: "من المفهوم إلى البناء، نقوم بإنشاء تصاميم معمارية توازن بين الجمال والوظيفة والاستدامة"
+          en: "From concept to construction, we create architectural designs that balance aesthetics, functionality, and sustainability.",
+          ar: "من المفهوم إلى البناء، نقوم بإنشاء تصاميم معمارية توازن بين الجماليات والوظائف والاستدامة."
         },
         features: {
           0: {
@@ -314,19 +314,19 @@ export const translations = {
           },
           1: {
             en: "Sustainable architecture solutions",
-            ar: "حلول العمارة المستدامة"
+            ar: "حلول معمارية مستدامة"
           },
           2: {
-            en: "3D modeling and visualization",
-            ar: "النمذجة والتصور ثلاثي الأبعاد"
+            en: "Advanced 3D modeling and visualization",
+            ar: "نمذجة وتصور ثلاثي الأبعاد متطور"
           },
           3: {
-            en: "Construction documentation",
-            ar: "وثائق البناء"
+            en: "Comprehensive construction documentation",
+            ar: "وثائق بناء شاملة"
           },
           4: {
-            en: "Site analysis and planning",
-            ar: "تحليل الموقع والتخطيط"
+            en: "Expert site analysis and planning",
+            ar: "تحليل وتخطيط موقع متخصص"
           }
         },
         process: {
@@ -335,16 +335,16 @@ export const translations = {
             ar: "الاستشارة الأولية وجمع المتطلبات"
           },
           1: {
-            en: "Concept development and sketches",
-            ar: "تطوير المفهوم والرسومات"
+            en: "Concept development and preliminary sketches",
+            ar: "تطوير المفهوم والرسومات الأولية"
           },
           2: {
-            en: "Detailed design and documentation",
-            ar: "التصميم المفصل والتوثيق"
+            en: "Detailed design and technical documentation",
+            ar: "التصميم المفصل والتوثيق التقني"
           },
           3: {
-            en: "Construction supervision",
-            ar: "الإشراف على البناء"
+            en: "Professional construction supervision",
+            ar: "الإشراف الاحترافي على البناء"
           }
         }
       },
@@ -354,8 +354,8 @@ export const translations = {
           ar: "التصميم الداخلي"
         },
         description: {
-          en: "Transform your spaces with thoughtful interior design that reflects your style and enhances your daily experience",
-          ar: "حول مساحاتك بتصميم داخلي مدروس يعكس أسلوبك ويعزز تجربتك اليومية"
+          en: "Transform your spaces with thoughtful interior design that reflects your style and enhances your daily experience.",
+          ar: "حوّل مساحاتك بتصميم داخلي مدروس يعكس أسلوبك ويعزز تجربتك اليومية."
         }
       },
       {
@@ -364,8 +364,8 @@ export const translations = {
           ar: "التصور ثلاثي الأبعاد"
         },
         description: {
-          en: "Experience your project before it's built with photorealistic 3D renderings and immersive virtual tours",
-          ar: "اختبر مشروعك قبل بنائه من خلال عروض ثلاثية الأبعاد واقعية وجولات افتراضية غامرة"
+          en: "Experience your project before it's built with photorealistic 3D renderings and immersive virtual tours.",
+          ar: "اختبر مشروعك قبل بنائه من خلال عروض ثلاثية الأبعاد واقعية وجولات افتراضية غامرة."
         }
       }
     ]
@@ -376,8 +376,8 @@ export const translations = {
       ar: "مشاريعنا"
     },
     subtitle: {
-      en: "Explore our portfolio of innovative architectural and interior design projects",
-      ar: "استكشف محفظتنا من مشاريع التصميم المعماري والداخلي المبتكرة"
+      en: "Explore our portfolio of innovative architectural and interior design projects across various sectors.",
+      ar: "استكشف محفظتنا من مشاريع التصميم المعماري والداخلي المبتكرة عبر مختلف القطاعات."
     },
     viewDetails: {
       en: "View Details",
@@ -389,8 +389,8 @@ export const translations = {
     },
     categories: {
       all: {
-        en: "All",
-        ar: "الكل"
+        en: "All Projects",
+        ar: "جميع المشاريع"
       },
       residential: {
         en: "Residential",
@@ -405,8 +405,8 @@ export const translations = {
         ar: "ضيافة"
       },
       urban: {
-        en: "Urban",
-        ar: "حضري"
+        en: "Urban Development",
+        ar: "تطوير حضري"
       }
     },
     projectDetails: {
@@ -419,12 +419,12 @@ export const translations = {
         ar: "الموقع"
       },
       year: {
-        en: "Year",
-        ar: "السنة"
+        en: "Year Completed",
+        ar: "سنة الإنجاز"
       },
       size: {
-        en: "Size",
-        ar: "المساحة"
+        en: "Project Size",
+        ar: "حجم المشروع"
       },
       client: {
         en: "Client",
@@ -435,8 +435,8 @@ export const translations = {
         ar: "الخدمات المقدمة"
       },
       contactProject: {
-        en: "Contact Us About This Project",
-        ar: "تواصل معنا بخصوص هذا المشروع"
+        en: "Inquire About This Project",
+        ar: "استفسر عن هذا المشروع"
       }
     }
   },
@@ -444,75 +444,75 @@ export const translations = {
     testimonials: {
       title: {
         en: "Client Testimonials",
-        ar: "آراء العملاء"
+        ar: "شهادات العملاء"
       },
       subtitle: {
-        en: "What our clients say about our services",
-        ar: "ما يقوله عملاؤنا عن خدماتنا"
+        en: "Discover what our clients say about their experience working with our team.",
+        ar: "اكتشف ما يقوله عملاؤنا عن تجربتهم في العمل مع فريقنا."
       },
       quotes: {
         0: {
-          en: "Omair Contracting delivered exceptional results. Their team was professional and efficient.",
-          ar: "قدمت مؤسسة عمير للمقاولات نتائج استثنائية. فريقهم محترف وفعال."
+          en: "Omair Contracting delivered exceptional results that exceeded our expectations. Their team demonstrated outstanding professionalism and efficiency throughout the entire project.",
+          ar: "قدمت مؤسسة عمير للمقاولات نتائج استثنائية تجاوزت توقعاتنا. أظهر فريقهم احترافية متميزة وكفاءة عالية طوال مدة المشروع."
         },
         1: {
-          en: "The quality of their work exceeded our expectations. We highly recommend their services.",
-          ar: "تجاوزت جودة عملهم توقعاتنا. نحن نوصي بشدة بخدماتهم."
+          en: "The quality of their work is impeccable. Their attention to detail and commitment to excellence makes them our top choice for all future projects.",
+          ar: "جودة عملهم لا تشوبها شائبة. اهتمامهم بالتفاصيل والتزامهم بالتميز يجعلهم خيارنا الأول لجميع المشاريع المستقبلية."
         },
         2: {
-          en: "Their attention to detail and commitment to customer satisfaction is commendable.",
-          ar: "اهتمامهم بالتفاصيل والتزامهم بإرضاء العملاء يستحق الثناء."
+          en: "Their dedication to customer satisfaction and meticulous attention to detail resulted in a final product that perfectly aligned with our vision.",
+          ar: "تفانيهم في إرضاء العملاء واهتمامهم الدقيق بالتفاصيل أدى إلى منتج نهائي يتوافق تماماً مع رؤيتنا."
         }
       },
       names: {
         0: {
-          en: "Sarah J.",
-          ar: "سارة ج."
+          en: "Sarah Johnson",
+          ar: "سارة جونسون"
         },
         1: {
-          en: "Ahmed K.",
-          ar: "أحمد ك."
+          en: "Ahmed Khalid",
+          ar: "أحمد خالد"
         },
         2: {
-          en: "Fatima A.",
-          ar: "فاطمة أ."
+          en: "Fatima Al-Ahmed",
+          ar: "فاطمة الأحمد"
         }
       },
       roles: {
         0: {
-          en: "Client",
-          ar: "عميل"
+          en: "Property Developer",
+          ar: "مطور عقاري"
         },
         1: {
-          en: "Property Developer",
-          ar: "مطور عقارات"
+          en: "Commercial Director",
+          ar: "مدير تجاري"
         },
         2: {
-          en: "Homeowner",
-          ar: "مالك منزل"
+          en: "Residential Client",
+          ar: "عميل سكني"
         }
       }
     },
     showcase: {
       title: {
-        en: "Business Showcase",
-        ar: "عرض الأعمال"
+        en: "Project Showcase",
+        ar: "معرض المشاريع"
       },
       residential: {
-        en: "Residential Property",
-        ar: "عقار سكني"
+        en: "Luxury Residential Property",
+        ar: "عقار سكني فاخر"
       },
       commercial: {
-        en: "Commercial Interior",
-        ar: "تصميم داخلي تجاري"
+        en: "Modern Commercial Interior",
+        ar: "تصميم داخلي تجاري عصري"
       },
       luxury: {
-        en: "Luxury Villa",
-        ar: "فيلا فاخرة"
+        en: "Executive Villa Design",
+        ar: "تصميم فيلا تنفيذية"
       },
       highlights: {
-        en: "Highlights of the projects we have completed",
-        ar: "أبرز المشاريع التي أنجزناها"
+        en: "Featured highlights from our recently completed signature projects",
+        ar: "أبرز ما يميز مشاريعنا المتميزة المكتملة مؤخراً"
       }
     }
   },

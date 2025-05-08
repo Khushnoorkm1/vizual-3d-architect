@@ -66,24 +66,24 @@ const ServicesSection = () => {
 
   return (
     <section id="services" className="section-padding bg-gray-50 dark:bg-gray-800" dir={dir}>
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="section-title dark:text-white text-center">
           {t("services.title")}
         </h2>
-        <p className="section-subtitle dark:text-gray-300 text-center">
+        <p className="section-subtitle dark:text-gray-300 text-center mb-8 md:mb-10">
           {t("services.subtitle")}
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-8 md:mt-12">
           {services.map((service, index) => (
             <div
               key={index}
-              className="glass-card rounded-xl p-6 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl cursor-pointer"
+              className="glass-card rounded-xl p-5 sm:p-6 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl cursor-pointer"
               onClick={() => setSelectedService(service)}
             >
               <div className="mb-4">{service.icon}</div>
-              <h3 className="text-xl font-bold mb-3 text-architectural-blue dark:text-white">{t(service.titleKey)}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{t(service.descriptionKey)}</p>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 text-architectural-blue dark:text-white">{t(service.titleKey)}</h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">{t(service.descriptionKey)}</p>
             </div>
           ))}
         </div>
@@ -91,11 +91,11 @@ const ServicesSection = () => {
         <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
           <DialogContent className="max-w-2xl">
             <DialogHeader>
-              <DialogTitle className="flex items-center gap-3 text-2xl">
+              <DialogTitle className="flex items-center gap-3 text-xl sm:text-2xl">
                 {selectedService?.icon}
                 {selectedService && t(selectedService.titleKey)}
               </DialogTitle>
-              <DialogDescription className="text-lg">
+              <DialogDescription className="text-base sm:text-lg">
                 {selectedService && t(selectedService.descriptionKey)}
               </DialogDescription>
             </DialogHeader>
@@ -103,7 +103,7 @@ const ServicesSection = () => {
             {selectedService?.details && (
               <div className="mt-6 space-y-6">
                 <div>
-                  <h4 className="text-xl font-semibold mb-3 text-architectural-blue dark:text-white">
+                  <h4 className="text-lg sm:text-xl font-semibold mb-3 text-architectural-blue dark:text-white">
                     {t("services.keyFeatures")}
                   </h4>
                   <ul className="list-disc pl-6 space-y-2">
@@ -114,7 +114,7 @@ const ServicesSection = () => {
                 </div>
                 
                 <div>
-                  <h4 className="text-xl font-semibold mb-3 text-architectural-blue dark:text-white">
+                  <h4 className="text-lg sm:text-xl font-semibold mb-3 text-architectural-blue dark:text-white">
                     {t("services.ourProcess")}
                   </h4>
                   <div className="space-y-3">
@@ -139,100 +139,100 @@ const ServicesSection = () => {
           </DialogContent>
         </Dialog>
         
-        <div className="mt-24">
-          <h3 className="text-3xl font-bold text-center mb-12 text-architectural-blue dark:text-white">
+        <div className="mt-16 md:mt-24">
+          <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 text-architectural-blue dark:text-white">
             {t("services.designProcess.title")}
           </h3>
           
           <div className="relative">
             <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-architectural-gold/30 hidden md:block"></div>
             
-            <div className="space-y-12 md:space-y-0">
+            <div className="space-y-8 md:space-y-0">
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
-                  <div className="glass-card p-6 rounded-xl inline-block hover-scale">
-                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">
+                  <div className="glass-card p-4 sm:p-6 rounded-xl inline-block hover-scale">
+                    <h4 className="text-lg sm:text-xl font-bold mb-2 text-architectural-blue dark:text-white">
                       {t("services.designProcess.discovery.title")}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
                       {t("services.designProcess.discovery.content")}
                     </p>
                   </div>
                 </div>
-                <div className="relative md:w-1/2 flex justify-center mb-6 md:mb-0 order-1 md:order-2">
-                  <div className="w-12 h-12 rounded-full bg-architectural-gold flex items-center justify-center z-10">
+                <div className="relative md:w-1/2 flex justify-center mb-4 md:mb-0 order-1 md:order-2">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-architectural-gold flex items-center justify-center z-10">
                     <span className="text-white font-bold">1</span>
                   </div>
                 </div>
               </div>
               
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="relative md:w-1/2 flex justify-center mb-6 md:mb-0">
-                  <div className="w-12 h-12 rounded-full bg-architectural-gold flex items-center justify-center z-10">
+              <div className="flex flex-col md:flex-row items-center mt-8 md:mt-16">
+                <div className="relative md:w-1/2 flex justify-center mb-4 md:mb-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-architectural-gold flex items-center justify-center z-10">
                     <span className="text-white font-bold">2</span>
                   </div>
                 </div>
                 <div className="md:w-1/2 md:pl-12">
-                  <div className="glass-card p-6 rounded-xl inline-block hover-scale">
-                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">
+                  <div className="glass-card p-4 sm:p-6 rounded-xl inline-block hover-scale">
+                    <h4 className="text-lg sm:text-xl font-bold mb-2 text-architectural-blue dark:text-white">
                       {t("services.designProcess.conceptDevelopment.title")}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
                       {t("services.designProcess.conceptDevelopment.content")}
                     </p>
                   </div>
                 </div>
               </div>
               
-              <div className="flex flex-col md:flex-row items-center">
+              <div className="flex flex-col md:flex-row items-center mt-8 md:mt-16">
                 <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
-                  <div className="glass-card p-6 rounded-xl inline-block hover-scale">
-                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">
+                  <div className="glass-card p-4 sm:p-6 rounded-xl inline-block hover-scale">
+                    <h4 className="text-lg sm:text-xl font-bold mb-2 text-architectural-blue dark:text-white">
                       {t("services.designProcess.visualization.title")}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
                       {t("services.designProcess.visualization.content")}
                     </p>
                   </div>
                 </div>
-                <div className="relative md:w-1/2 flex justify-center mb-6 md:mb-0 order-1 md:order-2">
-                  <div className="w-12 h-12 rounded-full bg-architectural-gold flex items-center justify-center z-10">
+                <div className="relative md:w-1/2 flex justify-center mb-4 md:mb-0 order-1 md:order-2">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-architectural-gold flex items-center justify-center z-10">
                     <span className="text-white font-bold">3</span>
                   </div>
                 </div>
               </div>
               
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="relative md:w-1/2 flex justify-center mb-6 md:mb-0">
-                  <div className="w-12 h-12 rounded-full bg-architectural-gold flex items-center justify-center z-10">
+              <div className="flex flex-col md:flex-row items-center mt-8 md:mt-16">
+                <div className="relative md:w-1/2 flex justify-center mb-4 md:mb-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-architectural-gold flex items-center justify-center z-10">
                     <span className="text-white font-bold">4</span>
                   </div>
                 </div>
                 <div className="md:w-1/2 md:pl-12">
-                  <div className="glass-card p-6 rounded-xl inline-block hover-scale">
-                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">
+                  <div className="glass-card p-4 sm:p-6 rounded-xl inline-block hover-scale">
+                    <h4 className="text-lg sm:text-xl font-bold mb-2 text-architectural-blue dark:text-white">
                       {t("services.designProcess.refinement.title")}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
                       {t("services.designProcess.refinement.content")}
                     </p>
                   </div>
                 </div>
               </div>
               
-              <div className="flex flex-col md:flex-row items-center">
+              <div className="flex flex-col md:flex-row items-center mt-8 md:mt-16">
                 <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
-                  <div className="glass-card p-6 rounded-xl inline-block hover-scale">
-                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">
+                  <div className="glass-card p-4 sm:p-6 rounded-xl inline-block hover-scale">
+                    <h4 className="text-lg sm:text-xl font-bold mb-2 text-architectural-blue dark:text-white">
                       {t("services.designProcess.implementation.title")}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
                       {t("services.designProcess.implementation.content")}
                     </p>
                   </div>
                 </div>
-                <div className="relative md:w-1/2 flex justify-center mb-6 md:mb-0 order-1 md:order-2">
-                  <div className="w-12 h-12 rounded-full bg-architectural-gold flex items-center justify-center z-10">
+                <div className="relative md:w-1/2 flex justify-center mb-4 md:mb-0 order-1 md:order-2">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-architectural-gold flex items-center justify-center z-10">
                     <span className="text-white font-bold">5</span>
                   </div>
                 </div>

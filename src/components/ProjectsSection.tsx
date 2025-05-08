@@ -79,18 +79,18 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="section-padding bg-white dark:bg-gray-900" dir={dir}>
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="section-title dark:text-white text-center">{t("projects.title")}</h2>
-        <p className="section-subtitle dark:text-gray-300 text-center">
+        <p className="section-subtitle dark:text-gray-300 text-center mb-8 md:mb-10">
           {t("projects.subtitle")}
         </p>
         
-        {/* Category filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        {/* Category filter - scrollable on mobile */}
+        <div className="flex flex-nowrap overflow-x-auto pb-2 md:flex-wrap md:justify-center gap-2 mb-8 md:mb-12 scrollbar-none">
           {categories.map((category) => (
             <button
               key={category}
-              className={`px-4 py-2 rounded-full transition-all ${
+              className={`px-4 py-2 rounded-full transition-all whitespace-nowrap ${
                 activeCategory === category
                   ? "bg-architectural-blue text-white"
                   : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
@@ -103,14 +103,14 @@ const ProjectsSection = () => {
         </div>
         
         {/* Projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {filteredProjects.map((project) => (
             <div 
               key={project.id} 
               className="glass-card rounded-xl overflow-hidden hover-scale"
               onClick={() => openProjectDetails(project)}
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                 <img
                   src={project.imageUrl}
                   alt={project.title}
@@ -120,17 +120,18 @@ const ProjectsSection = () => {
                   <span className="text-white font-medium">{t(`projects.categories.${project.category.toLowerCase()}`)}</span>
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+              <div className="p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-bold mb-2 text-architectural-blue dark:text-white">{project.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm sm:text-base">{project.description}</p>
                 <button 
-                  className="text-architectural-blue dark:text-architectural-gold font-medium flex items-center"
+                  className="text-architectural-blue dark:text-architectural-gold font-medium flex items-center text-sm sm:text-base"
                   onClick={(e) => {
                     e.stopPropagation();
                     openProjectDetails(project);
                   }}
                 >
-                  {t("projects.viewDetails")} <ArrowRight size={16} className="ml-1" />
+                  {t("projects.viewDetails")} 
+                  <ArrowRight size={16} className={`${dir === 'rtl' ? 'mr-1 rotate-180' : 'ml-1'}`} />
                 </button>
               </div>
             </div>
@@ -138,9 +139,9 @@ const ProjectsSection = () => {
         </div>
         
         {/* "View All" button for future expansion */}
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-8 md:mt-12">
           <Button className="glass-button bg-architectural-blue/10 text-architectural-blue dark:bg-architectural-gold/20 dark:text-architectural-gold">
-            {t("projects.viewAll")} <ExternalLink size={16} className="ml-2" />
+            {t("projects.viewAll")} <ExternalLink size={16} className={`${dir === 'rtl' ? 'mr-2' : 'ml-2'}`} />
           </Button>
         </div>
       </div>
@@ -148,8 +149,8 @@ const ProjectsSection = () => {
       {/* Project detail modal */}
       {selectedProject && (
         <Dialog open={!!selectedProject} onOpenChange={closeProjectDetails}>
-          <DialogContent className="max-w-4xl">
-            <div className="relative h-80 sm:h-96 rounded-t-lg overflow-hidden">
+          <DialogContent className="max-w-4xl p-0 overflow-hidden">
+            <div className="relative h-56 sm:h-72 md:h-80 lg:h-96 rounded-t-lg overflow-hidden">
               <img 
                 src={selectedProject.imageUrl} 
                 alt={selectedProject.title} 
@@ -166,13 +167,13 @@ const ProjectsSection = () => {
               </DialogClose>
             </div>
             
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               <DialogHeader>
-                <div className="flex justify-between items-start mb-4">
-                  <DialogTitle className="text-2xl font-bold text-architectural-blue dark:text-white">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-2">
+                  <DialogTitle className="text-xl sm:text-2xl font-bold text-architectural-blue dark:text-white">
                     {selectedProject.title}
                   </DialogTitle>
-                  <span className="bg-architectural-gold/20 text-architectural-gold px-3 py-1 rounded-full text-sm">
+                  <span className="bg-architectural-gold/20 text-architectural-gold px-3 py-1 rounded-full text-sm whitespace-nowrap">
                     {t(`projects.categories.${selectedProject.category.toLowerCase()}`)}
                   </span>
                 </div>
@@ -181,12 +182,12 @@ const ProjectsSection = () => {
                 </DialogDescription>
               </DialogHeader>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6">
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-architectural-blue dark:text-white">
                     {t("projects.projectDetails.title")}
                   </h4>
-                  <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+                  <ul className="space-y-2 text-gray-600 dark:text-gray-300 text-sm sm:text-base">
                     <li><span className="font-medium">{t("projects.projectDetails.location")}:</span> Dubai, UAE</li>
                     <li><span className="font-medium">{t("projects.projectDetails.year")}:</span> 2023</li>
                     <li><span className="font-medium">{t("projects.projectDetails.size")}:</span> 12,000 sq ft</li>
@@ -197,7 +198,7 @@ const ProjectsSection = () => {
                   <h4 className="text-lg font-semibold mb-2 text-architectural-blue dark:text-white">
                     {t("projects.projectDetails.servicesProvided")}
                   </h4>
-                  <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+                  <ul className="space-y-2 text-gray-600 dark:text-gray-300 text-sm sm:text-base">
                     <li>Architectural Design</li>
                     <li>Interior Design</li>
                     <li>3D Visualization</li>
