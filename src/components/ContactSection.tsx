@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Phone, Mail, MapPin, Send, Building, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,8 +13,12 @@ import {
   DialogClose
 } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ContactSection = () => {
+  const { t } = useTranslation();
+  const { dir } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -58,7 +63,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-white dark:bg-teal-900/30">
+    <section id="contact" className="section-padding bg-white dark:bg-teal-900/30" dir={dir}>
       <div className="container mx-auto">
         {/* Success Dialog */}
         <Dialog open={isSuccessDialogOpen} onOpenChange={setIsSuccessDialogOpen}>
@@ -66,16 +71,16 @@ const ContactSection = () => {
             <DialogHeader>
               <DialogTitle className="text-center flex items-center justify-center gap-2 text-teal-900 dark:text-white">
                 <CheckCircle className="h-6 w-6 text-green-500" />
-                Message Sent
+                {t("contact.form.messageSent")}
               </DialogTitle>
               <DialogDescription className="text-center text-teal-800 dark:text-gray-300">
-                Thank you for your inquiry. We'll get back to you soon!
+                {t("contact.form.thankYou")}
               </DialogDescription>
             </DialogHeader>
             <DialogFooter className="sm:justify-center">
               <DialogClose asChild>
                 <Button className="glass-button bg-teal-600 hover:bg-teal-500 text-white border border-teal-400/30">
-                  Close
+                  {t("contact.form.close")}
                 </Button>
               </DialogClose>
             </DialogFooter>
@@ -90,7 +95,7 @@ const ContactSection = () => {
           variants={fadeIn}
           className="section-title text-teal-900 dark:text-white text-center"
         >
-          Contact Us
+          {t("contact.title")}
         </motion.h2>
         
         <motion.p 
@@ -101,7 +106,7 @@ const ContactSection = () => {
           variants={fadeIn}
           className="section-subtitle text-teal-800 dark:text-gray-300 text-center"
         >
-          Reach out to discuss your project or schedule a consultation with our team
+          {t("contact.subtitle")}
         </motion.p>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
@@ -117,12 +122,12 @@ const ContactSection = () => {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="glass-card rounded-xl p-8 bg-white/80 dark:bg-teal-800/30 backdrop-blur-md border border-teal-200 dark:border-white/10"
             >
-              <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">Send Us a Message</h3>
+              <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">{t("contact.form.sendMessage")}</h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-teal-800 dark:text-gray-300 mb-1">
-                    Your Name
+                    {t("contact.form.name")}
                   </label>
                   <Input
                     id="name"
@@ -132,14 +137,14 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     className="w-full bg-white/50 dark:bg-teal-900/50 border-teal-200 dark:border-teal-700"
-                    placeholder="John Doe"
+                    placeholder={t("contact.form.namePlaceholder")}
                   />
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-teal-800 dark:text-gray-300 mb-1">
-                      Email Address
+                      {t("contact.form.email")}
                     </label>
                     <Input
                       id="email"
@@ -149,13 +154,13 @@ const ContactSection = () => {
                       onChange={handleChange}
                       required
                       className="w-full bg-white/50 dark:bg-teal-900/50 border-teal-200 dark:border-teal-700"
-                      placeholder="john@example.com"
+                      placeholder={t("contact.form.emailPlaceholder")}
                     />
                   </div>
                   
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-teal-800 dark:text-gray-300 mb-1">
-                      Phone Number
+                      {t("contact.form.phone")}
                     </label>
                     <Input
                       id="phone"
@@ -171,7 +176,7 @@ const ContactSection = () => {
                 
                 <div>
                   <label htmlFor="service" className="block text-sm font-medium text-teal-800 dark:text-gray-300 mb-1">
-                    Service of Interest
+                    {t("contact.form.service")}
                   </label>
                   <select
                     id="service"
@@ -180,20 +185,20 @@ const ContactSection = () => {
                     onChange={handleChange}
                     className="w-full rounded-md border border-teal-200 dark:border-teal-700 px-4 py-2 bg-white/50 dark:bg-teal-900/50 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:focus:ring-teal-300 text-teal-900 dark:text-white"
                   >
-                    <option value="">Select a service</option>
-                    <option value="contracting">Contracting</option>
-                    <option value="interior-design">Interior Design</option>
-                    <option value="restoration">Restoration</option>
-                    <option value="plumbing">Plumbing</option>
-                    <option value="electrical">Electrical Works</option>
-                    <option value="air-conditioning">Air Conditioning</option>
-                    <option value="project-development">Project Development</option>
+                    <option value="">{t("contact.form.selectService")}</option>
+                    <option value="contracting">{t("contact.form.services.contracting")}</option>
+                    <option value="interior-design">{t("contact.form.services.interiorDesign")}</option>
+                    <option value="restoration">{t("contact.form.services.restoration")}</option>
+                    <option value="plumbing">{t("contact.form.services.plumbing")}</option>
+                    <option value="electrical">{t("contact.form.services.electrical")}</option>
+                    <option value="air-conditioning">{t("contact.form.services.airConditioning")}</option>
+                    <option value="project-development">{t("contact.form.services.projectDevelopment")}</option>
                   </select>
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-teal-800 dark:text-gray-300 mb-1">
-                    Your Message
+                    {t("contact.form.message")}
                   </label>
                   <textarea
                     id="message"
@@ -203,7 +208,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     className="w-full rounded-md border border-teal-200 dark:border-teal-700 px-4 py-2 bg-white/50 dark:bg-teal-900/50 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:focus:ring-teal-300 text-teal-900 dark:text-white"
-                    placeholder="Tell us about your project..."
+                    placeholder={t("contact.form.messagePlaceholder")}
                   />
                 </div>
                 
@@ -219,11 +224,11 @@ const ContactSection = () => {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        Sending...
+                        {t("contact.form.sending")}
                       </span>
                     ) : (
                       <span className="flex items-center">
-                        Send Message <Send size={16} className="ml-2" />
+                        {t("contact.form.send")} <Send size={16} className="ml-2" />
                       </span>
                     )}
                   </Button>
@@ -245,7 +250,7 @@ const ContactSection = () => {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="glass-card rounded-xl p-8 bg-white/80 dark:bg-teal-800/30 backdrop-blur-md border border-teal-200 dark:border-white/10"
             >
-              <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">Contact Information</h3>
+              <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">{t("contact.contactInfo.title")}</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start">
@@ -253,7 +258,7 @@ const ContactSection = () => {
                     <Phone className="h-6 w-6 text-teal-700 dark:text-teal-300" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">Phone</h4>
+                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">{t("contact.contactInfo.phone")}</h4>
                     <p className="text-teal-800 dark:text-gray-300 break-words">+966 11 123 4567</p>
                     <p className="text-teal-800 dark:text-gray-300 break-words">+966 50 987 6543</p>
                   </div>
@@ -264,7 +269,7 @@ const ContactSection = () => {
                     <Mail className="h-6 w-6 text-teal-700 dark:text-teal-300" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">Email</h4>
+                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">{t("contact.contactInfo.email")}</h4>
                     <p className="text-teal-800 dark:text-gray-300 break-words">info@omaircontracting.com</p>
                     <p className="text-teal-800 dark:text-gray-300 break-words">projects@omaircontracting.com</p>
                   </div>
@@ -275,11 +280,11 @@ const ContactSection = () => {
                     <Building className="h-6 w-6 text-teal-700 dark:text-teal-300" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">Locations</h4>
-                    <p className="text-teal-800 dark:text-gray-300 font-medium break-words">Riyadh:</p>
-                    <p className="text-teal-800 dark:text-gray-300 mb-2 break-words">King Abdullah Road</p>
-                    <p className="text-teal-800 dark:text-gray-300 font-medium break-words">Shaqra City:</p>
-                    <p className="text-teal-800 dark:text-gray-300 break-words">King Fahd Road</p>
+                    <h4 className="text-lg font-medium text-teal-900 dark:text-white">{t("contact.contactInfo.locations")}</h4>
+                    <p className="text-teal-800 dark:text-gray-300 font-medium break-words">{t("contact.contactInfo.riyadh")}:</p>
+                    <p className="text-teal-800 dark:text-gray-300 mb-2 break-words">{t("contact.contactInfo.riyadhAddress")}</p>
+                    <p className="text-teal-800 dark:text-gray-300 font-medium break-words">{t("contact.contactInfo.shaqra")}:</p>
+                    <p className="text-teal-800 dark:text-gray-300 break-words">{t("contact.contactInfo.shaqraAddress")}</p>
                   </div>
                 </div>
               </div>
@@ -290,19 +295,19 @@ const ContactSection = () => {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="glass-card rounded-xl p-8 bg-white/80 dark:bg-teal-800/30 backdrop-blur-md border border-teal-200 dark:border-white/10"
             >
-              <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">Office Hours</h3>
+              <h3 className="text-2xl font-bold mb-6 text-teal-900 dark:text-white">{t("contact.officeHours.title")}</h3>
               
               <div className="space-y-3">
                 <div className="flex justify-between flex-wrap">
-                  <span className="text-teal-800 dark:text-gray-300">Sunday - Thursday</span>
+                  <span className="text-teal-800 dark:text-gray-300">{t("contact.officeHours.sundayThursday")}</span>
                   <span className="font-medium text-teal-900 dark:text-white">8:00 AM - 5:00 PM</span>
                 </div>
                 <div className="flex justify-between flex-wrap">
-                  <span className="text-teal-800 dark:text-gray-300">Friday</span>
-                  <span className="font-medium text-teal-900 dark:text-white">Closed</span>
+                  <span className="text-teal-800 dark:text-gray-300">{t("contact.officeHours.friday")}</span>
+                  <span className="font-medium text-teal-900 dark:text-white">{t("contact.officeHours.closed")}</span>
                 </div>
                 <div className="flex justify-between flex-wrap">
-                  <span className="text-teal-800 dark:text-gray-300">Saturday</span>
+                  <span className="text-teal-800 dark:text-gray-300">{t("contact.officeHours.saturday")}</span>
                   <span className="font-medium text-teal-900 dark:text-white">9:00 AM - 1:00 PM</span>
                 </div>
               </div>
@@ -317,7 +322,7 @@ const ContactSection = () => {
               <div className="absolute inset-0 flex items-center justify-center bg-black/30">
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <Button variant="outline" className="glass-button bg-white/70 hover:bg-white text-teal-900 dark:border-transparent">
-                    <MapPin className="mr-2 h-4 w-4" /> View Location
+                    <MapPin className="mr-2 h-4 w-4" /> {t("contact.viewLocation")}
                   </Button>
                 </motion.div>
               </div>

@@ -1,3 +1,4 @@
+
 import { 
   LayoutPanelTop, 
   Paintbrush, 
@@ -17,69 +18,60 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { translations } from "@/utils/translations";
-
-const services = [
-  {
-    icon: <Building size={36} className="text-architectural-gold" />,
-    title: "Architectural Design",
-    description: "From concept to construction, we create architectural designs that balance aesthetics, functionality, and sustainability.",
-    details: {
-      features: [
-        "Custom residential and commercial designs",
-        "Sustainable architecture solutions",
-        "3D modeling and visualization",
-        "Construction documentation",
-        "Site analysis and planning"
-      ],
-      process: [
-        "Initial consultation and requirement gathering",
-        "Concept development and sketches",
-        "Detailed design and documentation",
-        "Construction supervision"
-      ]
-    }
-  },
-  {
-    icon: <Paintbrush size={36} className="text-architectural-gold" />,
-    title: "Interior Design",
-    description: "Transform your spaces with thoughtful interior design that reflects your style and enhances your daily experience.",
-  },
-  {
-    icon: <LayoutPanelTop size={36} className="text-architectural-gold" />,
-    title: "3D Visualization",
-    description: "Experience your project before it's built with photorealistic 3D renderings and immersive virtual tours.",
-  },
-  {
-    icon: <Building2 size={36} className="text-architectural-gold" />,
-    title: "Commercial Spaces",
-    description: "Design commercial environments that enhance brand identity, maximize functionality, and create memorable experiences.",
-  },
-  {
-    icon: <Home size={36} className="text-architectural-gold" />,
-    title: "Residential Design",
-    description: "Create homes that reflect your personality, meet your needs, and provide comfort and inspiration every day.",
-  },
-  {
-    icon: <Waypoints size={36} className="text-architectural-gold" />,
-    title: "Urban Planning",
-    description: "Develop sustainable urban solutions that create vibrant communities and improve quality of life.",
-  },
-];
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ServicesSection = () => {
+  const { t } = useTranslation();
+  const { dir } = useLanguage();
   const [selectedService, setSelectedService] = useState(null);
 
+  // Define services with their icons
+  const services = [
+    {
+      icon: <Building size={36} className="text-architectural-gold" />,
+      titleKey: "services.items.0.title",
+      descriptionKey: "services.items.0.description",
+      details: {
+        features: Array.from({ length: 5 }, (_, i) => `services.items.0.features.${i}`),
+        process: Array.from({ length: 4 }, (_, i) => `services.items.0.process.${i}`)
+      }
+    },
+    {
+      icon: <Paintbrush size={36} className="text-architectural-gold" />,
+      titleKey: "services.items.1.title",
+      descriptionKey: "services.items.1.description"
+    },
+    {
+      icon: <LayoutPanelTop size={36} className="text-architectural-gold" />,
+      titleKey: "services.items.2.title",
+      descriptionKey: "services.items.2.description"
+    },
+    {
+      icon: <Building2 size={36} className="text-architectural-gold" />,
+      titleKey: "services.commercialSpaces.title",
+      descriptionKey: "services.commercialSpaces.description"
+    },
+    {
+      icon: <Home size={36} className="text-architectural-gold" />,
+      titleKey: "services.residentialDesign.title",
+      descriptionKey: "services.residentialDesign.description"
+    },
+    {
+      icon: <Waypoints size={36} className="text-architectural-gold" />,
+      titleKey: "services.urbanPlanning.title",
+      descriptionKey: "services.urbanPlanning.description"
+    },
+  ];
+
   return (
-    <section id="services" className="section-padding bg-gray-50 dark:bg-gray-800">
+    <section id="services" className="section-padding bg-gray-50 dark:bg-gray-800" dir={dir}>
       <div className="container mx-auto">
         <h2 className="section-title dark:text-white text-center">
-          <span className="block mb-2">{translations.services.title.ar}</span>
-          <span className="block">{translations.services.title.en}</span>
+          {t("services.title")}
         </h2>
         <p className="section-subtitle dark:text-gray-300 text-center">
-          <span className="block mb-2">{translations.services.subtitle.ar}</span>
-          <span className="block">{translations.services.subtitle.en}</span>
+          {t("services.subtitle")}
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
@@ -90,8 +82,8 @@ const ServicesSection = () => {
               onClick={() => setSelectedService(service)}
             >
               <div className="mb-4">{service.icon}</div>
-              <h3 className="text-xl font-bold mb-3 text-architectural-blue dark:text-white">{service.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{service.description}</p>
+              <h3 className="text-xl font-bold mb-3 text-architectural-blue dark:text-white">{t(service.titleKey)}</h3>
+              <p className="text-gray-600 dark:text-gray-300">{t(service.descriptionKey)}</p>
             </div>
           ))}
         </div>
@@ -101,41 +93,43 @@ const ServicesSection = () => {
             <DialogHeader>
               <DialogTitle className="flex items-center gap-3 text-2xl">
                 {selectedService?.icon}
-                {selectedService?.title}
+                {selectedService && t(selectedService.titleKey)}
               </DialogTitle>
               <DialogDescription className="text-lg">
-                {selectedService?.description}
+                {selectedService && t(selectedService.descriptionKey)}
               </DialogDescription>
             </DialogHeader>
             
-            <div className="mt-6 space-y-6">
-              <div>
-                <h4 className="text-xl font-semibold mb-3 text-architectural-blue dark:text-white">
-                  Key Features
-                </h4>
-                <ul className="list-disc pl-6 space-y-2">
-                  {selectedService?.details.features.map((feature, index) => (
-                    <li key={index} className="text-gray-600 dark:text-gray-300">{feature}</li>
-                  ))}
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-xl font-semibold mb-3 text-architectural-blue dark:text-white">
-                  Our Process
-                </h4>
-                <div className="space-y-3">
-                  {selectedService?.details.process.map((step, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-architectural-gold text-white flex items-center justify-center text-sm">
-                        {index + 1}
-                      </span>
-                      <p className="text-gray-600 dark:text-gray-300">{step}</p>
-                    </div>
-                  ))}
+            {selectedService?.details && (
+              <div className="mt-6 space-y-6">
+                <div>
+                  <h4 className="text-xl font-semibold mb-3 text-architectural-blue dark:text-white">
+                    {t("services.keyFeatures")}
+                  </h4>
+                  <ul className="list-disc pl-6 space-y-2">
+                    {selectedService.details.features.map((featureKey, index) => (
+                      <li key={index} className="text-gray-600 dark:text-gray-300">{t(featureKey)}</li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 className="text-xl font-semibold mb-3 text-architectural-blue dark:text-white">
+                    {t("services.ourProcess")}
+                  </h4>
+                  <div className="space-y-3">
+                    {selectedService.details.process.map((processKey, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-architectural-gold text-white flex items-center justify-center text-sm">
+                          {index + 1}
+                        </span>
+                        <p className="text-gray-600 dark:text-gray-300">{t(processKey)}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
             
             <DialogClose asChild>
               <Button variant="ghost" size="icon" className="absolute right-4 top-4">
@@ -147,7 +141,7 @@ const ServicesSection = () => {
         
         <div className="mt-24">
           <h3 className="text-3xl font-bold text-center mb-12 text-architectural-blue dark:text-white">
-            Our Design Process
+            {t("services.designProcess.title")}
           </h3>
           
           <div className="relative">
@@ -157,9 +151,11 @@ const ServicesSection = () => {
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
                   <div className="glass-card p-6 rounded-xl inline-block hover-scale">
-                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">Discovery</h4>
+                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">
+                      {t("services.designProcess.discovery.title")}
+                    </h4>
                     <p className="text-gray-600 dark:text-gray-300">
-                      We start by understanding your vision, requirements, and constraints through detailed consultations.
+                      {t("services.designProcess.discovery.content")}
                     </p>
                   </div>
                 </div>
@@ -178,9 +174,11 @@ const ServicesSection = () => {
                 </div>
                 <div className="md:w-1/2 md:pl-12">
                   <div className="glass-card p-6 rounded-xl inline-block hover-scale">
-                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">Concept Development</h4>
+                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">
+                      {t("services.designProcess.conceptDevelopment.title")}
+                    </h4>
                     <p className="text-gray-600 dark:text-gray-300">
-                      We create initial designs and concepts that align with your goals and project parameters.
+                      {t("services.designProcess.conceptDevelopment.content")}
                     </p>
                   </div>
                 </div>
@@ -189,9 +187,11 @@ const ServicesSection = () => {
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
                   <div className="glass-card p-6 rounded-xl inline-block hover-scale">
-                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">3D Visualization</h4>
+                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">
+                      {t("services.designProcess.visualization.title")}
+                    </h4>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Experience your design through photorealistic renderings and immersive 3D visualizations.
+                      {t("services.designProcess.visualization.content")}
                     </p>
                   </div>
                 </div>
@@ -210,9 +210,11 @@ const ServicesSection = () => {
                 </div>
                 <div className="md:w-1/2 md:pl-12">
                   <div className="glass-card p-6 rounded-xl inline-block hover-scale">
-                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">Refinement</h4>
+                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">
+                      {t("services.designProcess.refinement.title")}
+                    </h4>
                     <p className="text-gray-600 dark:text-gray-300">
-                      We refine the design based on your feedback, making adjustments until it perfectly matches your vision.
+                      {t("services.designProcess.refinement.content")}
                     </p>
                   </div>
                 </div>
@@ -221,9 +223,11 @@ const ServicesSection = () => {
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
                   <div className="glass-card p-6 rounded-xl inline-block hover-scale">
-                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">Implementation</h4>
+                    <h4 className="text-xl font-bold mb-2 text-architectural-blue dark:text-white">
+                      {t("services.designProcess.implementation.title")}
+                    </h4>
                     <p className="text-gray-600 dark:text-gray-300">
-                      We provide detailed documentation and support throughout the construction or implementation phase.
+                      {t("services.designProcess.implementation.content")}
                     </p>
                   </div>
                 </div>

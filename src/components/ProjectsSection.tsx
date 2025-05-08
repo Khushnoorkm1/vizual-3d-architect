@@ -4,6 +4,8 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
 import { X } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Sample project data
 const projects = [
@@ -51,11 +53,13 @@ const projects = [
   }
 ];
 
-const categories = ["All", "Residential", "Commercial", "Hospitality", "Urban"];
-
 const ProjectsSection = () => {
+  const { t } = useTranslation();
+  const { dir } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
+
+  const categories = ["All", "Residential", "Commercial", "Hospitality", "Urban"];
 
   const filteredProjects = activeCategory === "All" 
     ? projects 
@@ -69,12 +73,16 @@ const ProjectsSection = () => {
     setSelectedProject(null);
   };
 
+  const getCategoryTranslation = (category) => {
+    return t(`projects.categories.${category.toLowerCase()}`);
+  };
+
   return (
-    <section id="projects" className="section-padding bg-white dark:bg-gray-900">
+    <section id="projects" className="section-padding bg-white dark:bg-gray-900" dir={dir}>
       <div className="container mx-auto">
-        <h2 className="section-title dark:text-white text-center">Our Projects</h2>
+        <h2 className="section-title dark:text-white text-center">{t("projects.title")}</h2>
         <p className="section-subtitle dark:text-gray-300 text-center">
-          Explore our portfolio of innovative architectural and interior design projects.
+          {t("projects.subtitle")}
         </p>
         
         {/* Category filter */}
@@ -89,7 +97,7 @@ const ProjectsSection = () => {
               }`}
               onClick={() => setActiveCategory(category)}
             >
-              {category}
+              {getCategoryTranslation(category)}
             </button>
           ))}
         </div>
@@ -109,7 +117,7 @@ const ProjectsSection = () => {
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
-                  <span className="text-white font-medium">{project.category}</span>
+                  <span className="text-white font-medium">{t(`projects.categories.${project.category.toLowerCase()}`)}</span>
                 </div>
               </div>
               <div className="p-6">
@@ -122,7 +130,7 @@ const ProjectsSection = () => {
                     openProjectDetails(project);
                   }}
                 >
-                  View Details <ArrowRight size={16} className="ml-1" />
+                  {t("projects.viewDetails")} <ArrowRight size={16} className="ml-1" />
                 </button>
               </div>
             </div>
@@ -132,7 +140,7 @@ const ProjectsSection = () => {
         {/* "View All" button for future expansion */}
         <div className="flex justify-center mt-12">
           <Button className="glass-button bg-architectural-blue/10 text-architectural-blue dark:bg-architectural-gold/20 dark:text-architectural-gold">
-            View All Projects <ExternalLink size={16} className="ml-2" />
+            {t("projects.viewAll")} <ExternalLink size={16} className="ml-2" />
           </Button>
         </div>
       </div>
@@ -165,7 +173,7 @@ const ProjectsSection = () => {
                     {selectedProject.title}
                   </DialogTitle>
                   <span className="bg-architectural-gold/20 text-architectural-gold px-3 py-1 rounded-full text-sm">
-                    {selectedProject.category}
+                    {t(`projects.categories.${selectedProject.category.toLowerCase()}`)}
                   </span>
                 </div>
                 <DialogDescription className="text-gray-700 dark:text-gray-300">
@@ -175,16 +183,20 @@ const ProjectsSection = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                 <div>
-                  <h4 className="text-lg font-semibold mb-2 text-architectural-blue dark:text-white">Project Details</h4>
+                  <h4 className="text-lg font-semibold mb-2 text-architectural-blue dark:text-white">
+                    {t("projects.projectDetails.title")}
+                  </h4>
                   <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li><span className="font-medium">Location:</span> Dubai, UAE</li>
-                    <li><span className="font-medium">Year:</span> 2023</li>
-                    <li><span className="font-medium">Size:</span> 12,000 sq ft</li>
-                    <li><span className="font-medium">Client:</span> {selectedProject.title.split(' ')[0]} Group</li>
+                    <li><span className="font-medium">{t("projects.projectDetails.location")}:</span> Dubai, UAE</li>
+                    <li><span className="font-medium">{t("projects.projectDetails.year")}:</span> 2023</li>
+                    <li><span className="font-medium">{t("projects.projectDetails.size")}:</span> 12,000 sq ft</li>
+                    <li><span className="font-medium">{t("projects.projectDetails.client")}:</span> {selectedProject.title.split(' ')[0]} Group</li>
                   </ul>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold mb-2 text-architectural-blue dark:text-white">Services Provided</h4>
+                  <h4 className="text-lg font-semibold mb-2 text-architectural-blue dark:text-white">
+                    {t("projects.projectDetails.servicesProvided")}
+                  </h4>
                   <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                     <li>Architectural Design</li>
                     <li>Interior Design</li>
@@ -195,7 +207,7 @@ const ProjectsSection = () => {
               </div>
               
               <Button className="w-full glass-button bg-architectural-blue text-white mt-6">
-                Contact Us About This Project
+                {t("projects.projectDetails.contactProject")}
               </Button>
             </div>
           </DialogContent>

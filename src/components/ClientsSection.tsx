@@ -2,6 +2,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Star, ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Updated testimonials based on the provided images
 const testimonials = [
@@ -45,6 +47,8 @@ const clientLogos = [
 ];
 
 const ClientsSection = () => {
+  const { t } = useTranslation();
+  const { dir } = useLanguage();
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef(null);
@@ -117,7 +121,7 @@ const ClientsSection = () => {
   };
 
   return (
-    <section id="clients" className="section-padding bg-teal-50 dark:bg-teal-900/50">
+    <section id="clients" className="section-padding bg-teal-50 dark:bg-teal-900/50" dir={dir}>
       <div className="container mx-auto">
         <motion.h2 
           initial="hidden"
@@ -127,7 +131,7 @@ const ClientsSection = () => {
           variants={fadeIn}
           className="section-title text-teal-900 dark:text-white text-center"
         >
-          Client Testimonials
+          {t("clients.testimonials.title")}
         </motion.h2>
         <motion.p 
           initial="hidden"
@@ -137,7 +141,7 @@ const ClientsSection = () => {
           variants={fadeIn}
           className="section-subtitle text-teal-800 dark:text-gray-300 text-center"
         >
-          What our clients say about our services
+          {t("clients.testimonials.subtitle")}
         </motion.p>
         
         {/* Testimonials */}
@@ -184,7 +188,7 @@ const ClientsSection = () => {
                   transition={{ duration: 0.5 }}
                   className="text-lg md:text-xl italic text-teal-800 dark:text-gray-300 mb-6"
                 >
-                  {activeTestimonial.quote}
+                  {t(`clients.testimonials.quotes.${activeTestimonialIndex}`)}
                 </motion.blockquote>
                 
                 <div className="flex items-center mb-4">
@@ -209,10 +213,10 @@ const ClientsSection = () => {
                   transition={{ duration: 0.5 }}
                 >
                   <h3 className="text-xl font-bold text-teal-900 dark:text-white">
-                    {activeTestimonial.name}
+                    {t(`clients.testimonials.names.${activeTestimonialIndex}`)}
                   </h3>
                   <p className="text-teal-700 dark:text-gray-400">
-                    {activeTestimonial.role}{activeTestimonial.company && `, ${activeTestimonial.company}`}
+                    {t(`clients.testimonials.roles.${activeTestimonialIndex}`)}
                   </p>
                 </motion.div>
               </div>
@@ -303,7 +307,9 @@ const ClientsSection = () => {
           variants={fadeIn} 
           className="mt-16"
         >
-          <h3 className="text-2xl font-bold text-center mb-10 text-teal-900 dark:text-white">Business Showcase</h3>
+          <h3 className="text-2xl font-bold text-center mb-10 text-teal-900 dark:text-white">
+            {t("clients.showcase.title")}
+          </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <motion.div 
@@ -313,7 +319,7 @@ const ClientsSection = () => {
             >
               <img 
                 src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" 
-                alt="Residential Property" 
+                alt={t("clients.showcase.residential")} 
                 className="w-full h-64 object-cover"
               />
             </motion.div>
@@ -325,7 +331,7 @@ const ClientsSection = () => {
             >
               <img 
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" 
-                alt="Commercial Interior" 
+                alt={t("clients.showcase.commercial")} 
                 className="w-full h-64 object-cover"
               />
             </motion.div>
@@ -337,13 +343,15 @@ const ClientsSection = () => {
             >
               <img 
                 src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" 
-                alt="Luxury Villa" 
+                alt={t("clients.showcase.luxury")} 
                 className="w-full h-64 object-cover"
               />
             </motion.div>
           </div>
           
-          <p className="text-center mt-6 text-teal-800 dark:text-gray-300">Highlights of the projects we have completed</p>
+          <p className="text-center mt-6 text-teal-800 dark:text-gray-300">
+            {t("clients.showcase.highlights")}
+          </p>
         </motion.div>
       </div>
     </section>
